@@ -16,6 +16,9 @@
 		A83B4E651F0F1360008595E8 /* MericaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E641F0F1360008595E8 /* MericaTests.swift */; };
 		A83B4E701F0F1360008595E8 /* MericaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E6F1F0F1360008595E8 /* MericaUITests.swift */; };
 		A83B4E811F0F1D73008595E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E801F0F1D73008595E8 /* GoogleService-Info.plist */; };
+		A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E851F105EE2008595E8 /* WelcomeVC.swift */; };
+		A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E871F105F0E008595E8 /* LoginVC.swift */; };
+		A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E891F105F2D008595E8 /* SignUpVC.swift */; };
 		B0EB8C38B91581BA87A3CCEA /* Pods_MericaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAC1B814761248E14C4C42D /* Pods_MericaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +58,10 @@
 		A83B4E6F1F0F1360008595E8 /* MericaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MericaUITests.swift; sourceTree = "<group>"; };
 		A83B4E711F0F1360008595E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A83B4E801F0F1D73008595E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A83B4E821F105D76008595E8 /* Merica.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merica.entitlements; sourceTree = "<group>"; };
+		A83B4E851F105EE2008595E8 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		A83B4E871F105F0E008595E8 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		A83B4E891F105F2D008595E8 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		AAA69E54ECA541AA1E150E6D /* Pods-MericaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DABB58D4AF713797A1917FFB /* Pods-MericaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.release.xcconfig"; sourceTree = "<group>"; };
 		EE5447F6DE8C32FCDCDCEC79 /* Pods-MericaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaUITests/Pods-MericaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -114,6 +121,7 @@
 		A83B4E4E1F0F135F008595E8 /* Merica */ = {
 			isa = PBXGroup;
 			children = (
+				A83B4E821F105D76008595E8 /* Merica.entitlements */,
 				A83B4E7F1F0F1838008595E8 /* Models */,
 				A83B4E7E1F0F1833008595E8 /* Views */,
 				A83B4E7D1F0F1825008595E8 /* Controllers */,
@@ -148,6 +156,9 @@
 		A83B4E7D1F0F1825008595E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A83B4E851F105EE2008595E8 /* WelcomeVC.swift */,
+				A83B4E871F105F0E008595E8 /* LoginVC.swift */,
+				A83B4E891F105F2D008595E8 /* SignUpVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +279,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 3DKZWJ5854;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					A83B4E5F1F0F1360008595E8 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -474,7 +490,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
 				A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */,
+				A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */,
+				A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +648,7 @@
 			baseConfigurationReference = F9563577A2CEDD1BE565CA04 /* Pods-Merica.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Merica/Merica.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;
 				INFOPLIST_FILE = Merica/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -643,6 +663,7 @@
 			baseConfigurationReference = 7CA2A2E445A19D467342469C /* Pods-Merica.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Merica/Merica.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;
 				INFOPLIST_FILE = Merica/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -733,6 +754,7 @@
 				A83B4E761F0F1360008595E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A83B4E771F0F1360008595E8 /* Build configuration list for PBXNativeTarget "MericaTests" */ = {
 			isa = XCConfigurationList;
@@ -741,6 +763,7 @@
 				A83B4E791F0F1360008595E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A83B4E7A1F0F1360008595E8 /* Build configuration list for PBXNativeTarget "MericaUITests" */ = {
 			isa = XCConfigurationList;
@@ -749,6 +772,7 @@
 				A83B4E7C1F0F1360008595E8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
