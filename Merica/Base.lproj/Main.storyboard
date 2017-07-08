@@ -145,11 +145,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-N0-8Vk">
-                                <rect key="frame" x="26" y="267.5" width="268" height="28"/>
+                                <rect key="frame" x="26" y="402" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YuX-s7-Be9">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
@@ -171,11 +171,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="JS4-Kz-SS6">
-                                <rect key="frame" x="26" y="315.5" width="268" height="28"/>
+                                <rect key="frame" x="26" y="450" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ei-Zs-WMx">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                         <userDefinedRuntimeAttributes>
@@ -201,16 +201,16 @@
                         <constraints>
                             <constraint firstItem="JS4-Kz-SS6" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="10" id="51g-ym-69P"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Qvi-q7-LdM" secondAttribute="trailing" constant="10" id="7ei-BC-hPr"/>
-                            <constraint firstItem="EJ9-N0-8Vk" firstAttribute="top" secondItem="lXX-wk-FK0" secondAttribute="bottom" constant="20" id="GBg-pP-e1m"/>
-                            <constraint firstItem="lXX-wk-FK0" firstAttribute="top" secondItem="D6h-i9-XdF" secondAttribute="bottom" constant="8" id="GQc-XH-Scn"/>
                             <constraint firstItem="lXX-wk-FK0" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" id="GlQ-0o-ehl"/>
                             <constraint firstItem="Qvi-q7-LdM" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="10" id="Rh3-mK-ydG"/>
                             <constraint firstItem="lXX-wk-FK0" firstAttribute="trailing" secondItem="EJH-nt-Ndy" secondAttribute="trailingMargin" id="cce-l4-ndE"/>
                             <constraint firstItem="tVq-60-e5r" firstAttribute="top" secondItem="Qvi-q7-LdM" secondAttribute="bottom" constant="30" id="csz-du-jll"/>
                             <constraint firstItem="EJ9-N0-8Vk" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="10" id="d0K-iP-6rH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EJ9-N0-8Vk" secondAttribute="trailing" constant="10" id="mBZ-k5-sLK"/>
+                            <constraint firstItem="Qvi-q7-LdM" firstAttribute="top" secondItem="JS4-Kz-SS6" secondAttribute="bottom" constant="20" id="oz1-ZZ-BUi"/>
                             <constraint firstItem="JS4-Kz-SS6" firstAttribute="top" secondItem="EJ9-N0-8Vk" secondAttribute="bottom" constant="20" id="pFm-Do-93f"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JS4-Kz-SS6" secondAttribute="trailing" constant="10" id="t0X-wx-Sy6"/>
+                            <constraint firstItem="lXX-wk-FK0" firstAttribute="top" secondItem="D6h-i9-XdF" secondAttribute="bottom" constant="8" id="vwJ-r8-kgC"/>
                         </constraints>
                     </view>
                     <connections>
@@ -293,11 +293,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d28-w1-nob">
-                                <rect key="frame" x="26" y="267.5" width="268" height="28"/>
+                                <rect key="frame" x="26" y="354" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-N9-hWL">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="emailAddress"/>
                                         <userDefinedRuntimeAttributes>
@@ -319,11 +319,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Id3-fa-RQF">
-                                <rect key="frame" x="26" y="315.5" width="268" height="28"/>
+                                <rect key="frame" x="26" y="402" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-aC-2G9">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
@@ -345,11 +345,11 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Qq-5k-J9H">
-                                <rect key="frame" x="26" y="363.5" width="268" height="28"/>
+                                <rect key="frame" x="26" y="450" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ7-22-ENd">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                         <userDefinedRuntimeAttributes>
@@ -375,10 +375,10 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="3Qq-5k-J9H" secondAttribute="trailing" constant="10" id="3Uo-NG-yOD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Id3-fa-RQF" secondAttribute="trailing" constant="10" id="5dt-Od-hpz"/>
-                            <constraint firstItem="d28-w1-nob" firstAttribute="top" secondItem="deJ-0v-hsv" secondAttribute="bottom" constant="20" id="Mu4-62-oSO"/>
-                            <constraint firstItem="deJ-0v-hsv" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="8" id="Nw6-cG-JqU"/>
                             <constraint firstItem="3Qq-5k-J9H" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="Orw-A7-dJa"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="UZa-Hp-Yys"/>
+                            <constraint firstItem="deJ-0v-hsv" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="8" id="W6v-a2-NL4"/>
+                            <constraint firstItem="DPP-7k-uVe" firstAttribute="top" secondItem="3Qq-5k-J9H" secondAttribute="bottom" constant="20" id="WBB-xy-O4x"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="top" secondItem="d28-w1-nob" secondAttribute="bottom" constant="20" id="bYg-BY-x5Z"/>
                             <constraint firstItem="deJ-0v-hsv" firstAttribute="trailing" secondItem="GKb-dl-BtF" secondAttribute="trailingMargin" id="frL-PW-V5n"/>
                             <constraint firstItem="deJ-0v-hsv" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" id="fuJ-ut-iIf"/>
