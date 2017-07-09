@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SwiftKeychainWrapper
 
 class SignUpVC: UIViewController {
 
@@ -49,7 +51,31 @@ class SignUpVC: UIViewController {
         }
     }
 
-    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+    func completeSignUp(id: String, userData: [String: String]) {
+        DataService.dataService.createFirebaseDBUser(uid: id, userData: userData)
+        let keychain = KeychainWrapper.standard.set(id, forKey: KeyChain.uid.rawValue)
+        print("DATA saved to keychain \(keychain)")
+        performSegue(withIdentifier: Segue.signUpSuccess.rawValue, sender: nil)
+    }
 
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        if let email = emailTextField.text,
+        let userName = userNameTextField.text,
+            let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                if error != nil {
+                    print("Unable to authenticate with Firebase \(error!)")
+                } else {
+                    print("Successfully authenticated with Firebase")
+                    if let user = user {
+                        let userData = [DatabaseID.provider.rawValue: user.providerID,
+                                        DatabaseID.userName.rawValue: userName]
+                        self.completeSignUp(id: user.uid, userData: userData)
+                    }
+                }
+            })
+        } else {
+            print("ERROR IN SIGN IN TEXTFIELDS")
+        }
     }
 }

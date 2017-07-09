@@ -6,7 +6,9 @@ target 'Merica' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'SwiftKeychainWrapper'
-
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
 
   # Pods for Merica
 

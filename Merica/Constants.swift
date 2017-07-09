@@ -8,6 +8,24 @@
 
 import Foundation
 
+enum Segue: String {
+    case logInSuccess = "logInSuccess"
+    case signUpSuccess = "signUpSuccess"
+    case goToMainFeed = "goToMainFeed"
+}
+
+enum DatabaseID: String {
+    case posts = "posts"
+    case users = "users"
+    case pics = "pics"
+    case provider = "provider"
+    case userName = "userName"
+}
+
+enum KeyChain: String {
+    case uid = "uid"
+}
+
 
 
 

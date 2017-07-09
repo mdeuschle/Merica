@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>143744712046-j51pqavr6e5b433t0t1ohuto67knbumj.apps.googleusercontent.com</string>
+	<string>798477734031-fqmkjqi9783egi6haa5hr03m505pibf7.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.143744712046-j51pqavr6e5b433t0t1ohuto67knbumj</string>
+	<string>com.googleusercontent.apps.798477734031-fqmkjqi9783egi6haa5hr03m505pibf7</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBSwF3pO_ou8Sw-XKBCrhyJgfTkcA4eEUk</string>
+	<string>AIzaSyDLUsfEbPEYoTurhy892Op5HixkGhhdO8c</string>
 	<key>GCM_SENDER_ID</key>
-	<string>143744712046</string>
+	<string>798477734031</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.devslopes.DevChat</string>
+	<string>com.matt.deuschle.Merica</string>
 	<key>PROJECT_ID</key>
-	<string>devchat-9ff73</string>
+	<string>merica-1dbac</string>
 	<key>STORAGE_BUCKET</key>
-	<string>devchat-9ff73.appspot.com</string>
+	<string>merica-1dbac.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:143744712046:ios:a7ecd12f09be35b4</string>
+	<string>1:798477734031:ios:958fcdcb99e23750</string>
 	<key>DATABASE_URL</key>
-	<string>https://devchat-9ff73.firebaseio.com</string>
+	<string>https://merica-1dbac.firebaseio.com</string>
 </dict>
 </plist>

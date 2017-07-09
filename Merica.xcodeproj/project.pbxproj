@@ -15,11 +15,12 @@
 		A83B4E5A1F0F135F008595E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E581F0F135F008595E8 /* LaunchScreen.storyboard */; };
 		A83B4E651F0F1360008595E8 /* MericaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E641F0F1360008595E8 /* MericaTests.swift */; };
 		A83B4E701F0F1360008595E8 /* MericaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E6F1F0F1360008595E8 /* MericaUITests.swift */; };
-		A83B4E811F0F1D73008595E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E801F0F1D73008595E8 /* GoogleService-Info.plist */; };
 		A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E851F105EE2008595E8 /* WelcomeVC.swift */; };
 		A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E871F105F0E008595E8 /* LoginVC.swift */; };
 		A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E891F105F2D008595E8 /* SignUpVC.swift */; };
 		A83B4E8F1F107698008595E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E8E1F107698008595E8 /* Constants.swift */; };
+		A83B4E941F117983008595E8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E931F117983008595E8 /* DataService.swift */; };
+		A83B4E961F11CD66008595E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E951F11CD66008595E8 /* GoogleService-Info.plist */; };
 		B0EB8C38B91581BA87A3CCEA /* Pods_MericaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAC1B814761248E14C4C42D /* Pods_MericaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,12 +59,13 @@
 		A83B4E6B1F0F1360008595E8 /* MericaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MericaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83B4E6F1F0F1360008595E8 /* MericaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MericaUITests.swift; sourceTree = "<group>"; };
 		A83B4E711F0F1360008595E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A83B4E801F0F1D73008595E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A83B4E821F105D76008595E8 /* Merica.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Merica.entitlements; sourceTree = "<group>"; };
 		A83B4E851F105EE2008595E8 /* WelcomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		A83B4E871F105F0E008595E8 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A83B4E891F105F2D008595E8 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		A83B4E8E1F107698008595E8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A83B4E931F117983008595E8 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A83B4E951F11CD66008595E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AAA69E54ECA541AA1E150E6D /* Pods-MericaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DABB58D4AF713797A1917FFB /* Pods-MericaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.release.xcconfig"; sourceTree = "<group>"; };
 		EE5447F6DE8C32FCDCDCEC79 /* Pods-MericaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaUITests/Pods-MericaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		A83B4E4E1F0F135F008595E8 /* Merica */ = {
 			isa = PBXGroup;
 			children = (
+				A83B4E921F117969008595E8 /* Services */,
 				A83B4E821F105D76008595E8 /* Merica.entitlements */,
 				A83B4E7F1F0F1838008595E8 /* Models */,
 				A83B4E7E1F0F1833008595E8 /* Views */,
@@ -133,7 +136,7 @@
 				A83B4E561F0F135F008595E8 /* Assets.xcassets */,
 				A83B4E581F0F135F008595E8 /* LaunchScreen.storyboard */,
 				A83B4E5B1F0F135F008595E8 /* Info.plist */,
-				A83B4E801F0F1D73008595E8 /* GoogleService-Info.plist */,
+				A83B4E951F11CD66008595E8 /* GoogleService-Info.plist */,
 			);
 			path = Merica;
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				A83B4E8E1F107698008595E8 /* Constants.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		A83B4E921F117969008595E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A83B4E931F117983008595E8 /* DataService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		B77F149C684B7F160AE68998 /* Frameworks */ = {
@@ -336,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A83B4E5A1F0F135F008595E8 /* LaunchScreen.storyboard in Resources */,
-				A83B4E811F0F1D73008595E8 /* GoogleService-Info.plist in Resources */,
+				A83B4E961F11CD66008595E8 /* GoogleService-Info.plist in Resources */,
 				A83B4E571F0F135F008595E8 /* Assets.xcassets in Resources */,
 				A83B4E551F0F135F008595E8 /* Main.storyboard in Resources */,
 			);
@@ -504,6 +515,7 @@
 				A83B4E8F1F107698008595E8 /* Constants.swift in Sources */,
 				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
 				A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */,
+				A83B4E941F117983008595E8 /* DataService.swift in Sources */,
 				A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */,
 				A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */,
 			);
