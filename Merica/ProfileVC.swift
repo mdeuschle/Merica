@@ -38,20 +38,22 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell") else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.profileCell.rawValue) as? ProfileCell else {
             return UITableViewCell()
         }
-        cell.textLabel?.textColor = .white
-
-        switch indexPath.section {
-        case 0:
-            cell.textLabel?.text = "Logout"
-            cell.imageView?.image = #imageLiteral(resourceName: "battery")
-        default:
-            cell.textLabel?.text = "Logout"
-            cell.imageView?.image = #imageLiteral(resourceName: "battery")
-        }
+        cell.configCell(row: indexPath.row)
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            print("LOGOUT 1")
+        case 1:
+            print("LOG 2")
+        default:
+            print("HEY")
+        }
     }
 
 }

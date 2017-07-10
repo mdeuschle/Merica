@@ -38,6 +38,14 @@ enum StoryboardID: String {
     case tabBar = "TabBarController"
 }
 
+enum ReusableCell: String {
+    case profileCell = "ProfileCell"
+}
+
+enum ProfileCellLabel: String {
+    case logOut = "Log out"
+}
+
 
 
 
