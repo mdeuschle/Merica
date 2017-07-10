@@ -7,14 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        DataService.dataService.refCurrentUser.child("userName").observeSingleEvent(of: .value, with: { (snapshot) in
+            let name = snapshot.value as! String
+            print("NAME: \(name)")
+        })
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+
