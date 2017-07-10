@@ -76,10 +76,14 @@ class SignUpVC: UIViewController {
                     }
                 })
             } else {
-                present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue), animated: true, completion: nil)
+                present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue),
+                        animated: true,
+                        completion: nil)
             }
         } else {
-            present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue), animated: true, completion: nil)
+            present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue),
+                    animated: true,
+                    completion: nil)
         }
     }
 }

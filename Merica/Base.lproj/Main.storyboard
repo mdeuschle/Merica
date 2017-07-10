@@ -150,7 +150,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EJ9-N0-8Vk">
                                 <rect key="frame" x="26" y="402" width="268" height="28"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YuX-s7-Be9">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YuX-s7-Be9">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -217,8 +217,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="YuX-s7-Be9" id="Sc8-a1-Hf0"/>
                         <outlet property="passwordTextField" destination="4ei-Zs-WMx" id="CKb-pY-UZa"/>
-                        <outlet property="usernameTextField" destination="YuX-s7-Be9" id="Hlg-Wv-dEf"/>
                         <segue destination="GoY-N4-VuM" kind="show" identifier="logInSuccess" id="5wt-uG-M12"/>
                     </connections>
                 </viewController>

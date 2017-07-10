@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 class LoginVC: UIViewController {
 
-    @IBOutlet var usernameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
 
     override func viewDidLoad() {
@@ -51,7 +51,36 @@ class LoginVC: UIViewController {
     }
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-
+        if let email = emailTextField.text,
+            let password = passwordTextField.text {
+            if !email.isEmpty && !password.isEmpty {
+                Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+                    if error != nil {
+                        self.present(UIAlertController.withError(error: error!),
+                                     animated: true,
+                                     completion: nil)
+                    } else {
+                        print("Sign in success!")
+                        if let user = user {
+                            KeychainWrapper.standard.set(user.uid, forKey: KeyChain.uid.rawValue)
+                        } else {
+                            self.present(UIAlertController.withMessage(message: Alert.error.rawValue),
+                                         animated: true,
+                                         completion: nil)
+                        }
+                        self.performSegue(withIdentifier: Segue.logInSuccess.rawValue, sender: self)
+                    }
+                })
+            } else {
+                present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue),
+                        animated: true,
+                        completion: nil)
+            }
+        } else {
+            present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue),
+                    animated: true,
+                    completion: nil)
+        }
     }
 }
 
