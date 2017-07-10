@@ -22,6 +22,10 @@
 		A83B4E941F117983008595E8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E931F117983008595E8 /* DataService.swift */; };
 		A83B4E961F11CD66008595E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E951F11CD66008595E8 /* GoogleService-Info.plist */; };
 		A83B4E981F12F113008595E8 /* AlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */; };
+		A83B4E9A1F1310BB008595E8 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E991F1310BB008595E8 /* HomeVC.swift */; };
+		A83B4E9C1F131110008595E8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E9B1F131110008595E8 /* ProfileVC.swift */; };
+		A83B4E9E1F131130008595E8 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E9D1F131130008595E8 /* PostVC.swift */; };
+		A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA01F13115B008595E8 /* MapVC.swift */; };
 		B0EB8C38B91581BA87A3CCEA /* Pods_MericaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAC1B814761248E14C4C42D /* Pods_MericaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +72,10 @@
 		A83B4E931F117983008595E8 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		A83B4E951F11CD66008595E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertControllerExtensions.swift; sourceTree = "<group>"; };
+		A83B4E991F1310BB008595E8 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		A83B4E9B1F131110008595E8 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		A83B4E9D1F131130008595E8 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
+		A83B4EA01F13115B008595E8 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		AAA69E54ECA541AA1E150E6D /* Pods-MericaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DABB58D4AF713797A1917FFB /* Pods-MericaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.release.xcconfig"; sourceTree = "<group>"; };
 		EE5447F6DE8C32FCDCDCEC79 /* Pods-MericaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaUITests/Pods-MericaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +175,10 @@
 				A83B4E851F105EE2008595E8 /* WelcomeVC.swift */,
 				A83B4E871F105F0E008595E8 /* LoginVC.swift */,
 				A83B4E891F105F2D008595E8 /* SignUpVC.swift */,
+				A83B4E991F1310BB008595E8 /* HomeVC.swift */,
+				A83B4E9B1F131110008595E8 /* ProfileVC.swift */,
+				A83B4E9D1F131130008595E8 /* PostVC.swift */,
+				A83B4EA01F13115B008595E8 /* MapVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -516,7 +528,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A83B4E8F1F107698008595E8 /* Constants.swift in Sources */,
+				A83B4E9A1F1310BB008595E8 /* HomeVC.swift in Sources */,
 				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
+				A83B4E9C1F131110008595E8 /* ProfileVC.swift in Sources */,
+				A83B4E9E1F131130008595E8 /* PostVC.swift in Sources */,
+				A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */,
 				A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */,
 				A83B4E981F12F113008595E8 /* AlertControllerExtensions.swift in Sources */,
 				A83B4E941F117983008595E8 /* DataService.swift in Sources */,
