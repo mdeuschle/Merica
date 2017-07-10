@@ -26,6 +26,12 @@ enum KeyChain: String {
     case uid = "uid"
 }
 
+enum Alert: String {
+    case error = "Error"
+    case ok = "OK"
+    case emptyFields = "Please fill in all fields"
+}
+
 
 
 

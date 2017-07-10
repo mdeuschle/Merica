@@ -60,22 +60,30 @@ class SignUpVC: UIViewController {
 
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         if let email = emailTextField.text,
-        let userName = userNameTextField.text,
+            let userName = userNameTextField.text,
             let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                if error != nil {
-                    print("Unable to authenticate with Firebase \(error!)")
-                } else {
-                    print("Successfully authenticated with Firebase")
-                    if let user = user {
-                        let userData = [DatabaseID.provider.rawValue: user.providerID,
-                                        DatabaseID.userName.rawValue: userName]
-                        self.completeSignUp(id: user.uid, userData: userData)
+            if !email.isEmpty && !userName.isEmpty && !password.isEmpty {
+                Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                    if error != nil {
+                        self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
+                    } else {
+                        print("Successfully authenticated with Firebase")
+                        if let user = user {
+                            let userData = [DatabaseID.provider.rawValue: user.providerID,
+                                            DatabaseID.userName.rawValue: userName]
+                            self.completeSignUp(id: user.uid, userData: userData)
+                        }
                     }
-                }
-            })
+                })
+            } else {
+                present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue), animated: true, completion: nil)
+            }
         } else {
-            print("ERROR IN SIGN IN TEXTFIELDS")
+            present(UIAlertController.withMessage(message: Alert.emptyFields.rawValue), animated: true, completion: nil)
         }
     }
 }
+
+
+
+
