@@ -18,10 +18,7 @@ class WelcomeVC: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        if let _ = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue){
-            print("ID found in keychain")
-            performSegue(withIdentifier: Segue.goToMainFeed.rawValue, sender: nil)
-        }
+
     }
 
     override func didReceiveMemoryWarning() {

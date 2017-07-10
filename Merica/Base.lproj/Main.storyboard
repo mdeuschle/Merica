@@ -13,7 +13,7 @@
         <!--WelcomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="WelcomVC" id="BYZ-38-t0r" customClass="WelcomeVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeVC" id="BYZ-38-t0r" customClass="WelcomeVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -423,7 +423,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TrM-jD-C31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3591" y="508"/>
+            <point key="canvasLocation" x="3536" y="967"/>
         </scene>
         <!--Profile-->
         <scene sceneID="sUG-XG-gCn">
@@ -443,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3591" y="1196"/>
+            <point key="canvasLocation" x="2666" y="967"/>
         </scene>
         <!--Post-->
         <scene sceneID="vvl-tr-lZ0">
@@ -463,7 +463,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpF-ZM-Uv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3591" y="-184"/>
+            <point key="canvasLocation" x="3563" y="146"/>
         </scene>
         <!--Home-->
         <scene sceneID="bpg-kz-Yfr">
@@ -483,12 +483,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH5-vw-1te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3591" y="-889"/>
+            <point key="canvasLocation" x="3563" y="-611"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3Hm-mr-yB3">
             <objects>
-                <tabBarController id="GoY-N4-VuM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="GoY-N4-VuM" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1g7-SK-yEy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

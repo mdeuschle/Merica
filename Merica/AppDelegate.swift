@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+
+        let storyboard = UIStoryboard(name: StoryboardID.main.rawValue, bundle: nil)
+        var initialViewController: UIViewController
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        if let _ = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue){
+            print("ID found in keychain")
+            initialViewController = storyboard.instantiateViewController(withIdentifier: StoryboardID.tabBar.rawValue)
+        } else {
+            initialViewController = storyboard.instantiateViewController(withIdentifier: StoryboardID.welcome.rawValue)
+        }
+
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+        
         return true
     }
 

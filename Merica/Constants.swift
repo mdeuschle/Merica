@@ -32,6 +32,12 @@ enum Alert: String {
     case emptyFields = "Please fill in all fields"
 }
 
+enum StoryboardID: String {
+    case main = "Main"
+    case welcome = "WelcomeVC"
+    case tabBar = "TabBarController"
+}
+
 
 
 
