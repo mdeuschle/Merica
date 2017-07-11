@@ -11,7 +11,8 @@ import Foundation
 enum Segue: String {
     case logInSuccess = "logInSuccess"
     case signUpSuccess = "signUpSuccess"
-    case goToMainFeed = "goToMainFeed"
+    case toMainFeed = "toMainFeed"
+    case toWelcomeVC = "toWelcomeVC"
 }
 
 enum DatabaseID: String {

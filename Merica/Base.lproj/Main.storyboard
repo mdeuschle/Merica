@@ -92,7 +92,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="SeC-pI-CEb"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="GoY-N4-VuM" kind="show" identifier="goToMainFeed" id="saJ-HK-P9v"/>
+                        <segue destination="GoY-N4-VuM" kind="show" identifier="toMainFeed" id="saJ-HK-P9v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -501,6 +501,7 @@
                         <outlet property="mericaPoints" destination="ZNW-3j-ooB" id="bDi-Xh-dAE"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
                         <outlet property="usernameLabel" destination="1uN-B0-kzE" id="oFd-bO-gi7"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toWelcomeVC" id="zmO-aG-RfZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -569,6 +570,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aGa-Ld-f99"/>
+        <segue reference="saJ-HK-P9v"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class ProfileVC: UIViewController {
 
@@ -48,19 +49,23 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            print("LOGOUT 1")
+            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
+            do {
+                try Auth.auth().signOut()
+            } catch {
+                present(UIAlertController.withError(error: error),
+                        animated: true,
+                        completion: nil)
+            }
+            performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: nil)
         case 1:
             print("LOG 2")
         default:
             print("HEY")
         }
     }
-
+    
 }
-
-
-
-
 
 
 

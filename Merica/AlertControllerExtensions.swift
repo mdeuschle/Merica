@@ -28,6 +28,21 @@ extension UIAlertController {
         alert.addAction(action)
         return alert
     }
+
+    static func withHandler(message: String, handler: @escaping ((UIAlertAction) -> Void)) -> UIAlertController {
+        let alert = UIAlertController(title: nil,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                         style: .cancel,
+                                         handler: nil)
+        alert.addAction(cancelAction)
+        let handlerAction = UIAlertAction(title: "Yes",
+                                          style: .default,
+                                          handler: handler)
+        alert.addAction(handlerAction)
+        return alert
+    }
 }
 
 
