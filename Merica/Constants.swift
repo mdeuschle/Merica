@@ -41,6 +41,7 @@ enum StoryboardID: String {
 
 enum ReusableCell: String {
     case profileCell = "ProfileCell"
+    case postCell = "PostCell"
 }
 
 enum ProfileCellLabel: String {

@@ -18,3 +18,22 @@ class HomeVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
+
+extension HomeVC: UITableViewDataSource, UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
+            return UITableViewCell()
+        }
+        return cell
+    }
+
+}
+
+
+
+
