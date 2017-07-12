@@ -45,7 +45,7 @@ class PostCell: UITableViewCell {
                     if let imageData = data {
                         if let img = UIImage(data: imageData) {
                             self.postImageView.image = img
-                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as? String)
+                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as NSString)
                         }
                     }
                 }

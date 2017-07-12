@@ -8,10 +8,17 @@
 
 import UIKit
 
-class PostVC: UIViewController {
+class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    var imagePicker: UIImagePickerController!
+    var selectedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+
     }
 
     override func didReceiveMemoryWarning() {

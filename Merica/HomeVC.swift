@@ -36,7 +36,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
-
 }
 
 
