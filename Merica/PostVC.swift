@@ -18,7 +18,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Post to 'Merica"
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true

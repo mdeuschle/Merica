@@ -218,6 +218,8 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="YuX-s7-Be9" id="Sc8-a1-Hf0"/>
+                        <outlet property="loginLabel" destination="wPI-95-l5W" id="FFy-4E-cYb"/>
+                        <outlet property="logoImage" destination="zRj-zU-thT" id="ckS-oS-fAf"/>
                         <outlet property="passwordTextField" destination="4ei-Zs-WMx" id="CKb-pY-UZa"/>
                         <segue destination="GoY-N4-VuM" kind="show" identifier="logInSuccess" id="5wt-uG-M12"/>
                     </connections>
@@ -378,7 +380,9 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="Ul2-N9-hWL" id="Fkj-f7-fdb"/>
+                        <outlet property="logoImage" destination="WUu-QC-jmE" id="20L-eM-NLA"/>
                         <outlet property="passwordTextField" destination="ZJ7-22-ENd" id="XLx-kL-57Z"/>
+                        <outlet property="signUpLabel" destination="yF2-EQ-al1" id="1yY-tE-c98"/>
                         <outlet property="userNameTextField" destination="Bfz-aC-2G9" id="eOP-Hp-tuV"/>
                         <segue destination="GoY-N4-VuM" kind="show" identifier="signUpSuccess" id="aGa-Ld-f99"/>
                     </connections>
@@ -508,7 +512,7 @@
             </objects>
             <point key="canvasLocation" x="2668" y="941"/>
         </scene>
-        <!--PostVC-->
+        <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
             <objects>
                 <viewController storyboardIdentifier="PostVC" id="orA-qz-bJO" customClass="PostVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
@@ -551,7 +555,7 @@
                             <constraint firstItem="6kC-ir-wge" firstAttribute="top" secondItem="ngV-Kj-FZ6" secondAttribute="bottom" id="muf-Nn-GbC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RgP-Xy-qKz">
+                    <navigationItem key="navigationItem" title="Post to 'Merica" id="RgP-Xy-qKz">
                         <barButtonItem key="leftBarButtonItem" systemItem="camera" id="rGe-UT-pKv">
                             <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>

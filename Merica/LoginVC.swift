@@ -14,6 +14,8 @@ class LoginVC: UIViewController {
 
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var logoImage: UIImageView!
+    @IBOutlet var loginLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,4 +85,18 @@ class LoginVC: UIViewController {
         }
     }
 }
+
+extension LoginVC: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        logoImage.isHidden = true
+        loginLabel.isHidden = true
+    }
+}
+
+
+
+
+
+
 
