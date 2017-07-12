@@ -53,6 +53,12 @@ class SignUpVC: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? TabBarController {
+            destination.didSignUp = true
+        }
+    }
+
     func completeSignUp(id: String, userData: [String: String]) {
         DataService.dataService.createFirebaseDBUser(uid: id, userData: userData)
         let keychain = KeychainWrapper.standard.set(id, forKey: KeyChain.uid.rawValue)

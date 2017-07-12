@@ -38,13 +38,21 @@ enum KeyChain: String {
 enum Alert: String {
     case error = "Error"
     case ok = "OK"
+    case welcome = "Welcome "
+    case welcomBack = "Welcome back "
     case emptyFields = "Please fill in all fields"
+    case signUpThanks = "!\n\nThanks for Signing Up for 'Merica."
+    case signInThanks = "!\n\nThanks for Signing In to 'Merica."
 }
 
 enum StoryboardID: String {
     case main = "Main"
     case welcome = "WelcomeVC"
     case tabBar = "TabBarController"
+}
+
+enum ViewControllerID: String {
+    case home = "HomeVC"
 }
 
 enum ReusableCell: String {
@@ -55,7 +63,5 @@ enum ReusableCell: String {
 enum ProfileCellLabel: String {
     case logOut = "Log out"
 }
-
-
 
 

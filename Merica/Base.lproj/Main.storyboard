@@ -812,7 +812,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="3Hm-mr-yB3">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarController" id="GoY-N4-VuM" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="GoY-N4-VuM" customClass="TabBarController" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1g7-SK-yEy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -858,6 +858,6 @@
         <image name="bench" width="641" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aGa-Ld-f99"/>
+        <segue reference="5wt-uG-M12"/>
     </inferredMetricsTieBreakers>
 </document>

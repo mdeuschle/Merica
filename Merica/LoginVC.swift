@@ -52,6 +52,14 @@ class LoginVC: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.logInSuccess.rawValue {
+            if let destination = segue.destination as? TabBarController {
+                destination.didLogIn = true
+            }
+        }
+    }
+
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         if let email = emailTextField.text,
             let password = passwordTextField.text {
