@@ -748,6 +748,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="kgt-vG-ca6"/>
                     <navigationItem key="navigationItem" id="Uij-fI-Cnu"/>
+                    <connections>
+                        <outlet property="postTableView" destination="5c7-4H-fv4" id="SgC-1c-EdW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH5-vw-1te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

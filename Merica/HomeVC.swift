@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController {
 
+    @IBOutlet var postTableView: UITableView!
+    static var imageCache: NSCache<NSString, UIImage> = NSCache()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {

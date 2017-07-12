@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PostCell: UITableViewCell {
 
@@ -22,12 +23,35 @@ class PostCell: UITableViewCell {
     @IBOutlet var shareImage: UIView!
     @IBOutlet var shareLabel: UILabel!
 
+    var post: Post!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+    func configCell(post: Post, image: UIImage? = nil) {
+        self.post = post
+        postTitleLabel.text = post.postTitle
 
+        if image != nil {
+            self.postImageView.image = image
+        } else {
+            let ref = Storage.storage().reference(forURL: post.postImageURL)
+            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("Unable to download image from Firebase storage")
+                } else {
+                    print("Image downloaded from Firebase storage")
+                    if let imageData = data {
+                        if let img = UIImage(data: imageData) {
+                            self.postImageView.image = img
+                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as? String)
+                        }
+                    }
+                }
+            })
+        }
+    }
 }
+
+
