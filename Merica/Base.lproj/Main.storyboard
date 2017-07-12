@@ -565,6 +565,10 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="6kC-ir-wge" id="efX-JQ-Kqf"/>
+                        <outlet property="postTextField" destination="lzG-x8-0mE" id="6oT-Ok-Ics"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpF-ZM-Uv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -602,9 +606,8 @@
                                                         <constraint firstAttribute="height" constant="320" id="UxS-lX-pLp"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRd-rf-WmL">
-                                                    <rect key="frame" x="23" y="13" width="329" height="77"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRd-rf-WmL">
+                                                    <rect key="frame" x="23" y="23" width="274" height="50.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -748,13 +751,17 @@
                                             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" id="2U3-QB-P1b"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eRd-rf-WmL" secondAttribute="trailing" constant="15" id="2xR-3L-GZA"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="trailing" secondItem="BYD-Jj-SLk" secondAttribute="trailingMargin" id="7ZR-Qc-VgY"/>
+                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" constant="15" id="JUj-po-957"/>
                                                 <constraint firstItem="cbl-Ze-epB" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" constant="15" id="Nqk-XG-01J"/>
                                                 <constraint firstAttribute="trailing" secondItem="7Yv-ch-iby" secondAttribute="trailing" id="S5R-P8-RsQ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Gbc-pN-0k1" secondAttribute="bottom" constant="8" id="XBs-dj-Psn"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cbl-Ze-epB" secondAttribute="trailing" constant="15" id="as4-L2-pmt"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="top" secondItem="cbl-Ze-epB" secondAttribute="bottom" constant="15" id="bEG-dh-8JW"/>
+                                                <constraint firstItem="7Yv-ch-iby" firstAttribute="top" secondItem="eRd-rf-WmL" secondAttribute="bottom" constant="15" id="jez-Ck-ppn"/>
                                                 <constraint firstItem="7Yv-ch-iby" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leading" id="l5c-ka-Bhr"/>
+                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="top" secondItem="BYD-Jj-SLk" secondAttribute="topMargin" constant="15" id="u5M-L5-Oui"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="top" secondItem="7Yv-ch-iby" secondAttribute="bottom" constant="8" id="v5P-Sc-khb"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -796,7 +803,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH5-vw-1te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3562" y="-543"/>
+            <point key="canvasLocation" x="3560.625" y="-544.0140845070423"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3Hm-mr-yB3">
@@ -828,6 +835,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

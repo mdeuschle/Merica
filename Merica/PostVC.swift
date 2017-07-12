@@ -10,11 +10,15 @@ import UIKit
 
 class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var postTextField: UITextField!
+
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Post to 'Merica"
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
@@ -46,6 +50,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedImage = image
+            imageView.image = image
         } else {
             present(UIAlertController.withMessage(message: "Image not found"), animated: true, completion: nil)
         }
@@ -64,7 +69,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
     }
     
-    
+
 }
 
 
