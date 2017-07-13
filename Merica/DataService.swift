@@ -23,19 +23,15 @@ class DataService {
     var refBase: DatabaseReference {
         return _refBase
     }
-
     var refPosts: DatabaseReference {
         return _refPosts
     }
-
     var refUsers: DatabaseReference {
         return _refUsers
     }
-
     var refPics: StorageReference {
         return _refPics
     }
-
     var refCurrentUser: DatabaseReference {
         guard let uid = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) else {
             print("Current user is nil")

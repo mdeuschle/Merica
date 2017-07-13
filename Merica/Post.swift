@@ -15,10 +15,8 @@ class Post {
     private var _postImageURL: String?
     private var _timeStamp: String?
     private var _location: String?
-    private var _isUpvoted: Bool?
-    private var _upVotesCount: Int?
-    private var _isDownvoted: Bool?
-    private var _commentsCount: Int?
+    private var _votes: Int!
+    private var _comments: Int!
     private var _postKey: String!
     private var _postRef: DatabaseReference!
 
@@ -34,31 +32,23 @@ class Post {
     var location: String {
         return _location ?? ""
     }
-    var isUpvoted: Bool {
-        return _isUpvoted ?? false
+    var votes: Int {
+        return _votes ?? 0
     }
-    var upVotesCount: Int {
-        return _upVotesCount ?? 0
-    }
-    var isDownvoted: Bool {
-        return _isDownvoted ?? false
-    }
-    var commentsCount: Int {
-        return _commentsCount ?? 0
+    var comments: Int {
+        return _comments ?? 0
     }
     var postKey: String {
         return _postKey ?? ""
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, isUpvoted: Bool, upVotesCount: Int, isDownvoted: Bool, commentsCount: Int) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, votes: Int, comments: Int) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
         _location = location
-        _isUpvoted = isUpvoted
-        _upVotesCount = upVotesCount
-        _isDownvoted = isDownvoted
-        _commentsCount = commentsCount
+        _votes = votes
+        _comments = comments
     }
 
     init(postKey: String, postDic: [String: Any]) {
@@ -75,22 +65,24 @@ class Post {
         if let location = postDic[DatabaseID.location.rawValue] as? String {
             _location = location
         }
-        if let isUpvoted = postDic[DatabaseID.isUpvoted.rawValue] as? Bool {
-            _isUpvoted = isUpvoted
+        if let votes = postDic[DatabaseID.votes.rawValue] as? Int {
+            _votes = votes
         }
-        if let upVotesCount = postDic[DatabaseID.upVotesCount.rawValue] as? Int {
-            _upVotesCount = upVotesCount
-        }
-        if let isDownvoted = postDic[DatabaseID.isDownvoted.rawValue] as? Bool {
-            _isDownvoted = isDownvoted
-        }
-        if let commentsCount = postDic[DatabaseID.commentsCount.rawValue] as? Int {
-            _commentsCount = commentsCount
+        if let comments = postDic[DatabaseID.comments.rawValue] as? Int {
+            _comments = comments
         }
         _postRef = DataService.dataService.refPosts.child(_postKey)
     }
-}
 
+    func adjustVotes(didUpVote: Bool) {
+        if didUpVote {
+            _votes = _votes + 1
+        } else {
+            _votes = votes - 1
+        }
+        _postRef.child(DatabaseID.votes.rawValue).setValue(_votes)
+    }
+}
 
 
 
