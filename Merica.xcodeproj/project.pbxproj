@@ -30,6 +30,8 @@
 		A83B4EA71F149476008595E8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA61F149476008595E8 /* PostCell.swift */; };
 		A8FC68CA1F15525B00DEED82 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68C91F15525B00DEED82 /* Post.swift */; };
 		A8FC68CE1F16AD7C00DEED82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */; };
+		A8FC68D01F16BF0700DEED82 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */; };
+		A8FC68D21F16CF4F00DEED82 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68D11F16CF4F00DEED82 /* DateHelper.swift */; };
 		B0EB8C38B91581BA87A3CCEA /* Pods_MericaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2AAC1B814761248E14C4C42D /* Pods_MericaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +86,8 @@
 		A83B4EA61F149476008595E8 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A8FC68C91F15525B00DEED82 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
+		A8FC68D11F16CF4F00DEED82 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		AAA69E54ECA541AA1E150E6D /* Pods-MericaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DABB58D4AF713797A1917FFB /* Pods-MericaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaTests/Pods-MericaTests.release.xcconfig"; sourceTree = "<group>"; };
 		EE5447F6DE8C32FCDCDCEC79 /* Pods-MericaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MericaUITests/Pods-MericaUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 			children = (
 				A83B4E8E1F107698008595E8 /* Constants.swift */,
 				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
+				A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */,
+				A8FC68D11F16CF4F00DEED82 /* DateHelper.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -542,11 +548,13 @@
 				A83B4E8F1F107698008595E8 /* Constants.swift in Sources */,
 				A83B4E9A1F1310BB008595E8 /* HomeVC.swift in Sources */,
 				A83B4EA71F149476008595E8 /* PostCell.swift in Sources */,
+				A8FC68D01F16BF0700DEED82 /* ImageExtensions.swift in Sources */,
 				A8FC68CE1F16AD7C00DEED82 /* TabBarController.swift in Sources */,
 				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
 				A83B4E9C1F131110008595E8 /* ProfileVC.swift in Sources */,
 				A8FC68CA1F15525B00DEED82 /* Post.swift in Sources */,
 				A83B4E9E1F131130008595E8 /* PostVC.swift in Sources */,
+				A8FC68D21F16CF4F00DEED82 /* DateHelper.swift in Sources */,
 				A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */,
 				A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */,
 				A83B4E981F12F113008595E8 /* AlertControllerExtensions.swift in Sources */,

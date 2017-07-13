@@ -37,6 +37,7 @@ enum KeyChain: String {
 
 enum Alert: String {
     case error = "Error"
+    case imageNotFound = "Image not found"
     case ok = "OK"
     case welcome = "Welcome "
     case welcomBack = "Welcome back "
