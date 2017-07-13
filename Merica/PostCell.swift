@@ -32,6 +32,9 @@ class PostCell: UITableViewCell {
     func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
         postTitleLabel.text = post.postTitle
+        timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        locationLabel.text = post.location
+        
 
         if image != nil {
             self.postImageView.image = image

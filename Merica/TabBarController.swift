@@ -24,7 +24,7 @@ class TabBarController: UITabBarController {
                 if let name = snapshot.value as? String {
                     var message = ""
                     if didLogIn {
-                        message = Alert.welcomBack.rawValue + name + Alert.signInThanks.rawValue
+                        message = Alert.welcomBack.rawValue + name
                     } else {
                         message = Alert.welcome.rawValue + name + Alert.signUpThanks.rawValue
                     }
