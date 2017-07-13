@@ -622,14 +622,14 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoW-9H-ize">
                                                             <rect key="frame" x="0.0" y="0.0" width="101.5" height="20"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="aZJ-c9-vUo">
+                                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="aZJ-c9-vUo">
                                                                     <rect key="frame" x="12.5" y="3" width="15" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="15" id="E3D-bi-zgr"/>
                                                                         <constraint firstAttribute="height" constant="15" id="su3-it-Wkw"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-lD-AWR">
+                                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="3uu-lD-AWR">
                                                                     <rect key="frame" x="74.5" y="3" width="15" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="ErW-pj-IB3"/>
@@ -659,7 +659,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6h1-Fs-uf5">
                                                                     <rect key="frame" x="30" y="3" width="42.5" height="15"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-6k-B4e">
+                                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="d5W-6k-B4e">
                                                                             <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="15" id="0E3-EQ-u83"/>
@@ -707,7 +707,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PPf-yI-gvl">
                                                                     <rect key="frame" x="25" y="3" width="51" height="15"/>
                                                                     <subviews>
-                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="BN1-J8-h2n">
+                                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery" translatesAutoresizingMaskIntoConstraints="NO" id="BN1-J8-h2n">
                                                                             <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="15" id="eyX-ai-kyl"/>

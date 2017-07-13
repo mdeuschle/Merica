@@ -24,17 +24,53 @@ class PostCell: UITableViewCell {
     @IBOutlet var shareLabel: UILabel!
 
     var post: Post!
+    var votesRef: DatabaseReference!
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
+        downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
+    }
+
+    func upVotesTapped(sender: UITapGestureRecognizer) {
+        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.post.adjustVotes(didUpVote: true)
+                self.votesRef.setValue(true)
+            } else {
+                self.post.adjustVotes(didUpVote: false)
+                self.votesRef.removeValue()
+            }
+        })
+    }
+
+    func downVotesTapped(sender: UITapGestureRecognizer) {
+        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.post.adjustVotes(didUpVote: false)
+                self.votesRef.setValue(true)
+            } else {
+                self.post.adjustVotes(didUpVote: true)
+                self.votesRef.removeValue()
+            }
+        })
+    }
+
+    func tapGestureGenerator(selector: Selector?) -> UITapGestureRecognizer {
+        var tap = UITapGestureRecognizer()
+        tap = UITapGestureRecognizer(target: self, action: selector)
+        tap.numberOfTapsRequired = 1
+        return tap
     }
 
     func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
+        votesRef = DataService.dataService.refCurrentUser.child(DatabaseID.votes.rawValue).child(post.postKey)
+
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         locationLabel.text = post.location
-        
+
 
         if image != nil {
             self.postImageView.image = image

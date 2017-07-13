@@ -33,10 +33,10 @@ class Post {
         return _location ?? ""
     }
     var votes: Int {
-        return _votes ?? 0
+        return _votes
     }
     var comments: Int {
-        return _comments ?? 0
+        return _comments
     }
     var postKey: String {
         return _postKey ?? ""
