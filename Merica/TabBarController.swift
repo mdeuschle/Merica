@@ -8,14 +8,24 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var didSignUp = false
     var didLogIn = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         welcomePopUp(didLogIn: didLogIn, didSignUp: didSignUp)
+    }
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        switch tabBarController.selectedIndex {
+        case 2, 3:
+            UIApplication.shared.statusBarStyle = .default
+        default:
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
     }
 
     func welcomePopUp(didLogIn: Bool, didSignUp: Bool) {
