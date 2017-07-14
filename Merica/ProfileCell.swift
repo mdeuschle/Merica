@@ -22,9 +22,18 @@ class ProfileCell: UITableViewCell {
         self.textLabel?.textColor = .white
         switch row {
         case 0:
-            config(label: ProfileCellLabel.logOut.rawValue, image: #imageLiteral(resourceName: "battery"))
+            config(label: ProfileCellLabel.posts.rawValue, image: #imageLiteral(resourceName: "greyPost"))
+        case 1:
+            config(label: ProfileCellLabel.upVotes.rawValue, image: #imageLiteral(resourceName: "greyUpArrow"))
+        case 2:
+            config(label: ProfileCellLabel.comments.rawValue, image: #imageLiteral(resourceName: "greyComments"))
+        case 3:
+            config(label: ProfileCellLabel.logOut.rawValue, image: #imageLiteral(resourceName: "greyLogout"))
+        case 4:
+            config(label: ProfileCellLabel.more.rawValue, image: #imageLiteral(resourceName: "greyMore"))
+
         default:
-            config(label: "Take 2", image: #imageLiteral(resourceName: "battery"))
+            break
         }
     }
 

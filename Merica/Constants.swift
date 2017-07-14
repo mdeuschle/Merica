@@ -60,6 +60,10 @@ enum ReusableCell: String {
 
 enum ProfileCellLabel: String {
     case logOut = "Log out"
+    case posts = "Posts"
+    case comments = "Comments"
+    case upVotes = "Up Votes"
+    case more = "More"
 }
 
 

@@ -28,29 +28,17 @@ class PostCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
-        downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
+        upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(votesTapped(sender:))))
+        downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(votesTapped(sender:))))
     }
 
-    func upVotesTapped(sender: UITapGestureRecognizer) {
+    func votesTapped(sender: UITapGestureRecognizer) {
         votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.post.adjustVotes(didUpVote: true)
                 self.votesRef.setValue(true)
             } else {
                 self.post.adjustVotes(didUpVote: false)
-                self.votesRef.removeValue()
-            }
-        })
-    }
-
-    func downVotesTapped(sender: UITapGestureRecognizer) {
-        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let _ = snapshot.value as? NSNull {
-                self.post.adjustVotes(didUpVote: false)
-                self.votesRef.setValue(true)
-            } else {
-                self.post.adjustVotes(didUpVote: true)
                 self.votesRef.removeValue()
             }
         })
