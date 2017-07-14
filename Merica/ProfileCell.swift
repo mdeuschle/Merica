@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileCell: UITableViewCell {
 
+    @IBOutlet var cellImage: UIImageView!
+    @IBOutlet var cellLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -38,9 +41,8 @@ class ProfileCell: UITableViewCell {
     }
 
     private func config(label: String, image: UIImage) {
-        self.textLabel?.text = label
-        self.imageView?.image = image
-
+        cellLabel.text = label
+        cellImage.image = image
     }
 
 }

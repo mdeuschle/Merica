@@ -470,9 +470,35 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OrF-Jz-Kdf" id="kzR-Rc-gOD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4E-fV-Pub">
+                                                    <rect key="frame" x="63" y="14.5" width="257" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyMore" translatesAutoresizingMaskIntoConstraints="NO" id="XQl-no-Z3y">
+                                                    <rect key="frame" x="18" y="10" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="AMR-1G-3MA"/>
+                                                        <constraint firstAttribute="height" constant="30" id="OGj-H0-26r"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="XQl-no-Z3y" firstAttribute="centerY" secondItem="kzR-Rc-gOD" secondAttribute="centerY" id="Bkx-06-0Zq"/>
+                                                <constraint firstItem="e4E-fV-Pub" firstAttribute="trailing" secondItem="kzR-Rc-gOD" secondAttribute="trailingMargin" constant="8" id="Efu-c3-oDX"/>
+                                                <constraint firstItem="e4E-fV-Pub" firstAttribute="leading" secondItem="XQl-no-Z3y" secondAttribute="trailing" constant="15" id="Svr-Gd-XSV"/>
+                                                <constraint firstItem="e4E-fV-Pub" firstAttribute="centerY" secondItem="kzR-Rc-gOD" secondAttribute="centerY" id="iUu-mt-bKE"/>
+                                                <constraint firstItem="XQl-no-Z3y" firstAttribute="leading" secondItem="kzR-Rc-gOD" secondAttribute="leadingMargin" constant="10" id="tEc-x9-R48"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="cellImage" destination="XQl-no-Z3y" id="tpF-6o-UHv"/>
+                                            <outlet property="cellLabel" destination="e4E-fV-Pub" id="mA0-sU-yZo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -510,7 +536,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2668" y="941"/>
+            <point key="canvasLocation" x="2666.25" y="940.14084507042253"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
@@ -862,6 +888,7 @@
         <image name="greyDownArrow" width="24" height="24"/>
         <image name="greyHome" width="28" height="28"/>
         <image name="greyMap" width="21" height="26"/>
+        <image name="greyMore" width="40" height="8"/>
         <image name="greyPhoto" width="401" height="359"/>
         <image name="greyPost" width="28" height="28"/>
         <image name="greyProfile" width="12" height="28"/>
