@@ -48,6 +48,12 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            print("Posts")
+        case 1:
+            print("Up Votes")
+        case 2:
+            print("Comments")
+        case 3:
             KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
                 try Auth.auth().signOut()
@@ -57,14 +63,16 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                         completion: nil)
             }
             performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: nil)
-        case 1:
-            print("LOG 2")
+        case 4:
+            print("More")
+
         default:
-            print("HEY")
+            print("Default")
         }
     }
-    
 }
+
+
 
 
 
