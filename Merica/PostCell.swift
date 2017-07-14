@@ -28,17 +28,34 @@ class PostCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(votesTapped(sender:))))
-        downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(votesTapped(sender:))))
+        upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
+        downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
     }
 
-    func votesTapped(sender: UITapGestureRecognizer) {
+
+    func upVotesTapped(sender: UITapGestureRecognizer) {
         votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
-                self.post.adjustVotes(didUpVote: true)
+                self.downVoteImage.isUserInteractionEnabled = false
+                self.post.adjustUpVotes(didUpVote: true)
                 self.votesRef.setValue(true)
             } else {
-                self.post.adjustVotes(didUpVote: false)
+                self.downVoteImage.isUserInteractionEnabled = true
+                self.post.adjustUpVotes(didUpVote: false)
+                self.votesRef.removeValue()
+            }
+        })
+    }
+
+    func downVotesTapped(sender: UITapGestureRecognizer) {
+        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.upVoteImage.isUserInteractionEnabled = false
+                self.post.adjustDownVotes(didDownVote: true)
+                self.votesRef.setValue(true)
+            } else {
+                self.upVoteImage.isUserInteractionEnabled = true
+                self.post.adjustDownVotes(didDownVote: false)
                 self.votesRef.removeValue()
             }
         })
@@ -58,6 +75,7 @@ class PostCell: UITableViewCell {
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         locationLabel.text = post.location
+        voteCountLabel.text = "\(post.votes)"
 
 
         if image != nil {

@@ -65,7 +65,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: nil)
         case 4:
             print("More")
-
         default:
             print("Default")
         }

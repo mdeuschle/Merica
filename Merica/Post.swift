@@ -74,11 +74,20 @@ class Post {
         _postRef = DataService.dataService.refPosts.child(_postKey)
     }
 
-    func adjustVotes(didUpVote: Bool) {
+    func adjustUpVotes(didUpVote: Bool) {
         if didUpVote {
             _votes = _votes + 1
         } else {
             _votes = votes - 1
+        }
+        _postRef.child(DatabaseID.votes.rawValue).setValue(_votes)
+    }
+
+    func adjustDownVotes(didDownVote: Bool) {
+        if didDownVote {
+            _votes = _votes - 1
+        } else {
+            _votes = votes + 1
         }
         _postRef.child(DatabaseID.votes.rawValue).setValue(_votes)
     }
