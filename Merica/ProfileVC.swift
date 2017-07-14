@@ -49,6 +49,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             print("Posts")
+            performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
         case 1:
             print("Up Votes")
         case 2:
@@ -62,7 +63,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                         animated: true,
                         completion: nil)
             }
-            performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: nil)
+            performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: self)
         case 4:
             print("More")
         default:

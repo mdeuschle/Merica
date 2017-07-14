@@ -532,11 +532,55 @@
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
                         <outlet property="usernameLabel" destination="1uN-B0-kzE" id="oFd-bO-gi7"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="toWelcomeVC" id="zmO-aG-RfZ"/>
+                        <segue destination="gbi-ti-uWK" kind="show" identifier="toMyPosts" id="lQt-jD-7cR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2666.25" y="940.14084507042253"/>
+        </scene>
+        <!--My PostsVC-->
+        <scene sceneID="rWn-Px-KPL">
+            <objects>
+                <viewController id="S70-fc-YBQ" customClass="MyPostsVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wqI-fh-gJA"/>
+                        <viewControllerLayoutGuide type="bottom" id="VED-vL-Uab"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nJY-7w-kTV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="332" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NSY-Ib-IWP">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myPostCell" rowHeight="332" id="Fan-pB-abo">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="332"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fan-pB-abo" id="rr3-Yf-tlN">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="VED-vL-Uab" firstAttribute="top" secondItem="NSY-Ib-IWP" secondAttribute="bottom" id="7VV-Lw-Ija"/>
+                            <constraint firstItem="NSY-Ib-IWP" firstAttribute="leading" secondItem="nJY-7w-kTV" secondAttribute="leading" id="BAL-07-qQd"/>
+                            <constraint firstAttribute="trailing" secondItem="NSY-Ib-IWP" secondAttribute="trailing" id="dO6-7f-xd4"/>
+                            <constraint firstItem="NSY-Ib-IWP" firstAttribute="top" secondItem="wqI-fh-gJA" secondAttribute="bottom" id="kSo-HB-0Ga"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="pY2-T7-FnP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lb-zD-bh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2094.375" y="2470.7746478873241"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
@@ -617,7 +661,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="434" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-4H-fv4">
-                                <rect key="frame" x="0.0" y="30" width="320" height="489"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
@@ -777,6 +821,12 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="cDH-yQ-WRX" firstAttribute="leading" secondItem="cbl-Ze-epB" secondAttribute="leading" id="PVf-4I-SRE"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cDH-yQ-WRX" secondAttribute="trailing" id="b9Q-8O-5oh"/>
+                                                        <constraint firstAttribute="trailing" secondItem="TZr-QJ-10F" secondAttribute="trailing" id="jle-0d-4Ms"/>
+                                                        <constraint firstItem="TZr-QJ-10F" firstAttribute="leading" secondItem="cbl-Ze-epB" secondAttribute="leading" id="tat-pH-wqj"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
@@ -823,7 +873,7 @@
                             <constraint firstAttribute="trailing" secondItem="5c7-4H-fv4" secondAttribute="trailing" id="18R-CI-hml"/>
                             <constraint firstItem="uP1-Qz-VEg" firstAttribute="top" secondItem="5c7-4H-fv4" secondAttribute="bottom" id="ZeJ-MC-vUH"/>
                             <constraint firstItem="5c7-4H-fv4" firstAttribute="leading" secondItem="YIJ-dx-U7g" secondAttribute="leading" id="k8q-GR-e23"/>
-                            <constraint firstItem="5c7-4H-fv4" firstAttribute="top" secondItem="KNW-ev-ddr" secondAttribute="bottom" constant="10" id="yFM-Os-1PN"/>
+                            <constraint firstItem="5c7-4H-fv4" firstAttribute="top" secondItem="KNW-ev-ddr" secondAttribute="bottom" id="yFM-Os-1PN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="greyHome" id="kgt-vG-ca6"/>
@@ -878,6 +928,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPl-OU-ayl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3560.8000000000002" y="144.3778110944528"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="2qJ-bB-fvw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gbi-ti-uWK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MB8-df-9tH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="S70-fc-YBQ" kind="relationship" relationship="rootViewController" id="gxD-yn-MsN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TU-Zd-RHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2096.25" y="1704.9295774647887"/>
         </scene>
     </scenes>
     <resources>
