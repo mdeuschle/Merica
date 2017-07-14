@@ -48,6 +48,11 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         return posts.count
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        tableView.estimatedRowHeight = 320
+        return UITableViewAutomaticDimension
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
             return PostCell()
