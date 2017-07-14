@@ -13,16 +13,11 @@ class HomeVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
-
     var posts = [Post]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         readPostData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     func readPostData() {

@@ -25,10 +25,6 @@ class ProfileVC: UIViewController {
             }
         })
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {

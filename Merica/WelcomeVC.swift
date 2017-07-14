@@ -7,21 +7,7 @@
 //
 
 import UIKit
-import Firebase
-import SwiftKeychainWrapper
 
 class WelcomeVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
