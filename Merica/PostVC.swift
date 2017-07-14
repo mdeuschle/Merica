@@ -68,7 +68,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.postTitle.rawValue: postText as Any,
                 DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
                 DatabaseID.location.rawValue: "" as Any,
-                DatabaseID.votes.rawValue: 0 as Any,
+                DatabaseID.upVotes.rawValue: 0 as Any,
+                DatabaseID.downVotes.rawValue: 0 as Any,
                 DatabaseID.comments.rawValue: 0 as Any,
             ]
             DataService.dataService.refPosts.childByAutoId().setValue(postDic)

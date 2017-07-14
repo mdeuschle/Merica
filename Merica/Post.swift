@@ -15,7 +15,8 @@ class Post {
     private var _postImageURL: String?
     private var _timeStamp: String?
     private var _location: String?
-    private var _votes: Int!
+    private var _upVotes: Int!
+    private var _downVotes: Int!
     private var _comments: Int!
     private var _postKey: String!
     private var _postRef: DatabaseReference!
@@ -32,8 +33,11 @@ class Post {
     var location: String {
         return _location ?? ""
     }
-    var votes: Int {
-        return _votes
+    var upVotes: Int {
+        return _upVotes
+    }
+    var downVotes: Int {
+        return _downVotes
     }
     var comments: Int {
         return _comments
@@ -42,12 +46,13 @@ class Post {
         return _postKey ?? ""
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, votes: Int, comments: Int) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
         _location = location
-        _votes = votes
+        _upVotes = upVotes
+        _downVotes = downVotes
         _comments = comments
     }
 
@@ -65,8 +70,11 @@ class Post {
         if let location = postDic[DatabaseID.location.rawValue] as? String {
             _location = location
         }
-        if let votes = postDic[DatabaseID.votes.rawValue] as? Int {
-            _votes = votes
+        if let upVotes = postDic[DatabaseID.upVotes.rawValue] as? Int {
+            _upVotes = upVotes
+        }
+        if let downVotes = postDic[DatabaseID.downVotes.rawValue] as? Int {
+            _downVotes = downVotes
         }
         if let comments = postDic[DatabaseID.comments.rawValue] as? Int {
             _comments = comments
@@ -76,20 +84,20 @@ class Post {
 
     func adjustUpVotes(didUpVote: Bool) {
         if didUpVote {
-            _votes = _votes + 1
+            _upVotes = _upVotes + 1
         } else {
-            _votes = votes - 1
+            _upVotes = upVotes - 1
         }
-        _postRef.child(DatabaseID.votes.rawValue).setValue(_votes)
+        _postRef.child(DatabaseID.upVotes.rawValue).setValue(_upVotes)
     }
 
     func adjustDownVotes(didDownVote: Bool) {
         if didDownVote {
-            _votes = _votes - 1
+            _downVotes = _downVotes + 1
         } else {
-            _votes = votes + 1
+            _downVotes = downVotes - 1
         }
-        _postRef.child(DatabaseID.votes.rawValue).setValue(_votes)
+        _postRef.child(DatabaseID.downVotes.rawValue).setValue(_downVotes)
     }
 }
 

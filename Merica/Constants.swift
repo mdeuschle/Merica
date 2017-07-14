@@ -25,7 +25,8 @@ enum DatabaseID: String {
     case postImageURL = "postImageURL"
     case timeStamp = "timeStamp"
     case location = "location"
-    case votes = "votes"
+    case upVotes = "upVotes"
+    case downVotes = "downVotes"
     case comments = "comments"
 }
 

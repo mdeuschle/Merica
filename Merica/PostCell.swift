@@ -24,7 +24,8 @@ class PostCell: UITableViewCell {
     @IBOutlet var shareLabel: UILabel!
 
     var post: Post!
-    var votesRef: DatabaseReference!
+    var upVotesRef: DatabaseReference!
+    var downVotesRef: DatabaseReference!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,31 +33,34 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
     }
 
-
     func upVotesTapped(sender: UITapGestureRecognizer) {
-        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
+                self.upVoteImage.image = #imageLiteral(resourceName: "greenUpArrow")
                 self.downVoteImage.isUserInteractionEnabled = false
                 self.post.adjustUpVotes(didUpVote: true)
-                self.votesRef.setValue(true)
+                self.upVotesRef.setValue(true)
             } else {
+                self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
                 self.downVoteImage.isUserInteractionEnabled = true
                 self.post.adjustUpVotes(didUpVote: false)
-                self.votesRef.removeValue()
+                self.upVotesRef.removeValue()
             }
         })
     }
 
     func downVotesTapped(sender: UITapGestureRecognizer) {
-        votesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        downVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
+                self.downVoteImage.image = #imageLiteral(resourceName: "greenDownArrow")
                 self.upVoteImage.isUserInteractionEnabled = false
                 self.post.adjustDownVotes(didDownVote: true)
-                self.votesRef.setValue(true)
+                self.downVotesRef.setValue(true)
             } else {
+                self.downVoteImage.image = #imageLiteral(resourceName: "greyDownArrow")
                 self.upVoteImage.isUserInteractionEnabled = true
                 self.post.adjustDownVotes(didDownVote: false)
-                self.votesRef.removeValue()
+                self.downVotesRef.removeValue()
             }
         })
     }
@@ -70,13 +74,14 @@ class PostCell: UITableViewCell {
 
     func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
-        votesRef = DataService.dataService.refCurrentUser.child(DatabaseID.votes.rawValue).child(post.postKey)
+        upVotesRef = DataService.dataService.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
+        downVotesRef = DataService.dataService.refCurrentUser.child(DatabaseID.downVotes.rawValue).child(post.postKey)
 
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         locationLabel.text = post.location
-        voteCountLabel.text = "\(post.votes)"
-
+        let totalVotes = post.upVotes - post.downVotes
+        voteCountLabel.text = "\(totalVotes)"
 
         if image != nil {
             self.postImageView.image = image
@@ -96,7 +101,22 @@ class PostCell: UITableViewCell {
                 }
             })
         }
+        upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
+            } else {
+                self.upVoteImage.image = #imageLiteral(resourceName: "greenUpArrow")
+            }
+        })
+        downVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.downVoteImage.image = #imageLiteral(resourceName: "greyDownArrow")
+            } else {
+                self.downVoteImage.image = #imageLiteral(resourceName: "greenDownArrow")
+            }
+        })
     }
 }
+
 
 
