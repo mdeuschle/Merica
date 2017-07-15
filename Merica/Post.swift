@@ -19,6 +19,7 @@ class Post {
     private var _downVotes: Int!
     private var _comments: Int!
     private var _postKey: String!
+    private var _userKey: String!
     private var _postRef: DatabaseReference!
 
     var postTitle: String {
@@ -45,8 +46,11 @@ class Post {
     var postKey: String {
         return _postKey ?? ""
     }
+    var userKey: String {
+        return _userKey
+    }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
@@ -54,6 +58,7 @@ class Post {
         _upVotes = upVotes
         _downVotes = downVotes
         _comments = comments
+        _userKey = userKey
     }
 
     init(postKey: String, postDic: [String: Any]) {
@@ -78,6 +83,9 @@ class Post {
         }
         if let comments = postDic[DatabaseID.comments.rawValue] as? Int {
             _comments = comments
+        }
+        if let userKey = postDic[DatabaseID.userKey.rawValue] as? String {
+            _userKey = userKey
         }
         _postRef = DataService.dataService.refPosts.child(_postKey)
     }

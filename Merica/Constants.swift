@@ -29,6 +29,7 @@ enum DatabaseID: String {
     case upVotes = "upVotes"
     case downVotes = "downVotes"
     case comments = "comments"
+    case userKey = "userKey"
 }
 
 enum KeyChain: String {

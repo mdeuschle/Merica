@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -71,16 +72,17 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.upVotes.rawValue: 0 as Any,
                 DatabaseID.downVotes.rawValue: 0 as Any,
                 DatabaseID.comments.rawValue: 0 as Any,
+                DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
             ]
             DataService.dataService.refPosts.childByAutoId().setValue(postDic)
             self.tabBarController?.selectedIndex = 0
         }
+        postTextField.text = ""
+        imageView.image = #imageLiteral(resourceName: "greyPhoto")
     }
 
     @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
         present(imagePicker, animated: true, completion: nil)
-
-
     }
 
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {

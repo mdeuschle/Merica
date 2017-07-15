@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var initialViewController: UIViewController
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        if let _ = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue){
+        if let _ = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) {
             print("ID found in keychain")
             initialViewController = storyboard.instantiateViewController(withIdentifier: StoryboardID.tabBar.rawValue)
         } else {
