@@ -514,7 +514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3663.75" y="940.14084507042253"/>
+            <point key="canvasLocation" x="1853" y="1730"/>
         </scene>
         <!--My PostsVC-->
         <scene sceneID="rWn-Px-KPL">
@@ -748,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lb-zD-bh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1852.5" y="1405.9859154929577"/>
+            <point key="canvasLocation" x="919" y="1729"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
