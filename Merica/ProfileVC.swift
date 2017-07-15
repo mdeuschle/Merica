@@ -12,7 +12,6 @@ import SwiftKeychainWrapper
 
 class ProfileVC: UIViewController {
 
-    @IBOutlet var usernameLabel: UILabel!
     @IBOutlet var mericaPoints: UILabel!
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
@@ -21,7 +20,7 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         DataService.dataService.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
-                self.usernameLabel.text = name
+                self.title = name
             }
         })
     }
@@ -59,7 +58,10 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                         animated: true,
                         completion: nil)
             }
-            performSegue(withIdentifier: Segue.toWelcomeVC.rawValue, sender: self)
+            let storyBoard = UIStoryboard(name: StoryboardID.main.rawValue, bundle: nil)
+            let welcomeVC = storyBoard.instantiateViewController(withIdentifier: ViewControllerID.welcomeVC.rawValue)
+            present(welcomeVC, animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         case 4:
             print("More")
         default:

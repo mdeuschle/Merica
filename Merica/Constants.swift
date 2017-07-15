@@ -53,6 +53,7 @@ enum StoryboardID: String {
 
 enum ViewControllerID: String {
     case home = "HomeVC"
+    case welcomeVC = "WelcomeVC"
 }
 
 enum ReusableCell: String {
