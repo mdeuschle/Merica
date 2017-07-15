@@ -723,6 +723,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9563577A2CEDD1BE565CA04 /* Pods-Merica.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Merica/Merica.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;
@@ -738,6 +739,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7CA2A2E445A19D467342469C /* Pods-Merica.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Merica/Merica.entitlements;
 				DEVELOPMENT_TEAM = 3DKZWJ5854;

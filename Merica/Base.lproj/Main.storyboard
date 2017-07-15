@@ -428,8 +428,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="tBU-n5-Ft8"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
@@ -438,7 +438,7 @@
                                     <constraint firstAttribute="height" constant="21" id="mUL-8o-Zva"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="keR-aE-3ls">
@@ -516,7 +516,7 @@
             </objects>
             <point key="canvasLocation" x="1853" y="1730"/>
         </scene>
-        <!--My PostsVC-->
+        <!--My Posts-->
         <scene sceneID="rWn-Px-KPL">
             <objects>
                 <viewController id="S70-fc-YBQ" customClass="MyPostsVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
@@ -529,7 +529,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="402" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NSY-Ib-IWP">
-                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="myPostCell" rowHeight="402" id="Fan-pB-abo" customClass="MyPostCell" customModule="Merica" customModuleProvider="target">
@@ -738,17 +738,17 @@
                             <constraint firstItem="VED-vL-Uab" firstAttribute="top" secondItem="NSY-Ib-IWP" secondAttribute="bottom" id="7VV-Lw-Ija"/>
                             <constraint firstItem="NSY-Ib-IWP" firstAttribute="leading" secondItem="nJY-7w-kTV" secondAttribute="leading" id="BAL-07-qQd"/>
                             <constraint firstAttribute="trailing" secondItem="NSY-Ib-IWP" secondAttribute="trailing" id="dO6-7f-xd4"/>
-                            <constraint firstItem="NSY-Ib-IWP" firstAttribute="top" secondItem="wqI-fh-gJA" secondAttribute="bottom" constant="-20" id="kSo-HB-0Ga"/>
+                            <constraint firstItem="NSY-Ib-IWP" firstAttribute="top" secondItem="wqI-fh-gJA" secondAttribute="bottom" constant="-64" id="kSo-HB-0Ga"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pY2-T7-FnP"/>
+                    <navigationItem key="navigationItem" title="My Posts" id="pY2-T7-FnP"/>
                     <connections>
                         <outlet property="myPostTableView" destination="NSY-Ib-IWP" id="e3r-PI-Uc3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6lb-zD-bh7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="1729"/>
+            <point key="canvasLocation" x="918.75" y="1728.1690140845071"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
@@ -1106,6 +1106,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ifg-Xj-F9M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

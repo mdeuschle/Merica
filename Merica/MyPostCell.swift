@@ -29,6 +29,47 @@ class MyPostCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        myUpVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(myUpVotesTapped(sender:))))
+        myDownVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(myDownVotesTapped(sender:))))
+    }
+
+    func myUpVotesTapped(sender: UITapGestureRecognizer) {
+        myUpVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.myUpVoteImage.image = #imageLiteral(resourceName: "greenUpArrow")
+                self.myDownVoteImage.isUserInteractionEnabled = false
+                self.myPost.adjustUpVotes(didUpVote: true)
+                self.myUpVotesRef.setValue(true)
+            } else {
+                self.myUpVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
+                self.myDownVoteImage.isUserInteractionEnabled = true
+                self.myPost.adjustUpVotes(didUpVote: false)
+                self.myUpVotesRef.removeValue()
+            }
+        })
+    }
+
+    func myDownVotesTapped(sender: UITapGestureRecognizer) {
+        myDownVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.myDownVoteImage.image = #imageLiteral(resourceName: "greenDownArrow")
+                self.myUpVoteImage.isUserInteractionEnabled = false
+                self.myPost.adjustDownVotes(didDownVote: true)
+                self.myDownVotesRef.setValue(true)
+            } else {
+                self.myDownVoteImage.image = #imageLiteral(resourceName: "greyDownArrow")
+                self.myUpVoteImage.isUserInteractionEnabled = true
+                self.myPost.adjustDownVotes(didDownVote: false)
+                self.myDownVotesRef.removeValue()
+            }
+        })
+    }
+
+    func tapGestureGenerator(selector: Selector?) -> UITapGestureRecognizer {
+        var tap = UITapGestureRecognizer()
+        tap = UITapGestureRecognizer(target: self, action: selector)
+        tap.numberOfTapsRequired = 1
+        return tap
     }
 
     func myConfigCell(myPost: Post, myImage: UIImage? = nil) {
