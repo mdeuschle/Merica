@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class MyPostsVC: UIViewController {
 
@@ -27,8 +28,11 @@ class MyPostsVC: UIViewController {
                 for snap in snapShot {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
-                        let post = Post(postKey: snap.key, postDic: postDic)
-                        self.myPosts.append(post)
+                        let user = postDic[DatabaseID.userKey.rawValue] as! String
+                        if user == KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) {
+                            let post = Post(postKey: snap.key, postDic: postDic)
+                            self.myPosts.append(post)
+                        }
                     }
                 }
             }
