@@ -25,19 +25,6 @@ class ProfileVC: UIViewController {
             }
         })
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = false
-    }
-
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segue.toMyPosts.rawValue {
-            if let destination = segue.destination as? HomeVC {
-                destination.isFromProfile = true
-            }
-        }
-    }
 }
 
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
@@ -58,8 +45,14 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
+            tabBarController?.selectedIndex = 0
             tabBarController?.tabBar.isHidden = true
-            performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
+            let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
+            let vc = navController.topViewController as! HomeVC
+            vc.title = "My Posts"
+            
+
+
         case 1:
             print("Up Votes")
         case 2:

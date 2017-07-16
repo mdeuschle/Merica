@@ -507,8 +507,6 @@
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
                         <outlet property="mericaPoints" destination="ZNW-3j-ooB" id="bDi-Xh-dAE"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="toWelcomeVC" id="zmO-aG-RfZ"/>
-                        <segue destination="D75-yd-M1V" kind="show" identifier="toMyPosts" id="P7R-Ce-A2I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -940,7 +938,6 @@
         <image name="greyUpArrow" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="saJ-HK-P9v"/>
-        <segue reference="P7R-Ce-A2I"/>
+        <segue reference="5wt-uG-M12"/>
     </inferredMetricsTieBreakers>
 </document>

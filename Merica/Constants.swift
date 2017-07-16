@@ -12,8 +12,6 @@ enum Segue: String {
     case logInSuccess = "logInSuccess"
     case signUpSuccess = "signUpSuccess"
     case toMainFeed = "toMainFeed"
-    case toWelcomeVC = "toWelcomeVC"
-    case toMyPosts = "toMyPosts"
 }
 
 enum DatabaseID: String {
