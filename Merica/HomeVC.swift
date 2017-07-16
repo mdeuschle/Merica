@@ -14,14 +14,17 @@ class HomeVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
+    var isFromProfile = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.hidesBarsOnSwipe = true
         readPostData()
     }
 
     func readPostData() {
         DataService.dataService.refPosts.observe(.value, with: { (snapshot) in
+            print("FROM PROFILE: \(self.isFromProfile)")
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

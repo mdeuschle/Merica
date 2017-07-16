@@ -71,4 +71,8 @@ enum ProfileCellLabel: String {
     case more = "More"
 }
 
+enum NotificationKey: String {
+    case homeTapped = "home.tab.tapped"
+}
+
 

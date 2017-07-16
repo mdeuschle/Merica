@@ -18,11 +18,25 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         DataService.dataService.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
                 self.title = name
             }
         })
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.toMyPosts.rawValue {
+            if let destination = segue.destination as? HomeVC {
+                destination.isFromProfile = true
+            }
+        }
     }
 }
 
@@ -44,7 +58,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            print("Posts")
+            tabBarController?.tabBar.isHidden = true
             performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
         case 1:
             print("Up Votes")
@@ -54,15 +68,12 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
                 try Auth.auth().signOut()
+                navigationController?.popViewController(animated: true)
             } catch {
                 present(UIAlertController.withError(error: error),
                         animated: true,
                         completion: nil)
             }
-            let storyBoard = UIStoryboard(name: StoryboardID.main.rawValue, bundle: nil)
-            let welcomeVC = storyBoard.instantiateViewController(withIdentifier: ViewControllerID.welcomeVC.rawValue)
-            present(welcomeVC, animated: true, completion: nil)
-            navigationController?.popViewController(animated: true)
         case 4:
             print("More")
         default:
