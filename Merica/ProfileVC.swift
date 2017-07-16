@@ -50,8 +50,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
             let vc = navController.topViewController as! HomeVC
             vc.title = "My Posts"
-            
-
+            vc.isMyPosts = true
+            vc.readPostData()
 
         case 1:
             print("Up Votes")

@@ -14,6 +14,7 @@ class HomeVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
+    var isMyPosts = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,20 +24,29 @@ class HomeVC: UIViewController {
 
     func readPostData() {
         DataService.dataService.refPosts.observe(.value, with: { (snapshot) in
+            print("IS MY POSTS: \(self.isMyPosts)")
+
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        self.posts.append(post)
+                        if self.isMyPosts {
+                            if let currentUserID = Auth.auth().currentUser?.uid {
+                                if currentUserID == post.userKey {
+                                    self.posts.append(post)
+                                }
+                            }
+                        } else {
+                            self.posts.append(post)
+                        }
                     }
                 }
             }
             self.postTableView.reloadData()
         })
     }
-
 }
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {
