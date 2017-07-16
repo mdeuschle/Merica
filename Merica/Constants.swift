@@ -73,4 +73,10 @@ enum NotificationKey: String {
     case homeTapped = "home.tab.tapped"
 }
 
+enum ViewControllerTitle: String {
+    case myPosts = "My Posts"
+    case hi = "Hi, "
+    case merica = "'Merica"
+}
+
 

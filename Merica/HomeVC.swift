@@ -15,13 +15,28 @@ class HomeVC: UIViewController {
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     var isMyPosts = false
+    var backButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.hidesBarsOnSwipe = true
         readPostData()
+        configBackButton()
+    }
+    func configBackButton() {
+        backButton = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(HomeVC.backButtonTapped))
+        backButton.isEnabled = false
+        navigationItem.leftBarButtonItem = backButton
     }
 
+    func backButtonTapped() {
+        tabBarController?.selectedIndex = 3
+        tabBarController?.tabBar.isHidden = false
+        title = ViewControllerTitle.merica.rawValue
+        self.isMyPosts = false
+        readPostData()
+    }
+    
     func readPostData() {
         DataService.dataService.refPosts.observe(.value, with: { (snapshot) in
             print("IS MY POSTS: \(self.isMyPosts)")
@@ -33,12 +48,16 @@ class HomeVC: UIViewController {
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
                         if self.isMyPosts {
+                            self.backButton.image = #imageLiteral(resourceName: "greenBack")
+                            self.backButton.isEnabled = true
                             if let currentUserID = Auth.auth().currentUser?.uid {
                                 if currentUserID == post.userKey {
                                     self.posts.append(post)
                                 }
                             }
                         } else {
+                            self.backButton.image = UIImage()
+                            self.backButton.isEnabled = false
                             self.posts.append(post)
                         }
                     }

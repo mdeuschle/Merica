@@ -21,7 +21,7 @@ class ProfileVC: UIViewController {
 
         DataService.dataService.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
-                self.title = name
+                self.title = ViewControllerTitle.hi.rawValue + name
             }
         })
     }
@@ -49,10 +49,9 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             tabBarController?.tabBar.isHidden = true
             let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
             let vc = navController.topViewController as! HomeVC
-            vc.title = "My Posts"
+            vc.title = ViewControllerTitle.myPosts.rawValue
             vc.isMyPosts = true
             vc.readPostData()
-
         case 1:
             print("Up Votes")
         case 2:
@@ -61,7 +60,9 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
                 try Auth.auth().signOut()
-                navigationController?.popViewController(animated: true)
+                navigationController?.popToRootViewController(animated: false)
+                tabBarController?.dismiss(animated: true, completion: nil)
+                dismiss(animated: true, completion: nil)
             } catch {
                 present(UIAlertController.withError(error: error),
                         animated: true,
@@ -74,6 +75,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
 
 
 

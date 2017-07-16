@@ -59,6 +59,8 @@ class SignUpVC: UIViewController {
         DataService.dataService.createFirebaseDBUser(uid: id, userData: userData)
         let keychain = KeychainWrapper.standard.set(id, forKey: KeyChain.uid.rawValue)
         print("DATA saved to keychain \(keychain)")
+        emailTextField.text = ""
+        userNameTextField.text = ""
         performSegue(withIdentifier: Segue.signUpSuccess.rawValue, sender: nil)
     }
 

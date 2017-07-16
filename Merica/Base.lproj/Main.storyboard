@@ -431,7 +431,7 @@
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="est. 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
                                 <rect key="frame" x="12" y="102" width="296" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mUL-8o-Zva"/>
@@ -845,6 +845,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rVy-w6-hvA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -889,6 +890,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dVI-de-uql">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -938,6 +940,6 @@
         <image name="greyUpArrow" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5wt-uG-M12"/>
+        <segue reference="saJ-HK-P9v"/>
     </inferredMetricsTieBreakers>
 </document>

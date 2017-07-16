@@ -74,6 +74,8 @@ class LoginVC: UIViewController {
                                          animated: true,
                                          completion: nil)
                         }
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
                         self.performSegue(withIdentifier: Segue.logInSuccess.rawValue, sender: self)
                     }
                 })
