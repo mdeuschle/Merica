@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
         readPostData()
         configBackButton()
     }
-    
+
     func configBackButton() {
         backButton = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(HomeVC.backButtonTapped))
         backButton.isEnabled = false
@@ -36,7 +36,9 @@ class HomeVC: UIViewController {
         tabBarController?.selectedIndex = 3
         tabBarController?.tabBar.isHidden = false
         title = ViewControllerTitle.merica.rawValue
-        self.isMyPosts = false
+        isMyPosts = false
+        isMyUpVotes = false
+        isMyComments = false
         readPostData()
     }
 
@@ -59,14 +61,26 @@ class HomeVC: UIViewController {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        if self.isMyPosts {
+
+                        switch (self.isMyPosts, self.isMyUpVotes, self.isMyComments) {
+                        case (true, false, false):
                             self.enableBackButton(enableButton: true)
                             if let currentUserID = Auth.auth().currentUser?.uid {
                                 if currentUserID == post.userKey {
                                     self.posts.append(post)
                                 }
                             }
-                        } else {
+                        case (false, true, false):
+                            self.enableBackButton(enableButton: true)
+                            if post.upVotes > 0 {
+                                self.posts.append(post)
+                            }
+                        case (false, false, true):
+                            self.enableBackButton(enableButton: true)
+                            if post.comments > 0 {
+                                self.posts.append(post)
+                            }
+                        default:
                             self.enableBackButton(enableButton: false)
                             self.posts.append(post)
                         }
@@ -88,7 +102,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         tableView.estimatedRowHeight = 320
         return UITableViewAutomaticDimension
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
             return PostCell()
