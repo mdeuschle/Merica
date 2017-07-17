@@ -130,6 +130,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
                                                                    actionButtonTitle: Alert.delete.rawValue,
                                                                    handler: { action in
                                                                     self.posts.remove(at: indexPath.row)
+                                                                    DataService.dataService.refPosts.child(post.postKey).removeValue()
                                                                     self.postTableView.reloadData()
                     }), animated: true, completion: nil)
                 }
