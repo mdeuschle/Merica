@@ -28,7 +28,20 @@ extension UIAlertController {
         alert.addAction(action)
         return alert
     }
+
+    static func withMessageAndAction(alertTitle: String, alertMessage: String, actionButtonTitle: String, handler: @escaping ((UIAlertAction!) -> Void)) -> UIAlertController {
+        let alert = UIAlertController(title: alertTitle,
+                                      message: alertMessage,
+                                      preferredStyle: .alert)
+        let removeAction = UIAlertAction(title: actionButtonTitle,
+                                         style: .destructive,
+                                         handler: handler)
+        alert.addAction(removeAction)
+        let cancelAction = UIAlertAction(title: Alert.cancel.rawValue,
+                                         style: .default,
+                                         handler: nil)
+        alert.addAction(cancelAction)
+        return alert
+    }
 }
-
-
 

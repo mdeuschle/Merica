@@ -61,7 +61,6 @@ class HomeVC: UIViewController {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-
                         switch (self.isMyPosts, self.isMyUpVotes, self.isMyComments) {
                         case (true, false, false):
                             self.enableBackButton(enableButton: true)
@@ -102,7 +101,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         tableView.estimatedRowHeight = 320
         return UITableViewAutomaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
             return PostCell()
@@ -113,10 +112,31 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.configCell(post: post)
         }
+        if isMyPosts {
+            let longPress = UILongPressGestureRecognizer(target: self,
+                                                         action: #selector(HomeVC.removePost(recognizer:)))
+            cell.addGestureRecognizer(longPress)
+        }
         return cell
     }
-}
 
+    func removePost(recognizer: UILongPressGestureRecognizer) {
+        if recognizer.state == .began {
+            if let cell = recognizer.view as? UITableViewCell {
+                if let indexPath = postTableView.indexPath(for: cell) {
+                    let post = posts[indexPath.row]
+                    present(UIAlertController.withMessageAndAction(alertTitle: Alert.deletePost.rawValue,
+                                                                   alertMessage: post.postTitle,
+                                                                   actionButtonTitle: Alert.delete.rawValue,
+                                                                   handler: { action in
+                                                                    self.posts.remove(at: indexPath.row)
+                                                                    self.postTableView.reloadData()
+                    }), animated: true, completion: nil)
+                }
+            }
+        }
+    }
+}
 
 
 

@@ -42,6 +42,9 @@ enum Alert: String {
     case welcomBack = "Welcome back "
     case emptyFields = "Please fill in all fields"
     case signUpThanks = "!\n\nThanks for Signing Up for 'Merica."
+    case deletePost = "Delete Post"
+    case delete = "Delete"
+    case cancel = "Cancel"
 }
 
 enum StoryboardID: String {
