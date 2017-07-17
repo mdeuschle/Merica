@@ -75,6 +75,7 @@ enum NotificationKey: String {
 
 enum ViewControllerTitle: String {
     case myPosts = "My Posts"
+    case myUpVotes = "My Up Votes"
     case hi = "Hi, "
     case merica = "'Merica"
 }

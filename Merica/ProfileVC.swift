@@ -45,24 +45,21 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            tabBarController?.selectedIndex = 0
-            tabBarController?.tabBar.isHidden = true
-            let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
-            let vc = navController.topViewController as! HomeVC
-            vc.title = ViewControllerTitle.myPosts.rawValue
-            vc.isMyPosts = true
-            vc.readPostData()
+            filteredFeed(navTitle: ViewControllerTitle.myPosts.rawValue, selectedIndex: 0)
         case 1:
-            print("Up Votes")
+            filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
         case 2:
             print("Comments")
         case 3:
             KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
+
                 try Auth.auth().signOut()
-                navigationController?.popToRootViewController(animated: false)
-                tabBarController?.dismiss(animated: true, completion: nil)
-                dismiss(animated: true, completion: nil)
+
+                //TODO: Figure out how to go back to login
+
+                presentingViewController?.dismiss(animated: true, completion: nil)
+
             } catch {
                 present(UIAlertController.withError(error: error),
                         animated: true,
@@ -74,6 +71,27 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             print("Default")
         }
     }
+
+    func filteredFeed(navTitle: String, selectedIndex: Int) {
+        tabBarController?.selectedIndex = 0
+        tabBarController?.tabBar.isHidden = true
+        let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
+        let vc = navController.topViewController as! HomeVC
+        vc.title = navTitle
+        vc.readPostData()
+        switch selectedIndex {
+        case 0:
+            vc.isMyPosts = true
+        case 1:
+            vc.isMyUpVotes = true
+        case 2:
+            vc.isMyComments = true
+        default:
+            break
+        }
+    }
+
+
 }
 
 
