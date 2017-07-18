@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class MapVC: UIViewController {
 
+    @IBOutlet var mapView: MKMapView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }
