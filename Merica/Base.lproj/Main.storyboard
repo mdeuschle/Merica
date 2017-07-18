@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -97,12 +97,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="146"/>
+            <point key="canvasLocation" x="1013" y="146"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="kxR-GN-CXV">
             <objects>
-                <viewController id="Wh1-eG-ySD" customClass="LoginVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="Wh1-eG-ySD" customClass="LoginVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="D6h-i9-XdF"/>
                         <viewControllerLayoutGuide type="bottom" id="tVq-60-e5r"/>
@@ -231,7 +231,7 @@
         <!--Sign UpVC-->
         <scene sceneID="ZaY-BH-uJV">
             <objects>
-                <viewController id="xHL-XZ-vzZ" customClass="SignUpVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" id="xHL-XZ-vzZ" customClass="SignUpVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KDt-GW-zxK"/>
                         <viewControllerLayoutGuide type="bottom" id="Lte-eU-edk"/>
@@ -389,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m8V-H7-OxL" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="509"/>
+            <point key="canvasLocation" x="1853" y="509"/>
         </scene>
         <!--Map-->
         <scene sceneID="eo1-qr-QTh">
@@ -405,6 +405,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gJp-2R-q8o">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QAi-cf-QF2" id="THf-cC-saW"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -423,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TrM-jD-C31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2666" y="903"/>
+            <point key="canvasLocation" x="2668" y="904"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="sUG-XG-gCn">
@@ -526,7 +529,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4352" y="903"/>
+            <point key="canvasLocation" x="4352" y="891"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
@@ -592,7 +595,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpF-ZM-Uv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3514" y="-599"/>
+            <point key="canvasLocation" x="3514" y="-598"/>
         </scene>
         <!--'Merica-->
         <scene sceneID="bpg-kz-Yfr">
@@ -873,7 +876,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPl-OU-ayl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2664" y="-598"/>
+            <point key="canvasLocation" x="2668" y="-598"/>
         </scene>
         <!--Profile-->
         <scene sceneID="c1x-z0-fIk">
@@ -936,6 +939,6 @@
         <image name="greyUpArrow" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="saJ-HK-P9v"/>
+        <segue reference="5wt-uG-M12"/>
     </inferredMetricsTieBreakers>
 </document>

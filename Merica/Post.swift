@@ -18,6 +18,9 @@ class Post {
     private var _upVotes: Int!
     private var _downVotes: Int!
     private var _comments: Int!
+    private var _latitude: Double?
+    private var _longitude: Double?
+    private var _cityName: String?
     private var _postKey: String!
     private var _userKey: String!
     private var _postRef: DatabaseReference!
@@ -43,6 +46,15 @@ class Post {
     var comments: Int {
         return _comments
     }
+    var latitude: Double {
+        return _latitude ?? 0.0
+    }
+    var longitude: Double {
+        return _longitude ?? 0.0
+    }
+    var cityName: String {
+        return _cityName ?? ""
+    }
     var postKey: String {
         return _postKey ?? ""
     }
@@ -50,7 +62,7 @@ class Post {
         return _userKey
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int, userKey: String) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
@@ -58,6 +70,9 @@ class Post {
         _upVotes = upVotes
         _downVotes = downVotes
         _comments = comments
+        _latitude = latitude
+        _longitude = longitude
+        _cityName = cityName
         _userKey = userKey
     }
 
@@ -81,13 +96,22 @@ class Post {
         if let downVotes = postDic[DatabaseID.downVotes.rawValue] as? Int {
             _downVotes = downVotes
         }
+        if let latitude = postDic[DatabaseID.latitude.rawValue] as? Double {
+            _latitude = latitude
+        }
+        if let longitude = postDic[DatabaseID.longitude.rawValue] as? Double {
+            _longitude = longitude
+        }
         if let comments = postDic[DatabaseID.comments.rawValue] as? Int {
             _comments = comments
+        }
+        if let cityName = postDic[DatabaseID.cityName.rawValue] as? String {
+            _cityName = cityName
         }
         if let userKey = postDic[DatabaseID.userKey.rawValue] as? String {
             _userKey = userKey
         }
-        _postRef = DataService.dataService.refPosts.child(_postKey)
+        _postRef = DataService.shared.refPosts.child(_postKey)
     }
 
     func adjustUpVotes(didUpVote: Bool) {

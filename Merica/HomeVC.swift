@@ -53,7 +53,7 @@ class HomeVC: UIViewController {
     }
 
     func readPostData() {
-        DataService.dataService.refPosts.observe(.value, with: { (snapshot) in
+        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
             print("IS MY POSTS: \(self.isMyPosts)")
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
@@ -130,7 +130,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
                                                                    actionButtonTitle: Alert.delete.rawValue,
                                                                    handler: { action in
                                                                     self.posts.remove(at: indexPath.row)
-                                                                    DataService.dataService.refPosts.child(post.postKey).removeValue()
+                                                                    DataService.shared.refPosts.child(post.postKey).removeValue()
                                                                     self.postTableView.reloadData()
                     }), animated: true, completion: nil)
                 }

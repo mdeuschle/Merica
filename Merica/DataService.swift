@@ -14,7 +14,7 @@ let dbBase = Database.database().reference()
 let storageBase = Storage.storage().reference()
 
 class DataService {
-    static let dataService = DataService()
+    static let shared = DataService()
     private var _refBase = dbBase
     private var _refPosts = dbBase.child(DatabaseID.posts.rawValue)
     private var _refUsers = dbBase.child(DatabaseID.users.rawValue)

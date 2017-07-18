@@ -28,6 +28,9 @@ enum DatabaseID: String {
     case downVotes = "downVotes"
     case comments = "comments"
     case userKey = "userKey"
+    case latitude = "latitude"
+    case longitude = "longitude"
+    case cityName = "cityName"
 }
 
 enum KeyChain: String {
@@ -45,6 +48,7 @@ enum Alert: String {
     case deletePost = "Delete Post"
     case delete = "Delete"
     case cancel = "Cancel"
+    case locationNotFound = "Location not found"
 }
 
 enum StoryboardID: String {

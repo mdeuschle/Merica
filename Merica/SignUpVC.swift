@@ -56,7 +56,7 @@ class SignUpVC: UIViewController {
     }
 
     func completeSignUp(id: String, userData: [String: String]) {
-        DataService.dataService.createFirebaseDBUser(uid: id, userData: userData)
+        DataService.shared.createFirebaseDBUser(uid: id, userData: userData)
         let keychain = KeychainWrapper.standard.set(id, forKey: KeyChain.uid.rawValue)
         print("DATA saved to keychain \(keychain)")
         emailTextField.text = ""

@@ -9,12 +9,18 @@
 import UIKit
 import MapKit
 
-class MapVC: UIViewController {
+class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
+    var posts = [Post]()
+    var postAnnotation: MKPointAnnotation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        postAnnotation = MKPointAnnotation()
     }
 }
+
+
+
+

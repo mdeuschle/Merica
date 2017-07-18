@@ -74,8 +74,8 @@ class PostCell: UITableViewCell {
 
     func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
-        upVotesRef = DataService.dataService.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
-        downVotesRef = DataService.dataService.refCurrentUser.child(DatabaseID.downVotes.rawValue).child(post.postKey)
+        upVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
+        downVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.downVotes.rawValue).child(post.postKey)
 
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)

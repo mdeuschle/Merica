@@ -30,7 +30,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     func welcomePopUp(didLogIn: Bool, didSignUp: Bool) {
         if didSignUp || didLogIn {
-            DataService.dataService.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let name = snapshot.value as? String {
                     var message = ""
                     if didLogIn {
