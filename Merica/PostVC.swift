@@ -62,7 +62,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             selectedImage = image
             imageView.image = image
         } else {
-            present(UIAlertController.withMessage(message: "Image not found"), animated: true, completion: nil)
+            present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
         }
         imagePicker.dismiss(animated: true, completion: nil)
     }
@@ -77,7 +77,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.postImageURL.rawValue: imageURL as Any,
                 DatabaseID.postTitle.rawValue: postText as Any,
                 DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
-                DatabaseID.location.rawValue: "" as Any,
                 DatabaseID.upVotes.rawValue: 0 as Any,
                 DatabaseID.downVotes.rawValue: 0 as Any,
                 DatabaseID.comments.rawValue: 0 as Any,
@@ -104,17 +103,18 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 if let imageData = UIImagePNGRepresentation(reSizedImage) {
                     let imageID = NSUUID().uuidString
                     let metaData = StorageMetadata()
-                    metaData.contentType = "image/png"
+                    metaData.contentType = ContentType.imagePng.rawValue
                     DataService.shared.refPics.child(imageID).putData(imageData, metadata: metaData, completion: { (metaData, error) in
                         if error != nil {
                             self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                         } else {
                             print("Uploaded Image to Firebase Storage!")
                             LocationService.shared.getLocation(handler: { address, error, latitude, longitude in
-                                if let adrs = address, let city = adrs["City"] as? String, let state = adrs["State"] as? String, let lat = latitude, let lon = longitude {
-                                    print("STATE: \(state)")
+                                if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude {
                                     if let url = metaData?.downloadURL()?.absoluteString {
                                         self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
+                                    } else {
+                                        self.present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
                                     }
                                 } else {
                                     if let err = error {

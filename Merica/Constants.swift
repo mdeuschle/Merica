@@ -38,6 +38,14 @@ enum KeyChain: String {
     case uid = "uid"
 }
 
+enum Divider: String {
+    case pipe = " | "
+}
+
+enum ContentType: String {
+    case imagePng = "image/png"
+}
+
 enum Alert: String {
     case error = "Error"
     case imageNotFound = "Image not found"
@@ -87,5 +95,14 @@ enum ViewControllerTitle: String {
     case hi = "Hi, "
     case merica = "'Merica"
 }
+
+enum LocationType: String {
+    case city = "City"
+    case state = "State"
+}
+
+
+
+
 
 

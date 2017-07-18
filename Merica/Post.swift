@@ -14,7 +14,6 @@ class Post {
     private var _postTitle: String!
     private var _postImageURL: String?
     private var _timeStamp: String?
-    private var _location: String?
     private var _upVotes: Int!
     private var _downVotes: Int!
     private var _comments: Int!
@@ -34,9 +33,6 @@ class Post {
     }
     var timeStamp: String {
         return _timeStamp ?? ""
-    }
-    var location: String {
-        return _location ?? ""
     }
     var upVotes: Int {
         return _upVotes
@@ -66,11 +62,10 @@ class Post {
         return _userKey
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, location: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, stateName: String, userKey: String) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, stateName: String, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
-        _location = location
         _upVotes = upVotes
         _downVotes = downVotes
         _comments = comments
@@ -91,9 +86,6 @@ class Post {
         }
         if let timeStamp = postDic[DatabaseID.timeStamp.rawValue] as? String {
             _timeStamp = timeStamp
-        }
-        if let location = postDic[DatabaseID.location.rawValue] as? String {
-            _location = location
         }
         if let upVotes = postDic[DatabaseID.upVotes.rawValue] as? Int {
             _upVotes = upVotes

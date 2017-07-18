@@ -79,7 +79,8 @@ class PostCell: UITableViewCell {
 
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
-        locationLabel.text = post.location
+        let location = post.cityName + Divider.pipe.rawValue + post.stateName
+        locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
 
