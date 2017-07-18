@@ -39,19 +39,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         present(UIAlertController.withError(error: error), animated: true, completion: nil)
     }
 
-    //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    //        if let currentLoc = locations.first {
-    //            currentLocation = currentLoc
-    //            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
-    //                locationManager.stopUpdatingLocation()
-    //                latitude = currentLocation.coordinate.latitude
-    //                longitude = currentLocation.coordinate.longitude
-    //            }
-    //        } else {
-    //            present(UIAlertController.withMessage(message: Alert.locationNotFound.rawValue), animated: true, completion: nil)
-    //        }
-    //    }
-
     func configImagePicker() {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -94,7 +81,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.didReceiveMemoryWarning()
     }
 
-    func postToFirebse(imageURL: String, lat: Double, lon: Double) {
+    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String) {
         if let postText = postTextField.text {
             let postDic: [String: Any] = [
                 DatabaseID.postImageURL.rawValue: imageURL as Any,
@@ -106,7 +93,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.comments.rawValue: 0 as Any,
                 DatabaseID.latitude.rawValue: lat as Any,
                 DatabaseID.longitude.rawValue: lon as Any,
-                DatabaseID.cityName.rawValue: "" as Any,
+                DatabaseID.cityName.rawValue: cityName as Any,
                 DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
             ]
             DataService.shared.refPosts.childByAutoId().setValue(postDic)
@@ -132,12 +119,11 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                             self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                         } else {
                             print("Uploaded Image to Firebase Storage!")
-
                             LocationService.shared.getLocation(handler: { address, error, latitude, longitude in
-                                if let adrs = address, let city = adrs["City"] as? String, let lat = latitude, let lon = longitude {
-                                    print("CITY: \(city)")
+                                if let adrs = address, let city = adrs["City"] as? String, let state = adrs["State"] as? String, let lat = latitude, let lon = longitude {
+                                    print("STATE: \(state)")
                                     if let url = metaData?.downloadURL()?.absoluteString {
-                                        self.postToFirebse(imageURL: url, lat: lat, lon: lon)
+                                        self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city)
                                     }
                                 } else {
                                     if let err = error {
