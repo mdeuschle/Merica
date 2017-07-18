@@ -19,20 +19,10 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
 
-    //    var locationManager: CLLocationManager!
-    //    var currentLocation: CLLocation!
-    //    var latitude: Double?
-    //    var longitude: Double?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         configImagePicker()
         notifications()
-        //        locationManager = CLLocationManager()
-        //        currentLocation = CLLocation()
-        //        locationManager.delegate = self
-        //        locationManager.requestWhenInUseAuthorization()
-        //        locationManager.startUpdatingLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -81,7 +71,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.didReceiveMemoryWarning()
     }
 
-    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String) {
+    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
         if let postText = postTextField.text {
             let postDic: [String: Any] = [
                 DatabaseID.postImageURL.rawValue: imageURL as Any,
@@ -94,6 +84,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.latitude.rawValue: lat as Any,
                 DatabaseID.longitude.rawValue: lon as Any,
                 DatabaseID.cityName.rawValue: cityName as Any,
+                DatabaseID.stateName.rawValue: stateName as Any,
                 DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
             ]
             DataService.shared.refPosts.childByAutoId().setValue(postDic)
@@ -123,7 +114,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                                 if let adrs = address, let city = adrs["City"] as? String, let state = adrs["State"] as? String, let lat = latitude, let lon = longitude {
                                     print("STATE: \(state)")
                                     if let url = metaData?.downloadURL()?.absoluteString {
-                                        self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city)
+                                        self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
                                     }
                                 } else {
                                     if let err = error {

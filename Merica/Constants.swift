@@ -31,6 +31,7 @@ enum DatabaseID: String {
     case latitude = "latitude"
     case longitude = "longitude"
     case cityName = "cityName"
+    case stateName = "stateName"
 }
 
 enum KeyChain: String {
