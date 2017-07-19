@@ -9,6 +9,10 @@
 import UIKit
 import Firebase
 
+protocol ShareButtonTapped {
+    func shareButtonTapped(title: String, image: UIImage)
+}
+
 class PostCell: UITableViewCell {
 
     @IBOutlet var postTitleLabel: UILabel!
@@ -27,10 +31,19 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
 
+    var shareButtonDelegate: ShareButtonTapped?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
+        shareImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
+    }
+
+    func shareTapped(sender: UITapGestureRecognizer) {
+        if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
+            delegate.shareButtonTapped(title: postTitle, image: postImage)
+        }
     }
 
     func upVotesTapped(sender: UITapGestureRecognizer) {
