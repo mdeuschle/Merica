@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
+import CoreLocation
 import MapKit
 
 class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
@@ -18,15 +19,31 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
+    var currentLocation: CLLocation!
+    var locationManager: CLLocationManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configImagePicker()
         notifications()
+        currentLocation = CLLocation()
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         present(UIAlertController.withError(error: error), animated: true, completion: nil)
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currentLoc = locations.first {
+            currentLocation = currentLoc
+            if currentLoc.verticalAccuracy < 1000 && currentLoc.horizontalAccuracy < 1000 {
+                locationManager.stopUpdatingLocation()
+            }
+        }
     }
 
     func configImagePicker() {
@@ -109,7 +126,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                             self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                         } else {
                             print("Uploaded Image to Firebase Storage!")
-                            LocationService.shared.getLocation(handler: { address, error, latitude, longitude in
+                            LocationService.shared.getLocation(currentLocation: self.currentLocation, handler: { address, error, latitude, longitude in
                                 if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude, let url = metaData?.downloadURL()?.absoluteString {
                                     self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
                                 } else {

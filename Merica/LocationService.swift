@@ -12,16 +12,13 @@ import MapKit
 class LocationService {
 
     static let shared = LocationService()
-    let locationManager = CLLocationManager()
-    var currentLocation: CLLocation?
     let status = CLLocationManager.authorizationStatus()
 
-    func getLocation(handler: @escaping (_ address: [String: Any]?, _ error: Error?, _ lat: Double?, _ lon: Double?) -> ()) {
-        locationManager.requestWhenInUseAuthorization()
+    func getLocation(currentLocation: CLLocation?, handler: @escaping (_ address: [String: Any]?, _ error: Error?, _ lat: Double?, _ lon: Double?) -> ()) {
         if status == .authorizedWhenInUse {
-            if let currentLocation = locationManager.location {
+            if let currentLoc = currentLocation {
                 let geoCoder = CLGeocoder()
-                geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: { placemarks, error in
+                geoCoder.reverseGeocodeLocation(currentLoc, completionHandler: { placemarks, error in
                     if let err = error {
                         handler(nil, err, nil, nil)
                         print("Location Error: \(err)")
@@ -32,7 +29,7 @@ class LocationService {
                         guard let address = placeMark.addressDictionary as? [String: Any] else {
                             return
                         }
-                        handler(address, nil, currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
+                        handler(address, nil, currentLoc.coordinate.latitude, currentLoc.coordinate.longitude)
                     }
                 })
             } else {

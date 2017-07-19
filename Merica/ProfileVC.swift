@@ -57,8 +57,9 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                 try Auth.auth().signOut()
 
                 //TODO: Figure out how to go back to login
+                navigationController?.popToRootViewController(animated: true)
 
-                presentingViewController?.dismiss(animated: true, completion: nil)
+//                presentingViewController?.dismiss(animated: true, completion: nil)
 
             } catch {
                 present(UIAlertController.withError(error: error),
