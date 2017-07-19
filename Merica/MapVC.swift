@@ -71,7 +71,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
             let coordinate = CLLocationCoordinate2DMake(post.latitude, post.longitude)
             newPin.coordinate = coordinate
             newPin.title = post.postTitle
-            newPin.subtitle = post.cityName
+            newPin.subtitle = post.cityName + Divider.pipe.rawValue + post.stateName
             newPin.mapPost = post
             let ref = Storage.storage().reference(forURL: post.postImageURL)
             ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
