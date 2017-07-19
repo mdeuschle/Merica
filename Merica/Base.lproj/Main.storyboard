@@ -581,7 +581,7 @@
                                 <action selector="cameraButtonTapped:" destination="orA-qz-bJO" id="IGi-z2-FfM"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="greenPost" id="rTq-3z-zC5">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="rTq-3z-zC5">
                             <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="postButtonTapped:" destination="orA-qz-bJO" id="pLn-7J-RoH"/>
@@ -926,7 +926,6 @@
     </scenes>
     <resources>
         <image name="greenCamera" width="30" height="22"/>
-        <image name="greenPost" width="28" height="28"/>
         <image name="greyComments" width="35" height="36"/>
         <image name="greyDownArrow" width="24" height="24"/>
         <image name="greyHome" width="28" height="28"/>
