@@ -426,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TrM-jD-C31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2668" y="904"/>
+            <point key="canvasLocation" x="2666.25" y="903.16901408450701"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="sUG-XG-gCn">
@@ -576,7 +576,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Post to 'Merica" id="RgP-Xy-qKz">
                         <barButtonItem key="leftBarButtonItem" image="greenCamera" id="rGe-UT-pKv">
-                            <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.39215686274509803" green="0.92549019607843142" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="cameraButtonTapped:" destination="orA-qz-bJO" id="IGi-z2-FfM"/>
                             </connections>

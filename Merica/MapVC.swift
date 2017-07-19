@@ -56,8 +56,8 @@ class MapVC: UIViewController, MKMapViewDelegate {
         let postAnnotation = annotation as! PostAnnotation
         if postAnnotation.mapImage != nil {
             annotatedView?.image = postAnnotation.mapImage!
-            annotatedView?.layer.borderWidth = 2.0
-            annotatedView?.layer.borderColor = UIColor.red.cgColor
+            annotatedView?.layer.borderWidth = 3.0
+            annotatedView?.layer.borderColor = UIColor.mintGreen().cgColor
         }
         else {
             annotatedView?.image = #imageLiteral(resourceName: "greenMap")
