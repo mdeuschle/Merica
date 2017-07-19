@@ -119,16 +119,14 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped 
         } else {
             cell.configCell(post: post)
         }
-        if isMyPosts {
-            let longPress = UILongPressGestureRecognizer(target: self,
-                                                         action: #selector(HomeVC.removePost(recognizer:)))
-            cell.addGestureRecognizer(longPress)
-        }
+        let longPress = UILongPressGestureRecognizer(target: self,
+                                                     action: #selector(HomeVC.removePost(recognizer:)))
+        cell.addGestureRecognizer(longPress)
         return cell
     }
 
     func removePost(recognizer: UILongPressGestureRecognizer) {
-        if recognizer.state == .began {
+        if recognizer.state == .began && isMyPosts {
             if let cell = recognizer.view as? UITableViewCell {
                 if let indexPath = postTableView.indexPath(for: cell) {
                     let post = posts[indexPath.row]
