@@ -29,6 +29,7 @@
 		A83B4EA51F1442CF008595E8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA41F1442CF008595E8 /* ProfileCell.swift */; };
 		A83B4EA71F149476008595E8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA61F149476008595E8 /* PostCell.swift */; };
 		A8CF0DE21F1E8274005B8EA6 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF0DE11F1E8274005B8EA6 /* LocationService.swift */; };
+		A8D94CD41F1EB24000DE148F /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */; };
 		A8FC68CA1F15525B00DEED82 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68C91F15525B00DEED82 /* Post.swift */; };
 		A8FC68CE1F16AD7C00DEED82 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */; };
 		A8FC68D01F16BF0700DEED82 /* ImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */; };
@@ -86,6 +87,7 @@
 		A83B4EA41F1442CF008595E8 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		A83B4EA61F149476008595E8 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		A8CF0DE11F1E8274005B8EA6 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		A8FC68C91F15525B00DEED82 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtensions.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
 				A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */,
 				A8FC68D11F16CF4F00DEED82 /* DateHelper.swift */,
+				A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */,
 				A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */,
 				A83B4E981F12F113008595E8 /* AlertControllerExtensions.swift in Sources */,
+				A8D94CD41F1EB24000DE148F /* PostAnnotation.swift in Sources */,
 				A83B4E941F117983008595E8 /* DataService.swift in Sources */,
 				A83B4EA51F1442CF008595E8 /* ProfileCell.swift in Sources */,
 				A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */,

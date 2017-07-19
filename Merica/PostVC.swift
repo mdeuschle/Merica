@@ -110,12 +110,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                         } else {
                             print("Uploaded Image to Firebase Storage!")
                             LocationService.shared.getLocation(handler: { address, error, latitude, longitude in
-                                if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude {
-                                    if let url = metaData?.downloadURL()?.absoluteString {
-                                        self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
-                                    } else {
-                                        self.present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
-                                    }
+                                if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude, let url = metaData?.downloadURL()?.absoluteString {
+                                    self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
                                 } else {
                                     if let err = error {
                                         self.present(UIAlertController.withError(error: err), animated: true, completion: nil)
