@@ -91,7 +91,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped {
+extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped, CommentsButtonTapped {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -100,6 +100,11 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         tableView.estimatedRowHeight = 320
         return UITableViewAutomaticDimension
+    }
+
+    func commentsButtonTapped() {
+        performSegue(withIdentifier: Segue.toCommentsVC.rawValue, sender: self)
+        tabBarController?.tabBar.isHidden = true
     }
 
     func shareButtonTapped(title: String, image: UIImage) {
@@ -112,6 +117,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped 
             return PostCell()
         }
         cell.shareButtonDelegate = self
+        cell.commentsButtonDelegate = self
         let post = posts[indexPath.row]
 
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
