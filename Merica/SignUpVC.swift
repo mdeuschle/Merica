@@ -64,7 +64,7 @@ class SignUpVC: UIViewController {
         performSegue(withIdentifier: Segue.signUpSuccess.rawValue, sender: nil)
     }
 
-    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+    func performSignUp() {
         if let email = emailTextField.text,
             let userName = userNameTextField.text,
             let password = passwordTextField.text {
@@ -92,6 +92,10 @@ class SignUpVC: UIViewController {
                     completion: nil)
         }
     }
+
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        performSignUp()
+    }
 }
 
 extension SignUpVC: UITextFieldDelegate {
@@ -99,6 +103,22 @@ extension SignUpVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         logoImage.isHidden = true
         signUpLabel.isHidden = true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            switch textField {
+            case emailTextField:
+                userNameTextField.becomeFirstResponder()
+            case userNameTextField:
+                passwordTextField.becomeFirstResponder()
+            case passwordTextField:
+                performSignUp()
+            default:
+                textField.resignFirstResponder()
+            }
+        }
+        return true
     }
 }
 

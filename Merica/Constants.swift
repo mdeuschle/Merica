@@ -77,6 +77,7 @@ enum ReusableCell: String {
     case postCell = "PostCell"
     case myPostCell = "myPostCell"
     case commentsCell = "commentsCell"
+    case commentsListCell = "commentsListCell"
 }
 
 enum ReusableID: String {

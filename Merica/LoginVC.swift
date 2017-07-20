@@ -56,7 +56,7 @@ class LoginVC: UIViewController {
         }
     }
 
-    @IBAction func loginButtonTapped(_ sender: UIButton) {
+    func performLogin() {
         if let email = emailTextField.text,
             let password = passwordTextField.text {
             if !email.isEmpty && !password.isEmpty {
@@ -90,6 +90,10 @@ class LoginVC: UIViewController {
                     completion: nil)
         }
     }
+
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        performLogin()
+    }
 }
 
 extension LoginVC: UITextFieldDelegate {
@@ -97,6 +101,17 @@ extension LoginVC: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         logoImage.isHidden = true
         loginLabel.isHidden = true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            if textField == emailTextField {
+                passwordTextField.becomeFirstResponder()
+            } else {
+                performLogin()
+            }
+        }
+        return true
     }
 }
 
