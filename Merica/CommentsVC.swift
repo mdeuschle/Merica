@@ -11,9 +11,12 @@ import UIKit
 class CommentsVC: UIViewController {
 
     @IBOutlet var commentsTextField: UITextField!
+    var post: Post!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("POST TITLE: \(post.postTitle)")
+        print("POST CITY: \(post.cityName)")
     }
     override func viewWillDisappear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false

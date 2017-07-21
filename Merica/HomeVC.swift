@@ -102,8 +102,8 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
         return UITableViewAutomaticDimension
     }
 
-    func commentsButtonTapped() {
-        performSegue(withIdentifier: Segue.toCommentsVC.rawValue, sender: self)
+    func commentsButtonTapped(commentsImage: UIImageView) {
+        performSegue(withIdentifier: Segue.toCommentsVC.rawValue, sender: commentsImage.tag)
         tabBarController?.tabBar.isHidden = true
     }
 
@@ -118,8 +118,8 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
         }
         cell.shareButtonDelegate = self
         cell.commentsButtonDelegate = self
+        cell.commentsImage.tag = indexPath.row
         let post = posts[indexPath.row]
-
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
             cell.configCell(post: post, image: image)
         } else {
@@ -145,6 +145,14 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
                                                                     self.postTableView.reloadData()
                     }), animated: true, completion: nil)
                 }
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.toCommentsVC.rawValue {
+            if let destination = segue.destination as? CommentsVC, let row = sender as? Int {
+                destination.post = posts[row]
             }
         }
     }

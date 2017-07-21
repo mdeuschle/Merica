@@ -14,7 +14,7 @@ protocol ShareButtonTapped {
 }
 
 protocol CommentsButtonTapped {
-    func commentsButtonTapped()
+    func commentsButtonTapped(commentsImage: UIImageView)
 }
 
 class PostCell: UITableViewCell {
@@ -47,7 +47,7 @@ class PostCell: UITableViewCell {
 
     func commentsTapped() {
         if let delegate = commentsButtonDelegate {
-            delegate.commentsButtonTapped()
+            delegate.commentsButtonTapped(commentsImage: commentsImage)
         }
     }
 

@@ -609,14 +609,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="434" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-4H-fv4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="434" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-4H-fv4">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="434" id="4Da-tk-yzj" customClass="PostCell" customModule="Merica" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="434" id="4Da-tk-yzj" customClass="PostCell" customModule="Merica" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="434"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Da-tk-yzj" id="BYD-Jj-SLk">
@@ -1147,15 +1147,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a text comments. Comments are really cool and this is a way to test how the text will look. I hope it looks good." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pe-f7-ZJt">
-                                                    <rect key="frame" x="23" y="42" width="274" height="87.5"/>
+                                                    <rect key="frame" x="23" y="31" width="274" height="90.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bob3244・3 hours ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vX-ih-cjj">
-                                                    <rect key="frame" x="23" y="23" width="274" height="15"/>
+                                                    <rect key="frame" x="23" y="8" width="274" height="15"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="Pee-Ig-jHe"/>
+                                                        <constraint firstAttribute="height" constant="15" id="hS4-qU-xaS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                     <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -1178,21 +1178,21 @@
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="16" id="grk-ln-ReR"/>
+                                                        <constraint firstAttribute="height" constant="16" id="UaM-k2-jwC"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="9Pe-f7-ZJt" firstAttribute="top" secondItem="9vX-ih-cjj" secondAttribute="bottom" constant="4" id="89G-FT-rLk"/>
-                                                <constraint firstItem="M82-4u-w4w" firstAttribute="top" secondItem="9Pe-f7-ZJt" secondAttribute="bottom" id="Vps-ya-hFY"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9vX-ih-cjj" secondAttribute="trailing" constant="15" id="YHr-NX-tgS"/>
-                                                <constraint firstItem="9vX-ih-cjj" firstAttribute="leading" secondItem="XEV-C2-7td" secondAttribute="leadingMargin" constant="15" id="bOO-yu-RaV"/>
-                                                <constraint firstItem="9vX-ih-cjj" firstAttribute="top" secondItem="XEV-C2-7td" secondAttribute="topMargin" constant="15" id="dZ4-xq-5pq"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="M82-4u-w4w" secondAttribute="bottom" constant="15" id="e5v-FF-342"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="9Pe-f7-ZJt" secondAttribute="trailing" constant="15" id="mOL-x1-7Y0"/>
-                                                <constraint firstItem="9Pe-f7-ZJt" firstAttribute="leading" secondItem="XEV-C2-7td" secondAttribute="leadingMargin" constant="15" id="oBK-97-F8Z"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="M82-4u-w4w" secondAttribute="trailing" constant="15" id="tuJ-aV-34c"/>
+                                                <constraint firstItem="M82-4u-w4w" firstAttribute="top" secondItem="9Pe-f7-ZJt" secondAttribute="bottom" constant="8" id="2z4-u8-uAs"/>
+                                                <constraint firstItem="9vX-ih-cjj" firstAttribute="top" secondItem="XEV-C2-7td" secondAttribute="topMargin" id="38d-UO-S4w"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="M82-4u-w4w" secondAttribute="trailing" constant="15" id="ChN-Rp-fPU"/>
+                                                <constraint firstItem="9Pe-f7-ZJt" firstAttribute="top" secondItem="9vX-ih-cjj" secondAttribute="bottom" constant="8" id="FNm-Dz-RCh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9Pe-f7-ZJt" secondAttribute="trailing" constant="15" id="M8I-kd-0O3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="M82-4u-w4w" secondAttribute="bottom" constant="15" id="Tf9-Ns-QwP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="9vX-ih-cjj" secondAttribute="trailing" constant="15" id="WdS-2t-3eo"/>
+                                                <constraint firstItem="9vX-ih-cjj" firstAttribute="leading" secondItem="XEV-C2-7td" secondAttribute="leadingMargin" constant="15" id="eG9-Eh-2bn"/>
+                                                <constraint firstItem="9Pe-f7-ZJt" firstAttribute="leading" secondItem="XEV-C2-7td" secondAttribute="leadingMargin" constant="15" id="odm-HH-QJm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
