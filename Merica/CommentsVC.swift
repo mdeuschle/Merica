@@ -11,20 +11,52 @@ import Firebase
 class CommentsVC: UIViewController {
 
     @IBOutlet var commentsTextField: UITextField!
-    
+
     var post: Post!
     var commentRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        notifications()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    func notifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.showKeyboard), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.hideKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    func showKeyboard(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    func hideKeyboard(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y != 0 {
+                view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
+
+    func addComment() {
+        if let comment = commentsTextField.text {
+            commentRef.observeSingleEvent(of: .value, with: { snapshot in
+                self.commentRef.setValue(comment)
+                self.commentsTextField.text = ""
+            })
+        }
     }
 
     @IBAction func postButtonTapped(_ sender: Any) {
-        commentRef.observeSingleEvent(of: .value, with: { snapshot in
-            if let _ = snapshot.value as? NSNull {
-                self.commentRef.setValue(self.commentsTextField.text)                
-            }
-        })
+        addComment()
     }
 }
 
