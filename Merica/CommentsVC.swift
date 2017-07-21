@@ -17,40 +17,17 @@ class CommentsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func postButtonTapped(_ sender: Any) {
-
         commentRef.observeSingleEvent(of: .value, with: { snapshot in
             if let _ = snapshot.value as? NSNull {
-                self.post.addComment()
                 self.commentRef.setValue(self.commentsTextField.text)                
             }
-
         })
-
-
     }
 }
-//
-//
-//
-//func upVotesTapped(sender: UITapGestureRecognizer) {
-//    upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
-//        if let _ = snapshot.value as? NSNull {
-//            self.upVoteImage.image = #imageLiteral(resourceName: "greenUpArrow")
-//            self.downVoteImage.isUserInteractionEnabled = false
-//            self.post.adjustUpVotes(didUpVote: true)
-//            self.upVotesRef.setValue(true)
-//        } else {
-//            self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
-//            self.downVoteImage.isUserInteractionEnabled = true
-//            self.post.adjustUpVotes(didUpVote: false)
-//            self.upVotesRef.removeValue()
-//        }
-//    })
-//}
+
 extension CommentsVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

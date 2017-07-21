@@ -139,10 +139,6 @@ class Post {
         }
         _postRef.child(DatabaseID.downVotes.rawValue).setValue(_downVotes)
     }
-
-    func addComment() {
-        _postRef.child(DatabaseID.comment.rawValue).setValue(_comment)
-    }
 }
 
 
