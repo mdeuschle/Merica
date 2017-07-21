@@ -16,8 +16,6 @@ class CommentsCell: UITableViewCell {
     @IBOutlet var timeStampLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
 
-    var post: Post!
-
     override func awakeFromNib() {
         super.awakeFromNib()
     }

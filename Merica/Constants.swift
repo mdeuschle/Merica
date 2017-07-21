@@ -33,6 +33,7 @@ enum DatabaseID: String {
     case cityName = "cityName"
     case stateName = "stateName"
     case coordinate = "coordinate"
+    case comment = "comment"
 }
 
 enum KeyChain: String {

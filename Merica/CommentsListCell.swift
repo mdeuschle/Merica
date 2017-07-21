@@ -18,5 +18,14 @@ class CommentsListCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+
+    }
+
+    func postTapped() {
+        print("POST TAPPED")
+    }
+
+    func configCell(post: Post) {
+
     }
 }
