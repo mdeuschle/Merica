@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsCell: UITableViewCell {
 
@@ -14,16 +15,30 @@ class CommentsCell: UITableViewCell {
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var timeStampLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
-    @IBOutlet var upVoteImage: UIImageView!
-    @IBOutlet var voteCountLabel: UILabel!
-    @IBOutlet var downVoteImage: UIImageView!
-    @IBOutlet var commentsImage: UIImageView!
-    @IBOutlet var commentsCountLabel: UILabel!
-    @IBOutlet var shareImage: UIView!
-    @IBOutlet var shareLabel: UILabel!
+
+    var post: Post!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    func configCell(post: Post) {
+        postTitleLabel.text = post.postTitle
+        timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        let location = post.cityName + Divider.pipe.rawValue + post.stateName
+        locationLabel.text = location
+        let ref = Storage.storage().reference(forURL: post.postImageURL)
+        ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            if error != nil {
+                print("Unable to download image from Firebase storage")
+            } else {
+                print("Image downloaded from Firebase storage")
+                if let imageData = data {
+                    if let img = UIImage(data: imageData) {
+                        self.postImageView.image = img
+                    }
+                }
+            }
+        })
+    }
 }

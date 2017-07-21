@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsVC: UIViewController {
 
@@ -15,12 +16,8 @@ class CommentsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("POST TITLE: \(post.postTitle)")
-        print("POST CITY: \(post.cityName)")
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = false
-    }
+
     @IBAction func postButtonTapped(_ sender: Any) {
 
     }
@@ -37,6 +34,7 @@ extension CommentsVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.commentsCell.rawValue) as? CommentsCell else {
                 return CommentsCell()
             }
+            cell.configCell(post: post)
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.commentsListCell.rawValue) as? CommentsListCell else {
