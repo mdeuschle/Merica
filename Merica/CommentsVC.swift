@@ -23,6 +23,7 @@ class CommentsVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        tabBarController?.tabBar.isHidden = false
     }
 
     func notifications() {
@@ -49,8 +50,10 @@ class CommentsVC: UIViewController {
     func addComment() {
         if let comment = commentsTextField.text {
             commentRef.observeSingleEvent(of: .value, with: { snapshot in
-                self.commentRef.setValue(comment)
-                self.commentsTextField.text = ""
+                if comment != "" {
+                    self.commentRef.setValue(comment)
+                    self.commentsTextField.resignFirstResponder()
+                }
             })
         }
     }
@@ -85,3 +88,18 @@ extension CommentsVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+
+extension CommentsVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            addComment()
+        }
+        return true
+    }
+}
+
+
+
+
+
+
