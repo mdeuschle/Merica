@@ -57,7 +57,7 @@
                                 </constraints>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="ud1-L2-eYh">
-                                <rect key="frame" x="76" y="80" width="168" height="200"/>
+                                <rect key="frame" x="76" y="100" width="168" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="t45-ZV-zLK"/>
                                 </constraints>
@@ -68,7 +68,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Poj-Gb-yG1" secondAttribute="trailing" constant="10" id="MrG-HA-cr7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ud1-L2-eYh" secondAttribute="trailing" constant="60" id="Tzi-TQ-TSZ"/>
                             <constraint firstItem="ud1-L2-eYh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="aUY-DF-uyi"/>
-                            <constraint firstItem="ud1-L2-eYh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="dPU-4x-EVW"/>
+                            <constraint firstItem="ud1-L2-eYh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="dPU-4x-EVW"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Poj-Gb-yG1" secondAttribute="bottom" constant="30" id="fS7-VG-yx4"/>
                             <constraint firstItem="Poj-Gb-yG1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="mCC-lo-pWw"/>
                         </constraints>
@@ -168,7 +168,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="OXP-wg-MlB">
-                                <rect key="frame" x="76" y="80" width="168" height="200"/>
+                                <rect key="frame" x="76" y="100" width="168" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="9fZ-xh-Hir"/>
                                 </constraints>
@@ -180,7 +180,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Qvi-q7-LdM" secondAttribute="trailing" constant="10" id="7ei-BC-hPr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OXP-wg-MlB" secondAttribute="trailing" constant="60" id="909-ks-lAe"/>
                             <constraint firstItem="Qvi-q7-LdM" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="10" id="Rh3-mK-ydG"/>
-                            <constraint firstItem="OXP-wg-MlB" firstAttribute="top" secondItem="D6h-i9-XdF" secondAttribute="bottom" constant="60" id="SUP-tU-41T"/>
+                            <constraint firstItem="OXP-wg-MlB" firstAttribute="top" secondItem="D6h-i9-XdF" secondAttribute="bottom" constant="80" id="SUP-tU-41T"/>
                             <constraint firstItem="tVq-60-e5r" firstAttribute="top" secondItem="Qvi-q7-LdM" secondAttribute="bottom" constant="30" id="csz-du-jll"/>
                             <constraint firstItem="EJ9-N0-8Vk" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="10" id="d0K-iP-6rH"/>
                             <constraint firstItem="OXP-wg-MlB" firstAttribute="leading" secondItem="EJH-nt-Ndy" secondAttribute="leadingMargin" constant="60" id="lCw-UL-hH0"/>
@@ -311,7 +311,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="CSp-PF-2a5">
-                                <rect key="frame" x="76" y="80" width="168" height="200"/>
+                                <rect key="frame" x="76" y="100" width="168" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="cNn-e8-bgF"/>
                                 </constraints>
@@ -326,7 +326,7 @@
                             <constraint firstItem="CSp-PF-2a5" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="60" id="QkE-00-AQC"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="UZa-Hp-Yys"/>
                             <constraint firstItem="DPP-7k-uVe" firstAttribute="top" secondItem="3Qq-5k-J9H" secondAttribute="bottom" constant="20" id="WBB-xy-O4x"/>
-                            <constraint firstItem="CSp-PF-2a5" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="60" id="Zgk-6x-FfZ"/>
+                            <constraint firstItem="CSp-PF-2a5" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="80" id="Zgk-6x-FfZ"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="top" secondItem="d28-w1-nob" secondAttribute="bottom" constant="20" id="bYg-BY-x5Z"/>
                             <constraint firstItem="3Qq-5k-J9H" firstAttribute="top" secondItem="Id3-fa-RQF" secondAttribute="bottom" constant="20" id="hmE-G7-hIj"/>
                             <constraint firstItem="d28-w1-nob" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="ojR-22-1VF"/>
@@ -1105,9 +1105,9 @@
         <image name="greyProfile" width="12" height="28"/>
         <image name="greyShare" width="31" height="27"/>
         <image name="greyUpArrow" width="24" height="24"/>
-        <image name="logo" width="200" height="202"/>
+        <image name="logo" width="150" height="150"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5wt-uG-M12"/>
+        <segue reference="aGa-Ld-f99"/>
     </inferredMetricsTieBreakers>
 </document>
