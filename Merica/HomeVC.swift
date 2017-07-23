@@ -24,6 +24,7 @@ class HomeVC: UIViewController {
         navigationController?.hidesBarsOnSwipe = true
         readPostData()
         configBackButton()
+
     }
 
     func configBackButton() {
