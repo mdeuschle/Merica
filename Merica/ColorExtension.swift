@@ -17,8 +17,13 @@ extension UIColor {
             blue:   (CGFloat)((hex24 & 0x0000FF) >> 0) / 255.0,
             alpha:  1.0)
     }
-    class func mintGreen() -> UIColor
-    {
-        return colorWithRGBHex(hex24: 0x64ECE5)
+
+    class func iceBlue() -> UIColor {
+        return colorWithRGBHex(hex24: 6750207)
+    }
+
+
+    class func slateGrey() -> UIColor {
+        return colorWithRGBHex(hex24: 333333)
     }
 }

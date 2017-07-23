@@ -45,7 +45,7 @@ class HomeVC: UIViewController {
 
     func enableBackButton(enableButton: Bool) {
         if enableButton {
-            backButton.image = #imageLiteral(resourceName: "greenBack")
+            backButton.image = #imageLiteral(resourceName: "greyBack")
             backButton.isEnabled = true
         } else {
             backButton.image = UIImage()

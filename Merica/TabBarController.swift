@@ -23,7 +23,6 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         switch tabBarController.selectedIndex {
         case 2, 3:
             UIApplication.shared.statusBarStyle = .default
-            UINavigationBar.appearance().barTintColor = .mintGreen()
         default:
             UIApplication.shared.statusBarStyle = .lightContent
         }

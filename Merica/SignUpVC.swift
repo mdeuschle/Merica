@@ -16,7 +16,6 @@ class SignUpVC: UIViewController {
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var logoImage: UIImageView!
-    @IBOutlet var signUpLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,7 +101,6 @@ extension SignUpVC: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         logoImage.isHidden = true
-        signUpLabel.isHidden = true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
