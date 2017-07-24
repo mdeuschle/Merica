@@ -30,7 +30,6 @@ class ProfileCell: UITableViewCell {
             config(label: ProfileCellLabel.logOut.rawValue, image: #imageLiteral(resourceName: "greyLogout"))
         case 4:
             config(label: ProfileCellLabel.more.rawValue, image: #imageLiteral(resourceName: "greyMore"))
-
         default:
             break
         }

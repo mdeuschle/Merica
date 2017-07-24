@@ -16,6 +16,7 @@ class Post {
     private var _timeStamp: String?
     private var _upVotes: Int!
     private var _downVotes: Int!
+    private var _favorites: Bool!
     private var _latitude: Double?
     private var _longitude: Double?
     private var _cityName: String?
@@ -39,6 +40,9 @@ class Post {
     var downVotes: Int {
         return _downVotes
     }
+    var favorites: Bool {
+        return _favorites
+    }
     var latitude: Double {
         return _latitude ?? 0.0
     }
@@ -58,12 +62,13 @@ class Post {
         return _userKey
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, favorites: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
         _upVotes = upVotes
         _downVotes = downVotes
+        _favorites = favorites
         _latitude = latitude
         _longitude = longitude
         _cityName = cityName
@@ -87,6 +92,9 @@ class Post {
         }
         if let downVotes = postDic[DatabaseID.downVotes.rawValue] as? Int {
             _downVotes = downVotes
+        }
+        if let favorites = postDic[DatabaseID.favorites.rawValue] as? Bool {
+            _favorites = favorites
         }
         if let latitude = postDic[DatabaseID.latitude.rawValue] as? Double {
             _latitude = latitude
@@ -122,6 +130,15 @@ class Post {
             _downVotes = downVotes - 1
         }
         _postRef.child(DatabaseID.downVotes.rawValue).setValue(_downVotes)
+    }
+
+    func adjustFavorites(didFavorite: Bool) {
+        if didFavorite {
+            _favorites = true
+        } else {
+            _favorites = false
+        }
+        _postRef.child(DatabaseID.favorites.rawValue).setValue(_favorites)
     }
 }
 

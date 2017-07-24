@@ -34,6 +34,7 @@ class PostCell: UITableViewCell {
     var post: Post!
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
+    var favoriteRef: DatabaseReference!
     var shareButtonDelegate: ShareButtonTapped?
 
     override func awakeFromNib() {
@@ -42,13 +43,30 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         shareImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
         shareLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
+        favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
+        saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
     }
 
     func shareTapped(sender: UITapGestureRecognizer) {
-        print("SHARE TAPPED")
         if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
             delegate.shareButtonTapped(title: postTitle, image: postImage)
         }
+    }
+
+    func favoriteTapped(sender: UITapGestureRecognizer) {
+        favoriteRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                print("NULL")
+                self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
+                self.post.adjustFavorites(didFavorite: true)
+                self.favoriteRef.setValue(true)
+            } else {
+                print("EMPY FAV")
+                self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
+                self.post.adjustFavorites(didFavorite: false)
+                self.favoriteRef.removeValue()
+            }
+        })
     }
 
     func upVotesTapped(sender: UITapGestureRecognizer) {
@@ -94,6 +112,7 @@ class PostCell: UITableViewCell {
         self.post = post
         upVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
         downVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.downVotes.rawValue).child(post.postKey)
+        favoriteRef = DataService.shared.refCurrentUser.child(DatabaseID.favorites.rawValue).child(post.postKey)
 
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
@@ -132,6 +151,13 @@ class PostCell: UITableViewCell {
                 self.downVoteImage.image = #imageLiteral(resourceName: "greyDownArrow")
             } else {
                 self.downVoteImage.image = #imageLiteral(resourceName: "greenDownArrow")
+            }
+        })
+        favoriteRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
+            } else {
+                self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
             }
         })
     }

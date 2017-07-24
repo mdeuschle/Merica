@@ -26,6 +26,7 @@ enum DatabaseID: String {
     case timeStamp = "timeStamp"
     case upVotes = "upVotes"
     case downVotes = "downVotes"
+    case favorites = "favorites"
     case userKey = "userKey"
     case latitude = "latitude"
     case longitude = "longitude"
