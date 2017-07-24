@@ -92,6 +92,10 @@ class SignUpVC: UIViewController {
         }
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
         performSignUp()
     }
