@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CommentsListCell: UITableViewCell {
 
@@ -15,15 +16,21 @@ class CommentsListCell: UITableViewCell {
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var upVoteCount: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
+    var postUserRef: DatabaseReference!
 
     override func awakeFromNib() {
         super.awakeFromNib()
 
+
+
+
+
     }
 
     func configCell(post: Post) {
-        
-        
+
+        nameAndTimeLabel.text = post.postUser
+
 
     }
 }

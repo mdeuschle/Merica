@@ -18,6 +18,7 @@ class CommentsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         notifications()
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,6 +85,7 @@ extension CommentsVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.commentsListCell.rawValue) as? CommentsListCell else {
                 return CommentsListCell()
             }
+            cell.configCell(post: post)
             return cell
         default:
             return CommentsListCell()
