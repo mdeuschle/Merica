@@ -670,7 +670,7 @@
                                                                                 <constraint firstAttribute="width" constant="22" id="qot-Va-Mz2"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIZ-FN-Gd8">
+                                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Save" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIZ-FN-Gd8">
                                                                             <rect key="frame" x="32" y="0.0" width="27.5" height="22"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -717,7 +717,7 @@
                                                                                 <constraint firstAttribute="height" constant="22" id="rMJ-aK-uid"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-21-5DG">
+                                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-21-5DG">
                                                                             <rect key="frame" x="31" y="0.0" width="33" height="22"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -784,8 +784,9 @@
                                             <outlet property="locationLabel" destination="TZr-QJ-10F" id="7mD-UK-nYn"/>
                                             <outlet property="postImageView" destination="7Yv-ch-iby" id="PO9-Xh-0Gx"/>
                                             <outlet property="postTitleLabel" destination="eRd-rf-WmL" id="BaZ-t8-FL0"/>
+                                            <outlet property="saveLabel" destination="GIZ-FN-Gd8" id="AEK-Nc-zuw"/>
                                             <outlet property="shareImage" destination="BN1-J8-h2n" id="yLG-Fz-IKF"/>
-                                            <outlet property="shareLabel" destination="xtG-21-5DG" id="cAo-Xy-9Cn"/>
+                                            <outlet property="shareLabel" destination="xtG-21-5DG" id="whg-kg-Poc"/>
                                             <outlet property="timeStampLabel" destination="cDH-yQ-WRX" id="M5o-Qy-CHQ"/>
                                             <outlet property="upVoteImage" destination="aZJ-c9-vUo" id="mau-uH-tHU"/>
                                             <outlet property="voteCountLabel" destination="ha2-Dl-MfV" id="Vfw-0O-lof"/>

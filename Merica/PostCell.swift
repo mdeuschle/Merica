@@ -27,7 +27,8 @@ class PostCell: UITableViewCell {
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
     @IBOutlet var favoriteImage: UIImageView!
-    @IBOutlet var shareImage: UIView!
+    @IBOutlet var saveLabel: UILabel!
+    @IBOutlet var shareImage: UIImageView!
     @IBOutlet var shareLabel: UILabel!
 
     var post: Post!
@@ -40,9 +41,11 @@ class PostCell: UITableViewCell {
         upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         shareImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
+        shareLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
     }
 
     func shareTapped(sender: UITapGestureRecognizer) {
+        print("SHARE TAPPED")
         if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
             delegate.shareButtonTapped(title: postTitle, image: postImage)
         }
