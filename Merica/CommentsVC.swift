@@ -59,7 +59,9 @@ class CommentsVC: UIViewController {
     }
 
     @IBAction func postButtonTapped(_ sender: Any) {
-        addComment()
+        if commentsTextField.text != "" {
+            addComment()
+        }
     }
 }
 

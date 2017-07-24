@@ -34,6 +34,7 @@ enum DatabaseID: String {
     case stateName = "stateName"
     case coordinate = "coordinate"
     case comment = "comment"
+    case postUser = "postUser"
 }
 
 enum KeyChain: String {
@@ -60,6 +61,7 @@ enum Alert: String {
     case delete = "Delete"
     case cancel = "Cancel"
     case locationNotFound = "Location not found"
+    case unknownError = "Unknown error"
 }
 
 enum StoryboardID: String {

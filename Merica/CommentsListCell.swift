@@ -21,11 +21,9 @@ class CommentsListCell: UITableViewCell {
 
     }
 
-    func postTapped() {
-        print("POST TAPPED")
-    }
-
     func configCell(post: Post) {
+        
+        
 
     }
 }

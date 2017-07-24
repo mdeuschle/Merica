@@ -18,7 +18,6 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
                 self.title = ViewControllerTitle.hi.rawValue + name
@@ -59,7 +58,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                 //TODO: Figure out how to go back to login
                 navigationController?.popToRootViewController(animated: true)
 
-//                presentingViewController?.dismiss(animated: true, completion: nil)
+                //                presentingViewController?.dismiss(animated: true, completion: nil)
 
             } catch {
                 present(UIAlertController.withError(error: error),
@@ -91,8 +90,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             break
         }
     }
-
-
+    
+    
 }
 
 

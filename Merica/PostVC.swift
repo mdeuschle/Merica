@@ -88,7 +88,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.didReceiveMemoryWarning()
     }
 
-    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
+    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String, postUser: String) {
         if let postText = postTextField.text {
             let postDic: [String: Any] = [
                 DatabaseID.postImageURL.rawValue: imageURL as Any,
@@ -101,6 +101,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.longitude.rawValue: lon as Any,
                 DatabaseID.cityName.rawValue: cityName as Any,
                 DatabaseID.stateName.rawValue: stateName as Any,
+                DatabaseID.postUser.rawValue: postUser as Any,
                 DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
             ]
             DataService.shared.refPosts.childByAutoId().setValue(postDic)
@@ -128,7 +129,13 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                             print("Uploaded Image to Firebase Storage!")
                             LocationService.shared.getLocation(currentLocation: self.currentLocation, handler: { address, error, latitude, longitude in
                                 if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude, let url = metaData?.downloadURL()?.absoluteString {
-                                    self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
+                                    DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+                                        if let name = snapshot.value as? String {
+                                            self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state, postUser: name)
+                                        } else {
+                                            self.present(UIAlertController.withMessage(message: Alert.unknownError.rawValue), animated: true, completion: nil)
+                                        }
+                                    })
                                 } else {
                                     if let err = error {
                                         self.present(UIAlertController.withError(error: err), animated: true, completion: nil)

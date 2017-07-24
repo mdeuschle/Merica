@@ -22,6 +22,7 @@ class Post {
     private var _cityName: String?
     private var _stateName: String?
     private var _comment: String?
+    private var _postUser: String?
     private var _postKey: String!
     private var _userKey: String!
     private var _postRef: DatabaseReference!
@@ -57,7 +58,10 @@ class Post {
         return _stateName ?? ""
     }
     var comment: String {
-        return _comment ?? "Hey"
+        return _comment ?? ""
+    }
+    var postUser: String {
+        return _postUser ?? ""
     }
     var postKey: String {
         return _postKey ?? ""
@@ -66,7 +70,7 @@ class Post {
         return _userKey
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, userKey: String) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, comments: Int, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
@@ -77,6 +81,7 @@ class Post {
         _longitude = longitude
         _cityName = cityName
         _stateName = stateName
+        _postUser = postUser
         _comment = comment
         _userKey = userKey
     }
@@ -115,6 +120,9 @@ class Post {
         }
         if let comment = postDic[DatabaseID.comment.rawValue] as? String {
             _comment = comment
+        }
+        if let postUser = postDic[DatabaseID.postUser.rawValue] as? String {
+            _postUser = postUser
         }
         if let userKey = postDic[DatabaseID.userKey.rawValue] as? String {
             _userKey = userKey

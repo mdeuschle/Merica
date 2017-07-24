@@ -24,7 +24,6 @@ class HomeVC: UIViewController {
         navigationController?.hidesBarsOnSwipe = true
         readPostData()
         configBackButton()
-
     }
 
     func configBackButton() {
@@ -55,7 +54,6 @@ class HomeVC: UIViewController {
 
     func readPostData() {
         DataService.shared.refPosts.observe(.value, with: { (snapshot) in
-            print("IS MY POSTS: \(self.isMyPosts)")
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
