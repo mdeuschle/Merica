@@ -26,15 +26,12 @@ enum DatabaseID: String {
     case timeStamp = "timeStamp"
     case upVotes = "upVotes"
     case downVotes = "downVotes"
-    case comments = "comments"
     case userKey = "userKey"
     case latitude = "latitude"
     case longitude = "longitude"
     case cityName = "cityName"
     case stateName = "stateName"
     case coordinate = "coordinate"
-    case comment = "comment"
-    case postUser = "postUser"
 }
 
 enum KeyChain: String {
@@ -79,8 +76,6 @@ enum ReusableCell: String {
     case profileCell = "ProfileCell"
     case postCell = "PostCell"
     case myPostCell = "myPostCell"
-    case commentsCell = "commentsCell"
-    case commentsListCell = "commentsListCell"
 }
 
 enum ReusableID: String {
@@ -90,7 +85,7 @@ enum ReusableID: String {
 enum ProfileCellLabel: String {
     case logOut = "Log out"
     case posts = "Posts"
-    case comments = "Comments"
+    case favorites = "Favorites"
     case upVotes = "Up Votes"
     case more = "More"
 }

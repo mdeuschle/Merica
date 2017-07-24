@@ -16,7 +16,6 @@ class HomeVC: UIViewController {
     var posts = [Post]()
     var isMyPosts = false
     var isMyUpVotes = false
-    var isMyComments = false
     var backButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -38,7 +37,6 @@ class HomeVC: UIViewController {
         title = ViewControllerTitle.merica.rawValue
         isMyPosts = false
         isMyUpVotes = false
-        isMyComments = false
         readPostData()
     }
 
@@ -60,22 +58,17 @@ class HomeVC: UIViewController {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        switch (self.isMyPosts, self.isMyUpVotes, self.isMyComments) {
-                        case (true, false, false):
+                        switch (self.isMyPosts, self.isMyUpVotes) {
+                        case (true, false):
                             self.enableBackButton(enableButton: true)
                             if let currentUserID = Auth.auth().currentUser?.uid {
                                 if currentUserID == post.userKey {
                                     self.posts.append(post)
                                 }
                             }
-                        case (false, true, false):
+                        case (false, true):
                             self.enableBackButton(enableButton: true)
                             if post.upVotes > 0 {
-                                self.posts.append(post)
-                            }
-                        case (false, false, true):
-                            self.enableBackButton(enableButton: true)
-                            if post.comments > 0 {
                                 self.posts.append(post)
                             }
                         default:
@@ -90,7 +83,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped, CommentsButtonTapped {
+extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -99,11 +92,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         tableView.estimatedRowHeight = 320
         return UITableViewAutomaticDimension
-    }
-
-    func commentsButtonTapped(commentsImage: UIImageView) {
-        performSegue(withIdentifier: Segue.toCommentsVC.rawValue, sender: commentsImage.tag)
-        tabBarController?.tabBar.isHidden = true
     }
 
     func shareButtonTapped(title: String, image: UIImage) {
@@ -116,8 +104,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
             return PostCell()
         }
         cell.shareButtonDelegate = self
-        cell.commentsButtonDelegate = self
-        cell.commentsImage.tag = indexPath.row
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
             cell.configCell(post: post, image: image)
@@ -144,14 +130,6 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped,
                                                                     self.postTableView.reloadData()
                     }), animated: true, completion: nil)
                 }
-            }
-        }
-    }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segue.toCommentsVC.rawValue {
-            if let destination = segue.destination as? CommentsVC, let row = sender as? Int {
-                destination.post = posts[row]
             }
         }
     }

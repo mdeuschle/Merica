@@ -16,13 +16,10 @@ class Post {
     private var _timeStamp: String?
     private var _upVotes: Int!
     private var _downVotes: Int!
-    private var _comments: Int!
     private var _latitude: Double?
     private var _longitude: Double?
     private var _cityName: String?
     private var _stateName: String?
-    private var _comment: String?
-    private var _postUser: String?
     private var _postKey: String!
     private var _userKey: String!
     private var _postRef: DatabaseReference!
@@ -42,9 +39,6 @@ class Post {
     var downVotes: Int {
         return _downVotes
     }
-    var comments: Int {
-        return _comments
-    }
     var latitude: Double {
         return _latitude ?? 0.0
     }
@@ -56,12 +50,6 @@ class Post {
     }
     var stateName: String {
         return _stateName ?? ""
-    }
-    var comment: String {
-        return _comment ?? ""
-    }
-    var postUser: String {
-        return _postUser ?? ""
     }
     var postKey: String {
         return _postKey ?? ""
@@ -76,13 +64,10 @@ class Post {
         _timeStamp = timeStamp
         _upVotes = upVotes
         _downVotes = downVotes
-        _comments = comments
         _latitude = latitude
         _longitude = longitude
         _cityName = cityName
         _stateName = stateName
-        _postUser = postUser
-        _comment = comment
         _userKey = userKey
     }
 
@@ -109,20 +94,11 @@ class Post {
         if let longitude = postDic[DatabaseID.longitude.rawValue] as? Double {
             _longitude = longitude
         }
-        if let comments = postDic[DatabaseID.comments.rawValue] as? Int {
-            _comments = comments
-        }
         if let cityName = postDic[DatabaseID.cityName.rawValue] as? String {
             _cityName = cityName
         }
         if let stateName = postDic[DatabaseID.stateName.rawValue] as? String {
             _stateName = stateName
-        }
-        if let comment = postDic[DatabaseID.comment.rawValue] as? String {
-            _comment = comment
-        }
-        if let postUser = postDic[DatabaseID.postUser.rawValue] as? String {
-            _postUser = postUser
         }
         if let userKey = postDic[DatabaseID.userKey.rawValue] as? String {
             _userKey = userKey

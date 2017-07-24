@@ -26,8 +26,7 @@ class PostCell: UITableViewCell {
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
-    @IBOutlet var commentsImage: UIImageView!
-    @IBOutlet var commentsCountLabel: UILabel!
+    @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var shareImage: UIView!
     @IBOutlet var shareLabel: UILabel!
 
@@ -35,20 +34,12 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var shareButtonDelegate: ShareButtonTapped?
-    var commentsButtonDelegate: CommentsButtonTapped?
 
     override func awakeFromNib() {
         super.awakeFromNib()
         upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         shareImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
-        commentsImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(commentsTapped)))
-    }
-
-    func commentsTapped() {
-        if let delegate = commentsButtonDelegate {
-            delegate.commentsButtonTapped(commentsImage: commentsImage)
-        }
     }
 
     func shareTapped(sender: UITapGestureRecognizer) {

@@ -48,7 +48,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         case 1:
             filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
         case 2:
-            print("Comments")
+            print("Favorites")
         case 3:
             KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
@@ -84,8 +84,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             vc.isMyPosts = true
         case 1:
             vc.isMyUpVotes = true
-        case 2:
-            vc.isMyComments = true
         default:
             break
         }

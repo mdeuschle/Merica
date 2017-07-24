@@ -25,7 +25,7 @@ class ProfileCell: UITableViewCell {
         case 1:
             config(label: ProfileCellLabel.upVotes.rawValue, image: #imageLiteral(resourceName: "greyUpArrow"))
         case 2:
-            config(label: ProfileCellLabel.comments.rawValue, image: #imageLiteral(resourceName: "greyComments"))
+            config(label: ProfileCellLabel.favorites.rawValue, image: #imageLiteral(resourceName: "greyFavorite"))
         case 3:
             config(label: ProfileCellLabel.logOut.rawValue, image: #imageLiteral(resourceName: "greyLogout"))
         case 4:
