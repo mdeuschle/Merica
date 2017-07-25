@@ -16,7 +16,7 @@ class Post {
     private var _timeStamp: String?
     private var _upVotes: Int!
     private var _downVotes: Int!
-    private var _favorites: Bool!
+    private var _isFavorite: Bool!
     private var _latitude: Double?
     private var _longitude: Double?
     private var _cityName: String?
@@ -40,8 +40,8 @@ class Post {
     var downVotes: Int {
         return _downVotes
     }
-    var favorites: Bool {
-        return _favorites
+    var isFavorite: Bool {
+        return _isFavorite
     }
     var latitude: Double {
         return _latitude ?? 0.0
@@ -62,13 +62,13 @@ class Post {
         return _userKey
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, favorites: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
+    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
         _postImageURL = postImageURL
         _timeStamp = timeStamp
         _upVotes = upVotes
         _downVotes = downVotes
-        _favorites = favorites
+        _isFavorite = isFavorite
         _latitude = latitude
         _longitude = longitude
         _cityName = cityName
@@ -93,8 +93,8 @@ class Post {
         if let downVotes = postDic[DatabaseID.downVotes.rawValue] as? Int {
             _downVotes = downVotes
         }
-        if let favorites = postDic[DatabaseID.favorites.rawValue] as? Bool {
-            _favorites = favorites
+        if let isFavorite = postDic[DatabaseID.isFavorite.rawValue] as? Bool {
+            _isFavorite = isFavorite
         }
         if let latitude = postDic[DatabaseID.latitude.rawValue] as? Double {
             _latitude = latitude
@@ -134,11 +134,11 @@ class Post {
 
     func adjustFavorites(didFavorite: Bool) {
         if didFavorite {
-            _favorites = true
+            _isFavorite = true
         } else {
-            _favorites = false
+            _isFavorite = false
         }
-        _postRef.child(DatabaseID.favorites.rawValue).setValue(_favorites)
+        _postRef.child(DatabaseID.isFavorite.rawValue).setValue(_isFavorite)
     }
 }
 

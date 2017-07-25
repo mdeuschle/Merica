@@ -96,7 +96,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
                 DatabaseID.upVotes.rawValue: 0 as Any,
                 DatabaseID.downVotes.rawValue: 0 as Any,
-                DatabaseID.favorites.rawValue: false as Any,
+                DatabaseID.isFavorite.rawValue: false as Any,
                 DatabaseID.latitude.rawValue: lat as Any,
                 DatabaseID.longitude.rawValue: lon as Any,
                 DatabaseID.cityName.rawValue: cityName as Any,

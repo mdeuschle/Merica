@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
     var posts = [Post]()
     var isMyPosts = false
     var isMyUpVotes = false
+    var isMyFavorites = false
     var backButton: UIBarButtonItem!
 
     override func viewDidLoad() {
@@ -37,6 +38,7 @@ class HomeVC: UIViewController {
         title = ViewControllerTitle.merica.rawValue
         isMyPosts = false
         isMyUpVotes = false
+        isMyFavorites = false
         readPostData()
     }
 
@@ -58,17 +60,22 @@ class HomeVC: UIViewController {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        switch (self.isMyPosts, self.isMyUpVotes) {
-                        case (true, false):
+                        switch (self.isMyPosts, self.isMyUpVotes, self.isMyFavorites) {
+                        case (true, false, false):
                             self.enableBackButton(enableButton: true)
                             if let currentUserID = Auth.auth().currentUser?.uid {
                                 if currentUserID == post.userKey {
                                     self.posts.append(post)
                                 }
                             }
-                        case (false, true):
+                        case (false, true, false):
                             self.enableBackButton(enableButton: true)
                             if post.upVotes > 0 {
+                                self.posts.append(post)
+                            }
+                        case (false, false, true):
+                            self.enableBackButton(enableButton: true)
+                            if post.isFavorite {
                                 self.posts.append(post)
                             }
                         default:

@@ -26,7 +26,7 @@ enum DatabaseID: String {
     case timeStamp = "timeStamp"
     case upVotes = "upVotes"
     case downVotes = "downVotes"
-    case favorites = "favorites"
+    case isFavorite = "isFavorite"
     case userKey = "userKey"
     case latitude = "latitude"
     case longitude = "longitude"
@@ -98,6 +98,7 @@ enum NotificationKey: String {
 enum ViewControllerTitle: String {
     case myPosts = "My Posts"
     case myUpVotes = "My Up Votes"
+    case myFavorites = "My Favorites"
     case hi = "Hi, "
     case merica = "'Merica"
 }

@@ -56,12 +56,10 @@ class PostCell: UITableViewCell {
     func favoriteTapped(sender: UITapGestureRecognizer) {
         favoriteRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
-                print("NULL")
                 self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
                 self.post.adjustFavorites(didFavorite: true)
                 self.favoriteRef.setValue(true)
             } else {
-                print("EMPY FAV")
                 self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
                 self.post.adjustFavorites(didFavorite: false)
                 self.favoriteRef.removeValue()
@@ -112,7 +110,7 @@ class PostCell: UITableViewCell {
         self.post = post
         upVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
         downVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.downVotes.rawValue).child(post.postKey)
-        favoriteRef = DataService.shared.refCurrentUser.child(DatabaseID.favorites.rawValue).child(post.postKey)
+        favoriteRef = DataService.shared.refCurrentUser.child(DatabaseID.isFavorite.rawValue).child(post.postKey)
 
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
