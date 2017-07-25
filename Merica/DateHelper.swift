@@ -17,6 +17,13 @@ class DateHelper {
         return formatter.string(from: currentDate)
     }
 
+    static func dateToMedString() -> String {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: currentDate)
+    }
+
     static func calcuateTimeStamp(dateString: String) -> String {
         var result = ""
         let currentDate = Date()

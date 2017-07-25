@@ -425,17 +425,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="293 'Mericas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-3j-ooB">
-                                <rect key="frame" x="8" y="79" width="304" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="tBU-n5-Ft8"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Since 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
-                                <rect key="frame" x="12" y="102" width="296" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Est. June, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
+                                <rect key="frame" x="12" y="84" width="296" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="mUL-8o-Zva"/>
                                 </constraints>
@@ -444,7 +435,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="keR-aE-3ls">
-                                <rect key="frame" x="0.0" y="152" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="134" width="320" height="385"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -494,21 +485,17 @@
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="keR-aE-3ls" firstAttribute="top" secondItem="Qoo-qM-Yyj" secondAttribute="bottom" constant="29" id="2fV-WD-zWC"/>
-                            <constraint firstItem="ZNW-3j-ooB" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leading" constant="8" id="3Yp-T9-f95"/>
-                            <constraint firstAttribute="trailing" secondItem="ZNW-3j-ooB" secondAttribute="trailing" constant="8" id="Aks-mT-eFy"/>
                             <constraint firstItem="keR-aE-3ls" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leading" id="E99-Bb-Lub"/>
                             <constraint firstAttribute="trailing" secondItem="Qoo-qM-Yyj" secondAttribute="trailing" constant="12" id="Hym-wj-sC8"/>
                             <constraint firstItem="0e1-Cq-Rqv" firstAttribute="top" secondItem="keR-aE-3ls" secondAttribute="bottom" id="Jss-7j-gY3"/>
                             <constraint firstAttribute="trailing" secondItem="keR-aE-3ls" secondAttribute="trailing" id="Yh4-ZE-yg3"/>
+                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="top" secondItem="gw1-i6-C0s" secondAttribute="bottom" constant="20" id="Zcz-if-EbF"/>
                             <constraint firstItem="Qoo-qM-Yyj" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leading" constant="12" id="dKf-DC-9vR"/>
-                            <constraint firstItem="ZNW-3j-ooB" firstAttribute="top" secondItem="gw1-i6-C0s" secondAttribute="bottom" constant="15" id="ffw-Sq-4I8"/>
-                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="top" secondItem="ZNW-3j-ooB" secondAttribute="bottom" constant="2" id="hbV-Qx-On2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="02N-QB-1Tq"/>
                     <connections>
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
-                        <outlet property="mericaPoints" destination="ZNW-3j-ooB" id="bDi-Xh-dAE"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
                     </connections>
                 </viewController>

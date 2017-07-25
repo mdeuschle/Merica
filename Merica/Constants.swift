@@ -33,6 +33,8 @@ enum DatabaseID: String {
     case cityName = "cityName"
     case stateName = "stateName"
     case coordinate = "coordinate"
+    case estDate = "estDate"
+    case upVotesTotal = "upVotesTotal"
 }
 
 enum KeyChain: String {
@@ -89,6 +91,7 @@ enum ProfileCellLabel: String {
     case favorites = "Favorites"
     case upVotes = "Up Votes"
     case more = "More"
+    case est = "Est: "
 }
 
 enum NotificationKey: String {

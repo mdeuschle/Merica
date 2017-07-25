@@ -12,7 +12,6 @@ import SwiftKeychainWrapper
 
 class ProfileVC: UIViewController {
 
-    @IBOutlet var mericaPoints: UILabel!
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
 
@@ -21,6 +20,12 @@ class ProfileVC: UIViewController {
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
                 self.title = ViewControllerTitle.hi.rawValue + name
+            }
+        })
+
+        DataService.shared.refCurrentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let timeStamp = snapshot.value as? String {
+                self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
             }
         })
     }
