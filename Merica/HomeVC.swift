@@ -66,21 +66,25 @@ class HomeVC: UIViewController {
                             if let currentUserID = Auth.auth().currentUser?.uid {
                                 if currentUserID == post.userKey {
                                     self.posts.append(post)
+                                    self.posts.sort(by: { $0.timeStamp > $1.timeStamp })
                                 }
                             }
                         case (false, true, false):
                             self.enableBackButton(enableButton: true)
                             if post.upVotes > 0 {
                                 self.posts.append(post)
+                                self.posts.sort(by: { $0.timeStamp > $1.timeStamp })
                             }
                         case (false, false, true):
                             self.enableBackButton(enableButton: true)
                             if post.isFavorite {
                                 self.posts.append(post)
+                                self.posts.sort(by: { $0.timeStamp > $1.timeStamp })
                             }
                         default:
                             self.enableBackButton(enableButton: false)
                             self.posts.append(post)
+                            self.posts.sort(by: { $0.upVotes > $1.upVotes })
                         }
                     }
                 }

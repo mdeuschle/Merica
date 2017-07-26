@@ -34,7 +34,6 @@ enum DatabaseID: String {
     case stateName = "stateName"
     case coordinate = "coordinate"
     case estDate = "estDate"
-    case upVotesTotal = "upVotesTotal"
 }
 
 enum KeyChain: String {

@@ -76,7 +76,6 @@ class SignUpVC: UIViewController {
                         if let user = user {
                             let userData = [DatabaseID.provider.rawValue: user.providerID,
                                             DatabaseID.userName.rawValue: userName,
-                                            DatabaseID.upVotesTotal.rawValue: "\(0)",
                                             DatabaseID.estDate.rawValue: DateHelper.dateToMedString()]
                             self.completeSignUp(id: user.uid, userData: userData)
                         }
