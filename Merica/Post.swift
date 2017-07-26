@@ -61,6 +61,15 @@ class Post {
     var userKey: String {
         return _userKey
     }
+    var date: Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let dateFromString = formatter.date(from: _timeStamp!) {
+            return dateFromString
+        } else {
+            return Date()
+        }
+    }
 
     init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
