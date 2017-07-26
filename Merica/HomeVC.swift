@@ -21,7 +21,6 @@ class HomeVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.hidesBarsOnSwipe = true
         readPostData()
         configBackButton()
     }
@@ -88,6 +87,9 @@ class HomeVC: UIViewController {
                         }
                     }
                 }
+            }
+            if !self.posts.isEmpty {
+                self.navigationController?.hidesBarsOnSwipe = true
             }
             self.postTableView.reloadData()
         })
