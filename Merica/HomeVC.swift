@@ -83,7 +83,7 @@ class HomeVC: UIViewController {
                         default:
                             self.enableBackButton(enableButton: false)
                             self.posts.append(post)
-                            self.posts.sort(by: { $0.date > $1.date })
+                            self.posts = SortHelper.sortPosts(posts: self.posts)
                         }
                     }
                 }
