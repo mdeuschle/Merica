@@ -60,9 +60,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                 try Auth.auth().signOut()
 
                 //TODO: Figure out how to go back to login
-                navigationController?.popToRootViewController(animated: true)
 
-                //                presentingViewController?.dismiss(animated: true, completion: nil)
 
             } catch {
                 present(UIAlertController.withError(error: error),
@@ -70,7 +68,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                         completion: nil)
             }
         case 4:
-            print("More")
+            performSegue(withIdentifier: Segue.toMoreVC.rawValue, sender: self)
+
         default:
             print("Default")
         }

@@ -497,11 +497,92 @@
                     <connections>
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
+                        <segue destination="ayP-2i-v1i" kind="show" identifier="toMoreVC" id="BHN-XH-vjQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nYp-CI-Vbf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4352" y="903"/>
+        </scene>
+        <!--MoreVC-->
+        <scene sceneID="SMB-VC-HdC">
+            <objects>
+                <viewController storyboardIdentifier="MoreVC" id="ayP-2i-v1i" customClass="MoreVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hvw-o8-O8w"/>
+                        <viewControllerLayoutGuide type="bottom" id="38x-QN-Vde"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BRW-l9-cvt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bcg-U3-1qb">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="moreCell" id="1fL-bL-zYP" customClass="MoreCell" customModule="Merica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1fL-bL-zYP" id="fds-AK-r8K">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ayP-2i-v1i" id="eoC-gf-khn"/>
+                                    <outlet property="delegate" destination="ayP-2i-v1i" id="iir-ex-Nos"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bcg-U3-1qb" firstAttribute="top" secondItem="BRW-l9-cvt" secondAttribute="top" id="0Yc-HF-999"/>
+                            <constraint firstAttribute="trailing" secondItem="bcg-U3-1qb" secondAttribute="trailing" id="4VV-FB-PQ4"/>
+                            <constraint firstItem="bcg-U3-1qb" firstAttribute="leading" secondItem="BRW-l9-cvt" secondAttribute="leading" id="GpV-zC-Sbd"/>
+                            <constraint firstAttribute="bottom" secondItem="bcg-U3-1qb" secondAttribute="bottom" id="qbh-fE-q2k"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="0as-BX-gmY" kind="show" identifier="toTermsAndConditinos" id="UXU-mb-aO9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOt-ms-mnf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5153" y="903"/>
+        </scene>
+        <!--TermsVC-->
+        <scene sceneID="dke-u1-6yw">
+            <objects>
+                <viewController storyboardIdentifier="TermsVC" id="0as-BX-gmY" customClass="TermsVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q1v-a7-PE7"/>
+                        <viewControllerLayoutGuide type="bottom" id="h1P-av-UZR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hkc-RS-6NS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cjv-fQ-LSl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0as-BX-gmY" id="d6N-sx-DlB"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cjv-fQ-LSl" secondAttribute="bottom" id="7Jo-B7-HQQ"/>
+                            <constraint firstItem="cjv-fQ-LSl" firstAttribute="leading" secondItem="hkc-RS-6NS" secondAttribute="leading" id="9u1-z1-3jT"/>
+                            <constraint firstAttribute="trailing" secondItem="cjv-fQ-LSl" secondAttribute="trailing" id="QKu-kK-tNb"/>
+                            <constraint firstItem="cjv-fQ-LSl" firstAttribute="top" secondItem="hkc-RS-6NS" secondAttribute="top" id="okW-ba-Vt7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JjC-hu-6G1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5955" y="902.11267605633805"/>
         </scene>
         <!--Post to 'Merica-->
         <scene sceneID="vvl-tr-lZ0">
