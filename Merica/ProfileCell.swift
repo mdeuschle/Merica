@@ -27,8 +27,6 @@ class ProfileCell: UITableViewCell {
         case 2:
             config(label: ProfileCellLabel.favorites.rawValue, image: #imageLiteral(resourceName: "greyFavorite"))
         case 3:
-            config(label: ProfileCellLabel.logOut.rawValue, image: #imageLiteral(resourceName: "greyLogout"))
-        case 4:
             config(label: ProfileCellLabel.more.rawValue, image: #imageLiteral(resourceName: "greyMore"))
         default:
             break

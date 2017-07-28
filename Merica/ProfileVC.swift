@@ -22,7 +22,6 @@ class ProfileVC: UIViewController {
                 self.title = ViewControllerTitle.hi.rawValue + name
             }
         })
-
         DataService.shared.refCurrentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let timeStamp = snapshot.value as? String {
                 self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
@@ -34,7 +33,7 @@ class ProfileVC: UIViewController {
 extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -54,21 +53,21 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
         case 2:
             filteredFeed(navTitle: ViewControllerTitle.myFavorites.rawValue, selectedIndex: 2)
+//        case 3:
+//            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
+//            do {
+//
+//                try Auth.auth().signOut()
+//
+//                //TODO: Figure out how to go back to login
+//
+//
+//            } catch {
+//                present(UIAlertController.withError(error: error),
+//                        animated: true,
+//                        completion: nil)
+//            }
         case 3:
-            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
-            do {
-
-                try Auth.auth().signOut()
-
-                //TODO: Figure out how to go back to login
-
-
-            } catch {
-                present(UIAlertController.withError(error: error),
-                        animated: true,
-                        completion: nil)
-            }
-        case 4:
             performSegue(withIdentifier: Segue.toMoreVC.rawValue, sender: self)
 
         default:
