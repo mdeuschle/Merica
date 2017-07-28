@@ -14,7 +14,6 @@ class ProfileVC: UIViewController {
 
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in

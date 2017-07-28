@@ -47,6 +47,20 @@ class PostCell: UITableViewCell {
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
     }
 
+    func disableViews(isMyUpVotes: Bool, isMyFavorites: Bool) {
+        if isMyUpVotes || isMyFavorites {
+            upVoteImage.isUserInteractionEnabled = false
+            downVoteImage.isUserInteractionEnabled = false
+            favoriteImage.isUserInteractionEnabled = false
+            saveLabel.isUserInteractionEnabled = false
+        } else {
+            upVoteImage.isUserInteractionEnabled = true
+            downVoteImage.isUserInteractionEnabled = true
+            favoriteImage.isUserInteractionEnabled = true
+            saveLabel.isUserInteractionEnabled = true
+        }
+    }
+
     func shareTapped(sender: UITapGestureRecognizer) {
         if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
             delegate.shareButtonTapped(title: postTitle, image: postImage)

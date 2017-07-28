@@ -18,6 +18,7 @@ class HomeVC: UIViewController {
     var isMyUpVotes = false
     var isMyFavorites = false
     var backButton: UIBarButtonItem!
+    var upVotesRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +60,9 @@ class HomeVC: UIViewController {
                     print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
+
+                        self.upVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
+
                         switch (self.isMyPosts, self.isMyUpVotes, self.isMyFavorites) {
                         case (true, false, false):
                             self.enableBackButton(enableButton: true)
@@ -70,11 +74,31 @@ class HomeVC: UIViewController {
                             }
                         case (false, true, false):
                             self.enableBackButton(enableButton: true)
-                            if post.upVotes > 0 {
-                                self.posts.append(post)
-                                self.posts.sort(by: { $0.date > $1.date })
-                            }
+                                self.upVotesRef.observeSingleEvent(of: .value, with: { (snappy) in
+                                    if let upVote = snappy.value as? Bool {
+                                        if upVote {
+                                            self.posts.append(post)
+                                            self.posts.sort(by: { $0.date > $1.date })
+                                            self.postTableView.reloadData()
+                                            print("MY POST: \(post.postTitle)")
+                                        }
+                                    }
+                                })
                         case (false, false, true):
+
+                            self.enableBackButton(enableButton: true)
+                            self.upVotesRef.observeSingleEvent(of: .value, with: { (snappy) in
+                                if let upVote = snappy.value as? Bool {
+                                    if upVote {
+                                        self.posts.append(post)
+                                        self.posts.sort(by: { $0.date > $1.date })
+                                        self.postTableView.reloadData()
+                                        print("MY POST: \(post.postTitle)")
+                                    }
+                                }
+                            })
+
+
                             self.enableBackButton(enableButton: true)
                             if post.isFavorite {
                                 self.posts.append(post)
@@ -88,11 +112,12 @@ class HomeVC: UIViewController {
                     }
                 }
             }
-            if !self.posts.isEmpty {
-                self.navigationController?.hidesBarsOnSwipe = true
-            }
             self.postTableView.reloadData()
         })
+    }
+
+    func tableReload() {
+        postTableView.reloadData()
     }
 }
 
@@ -117,6 +142,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped 
             return PostCell()
         }
         cell.shareButtonDelegate = self
+        cell.disableViews(isMyUpVotes: isMyUpVotes, isMyFavorites: isMyFavorites)
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
             cell.configCell(post: post, image: image)
