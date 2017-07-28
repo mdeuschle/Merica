@@ -19,6 +19,7 @@ class HomeVC: UIViewController {
     var isMyFavorites = false
     var backButton: UIBarButtonItem!
     var upVotesRef: DatabaseReference!
+    var favoritesRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class HomeVC: UIViewController {
                         let post = Post(postKey: snap.key, postDic: postDic)
 
                         self.upVotesRef = DataService.shared.refCurrentUser.child(DatabaseID.upVotes.rawValue).child(post.postKey)
+                        self.favoritesRef = DataService.shared.refCurrentUser.child(DatabaseID.isFavorite.rawValue).child(post.postKey)
 
                         switch (self.isMyPosts, self.isMyUpVotes, self.isMyFavorites) {
                         case (true, false, false):
@@ -74,21 +76,8 @@ class HomeVC: UIViewController {
                             }
                         case (false, true, false):
                             self.enableBackButton(enableButton: true)
-                                self.upVotesRef.observeSingleEvent(of: .value, with: { (snappy) in
-                                    if let upVote = snappy.value as? Bool {
-                                        if upVote {
-                                            self.posts.append(post)
-                                            self.posts.sort(by: { $0.date > $1.date })
-                                            self.postTableView.reloadData()
-                                            print("MY POST: \(post.postTitle)")
-                                        }
-                                    }
-                                })
-                        case (false, false, true):
-
-                            self.enableBackButton(enableButton: true)
-                            self.upVotesRef.observeSingleEvent(of: .value, with: { (snappy) in
-                                if let upVote = snappy.value as? Bool {
+                            self.upVotesRef.observeSingleEvent(of: .value, with: { (upVoteSnap) in
+                                if let upVote = upVoteSnap.value as? Bool {
                                     if upVote {
                                         self.posts.append(post)
                                         self.posts.sort(by: { $0.date > $1.date })
@@ -98,12 +87,26 @@ class HomeVC: UIViewController {
                                 }
                             })
 
+                        case (false, false, true):
 
                             self.enableBackButton(enableButton: true)
-                            if post.isFavorite {
-                                self.posts.append(post)
-                                self.posts.sort(by: { $0.date > $1.date })
-                            }
+                            self.favoritesRef.observeSingleEvent(of: .value, with: { (favSnap) in
+                                if let favorite = favSnap.value as? Bool {
+                                    if favorite {
+                                        self.posts.append(post)
+                                        self.posts.sort(by: { $0.date > $1.date })
+                                        self.postTableView.reloadData()
+                                        print("MY POST: \(post.postTitle)")
+                                    }
+                                }
+                            })
+
+//
+//                            self.enableBackButton(enableButton: true)
+//                            if post.isFavorite {
+//                                self.posts.append(post)
+//                                self.posts.sort(by: { $0.date > $1.date })
+//                            }
                         default:
                             self.enableBackButton(enableButton: false)
                             self.posts.append(post)
@@ -114,10 +117,6 @@ class HomeVC: UIViewController {
             }
             self.postTableView.reloadData()
         })
-    }
-
-    func tableReload() {
-        postTableView.reloadData()
     }
 }
 
