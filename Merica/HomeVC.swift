@@ -82,13 +82,10 @@ class HomeVC: UIViewController {
                                         self.posts.append(post)
                                         self.posts.sort(by: { $0.date > $1.date })
                                         self.postTableView.reloadData()
-                                        print("MY POST: \(post.postTitle)")
                                     }
                                 }
                             })
-
                         case (false, false, true):
-
                             self.enableBackButton(enableButton: true)
                             self.favoritesRef.observeSingleEvent(of: .value, with: { (favSnap) in
                                 if let favorite = favSnap.value as? Bool {
@@ -96,17 +93,9 @@ class HomeVC: UIViewController {
                                         self.posts.append(post)
                                         self.posts.sort(by: { $0.date > $1.date })
                                         self.postTableView.reloadData()
-                                        print("MY POST: \(post.postTitle)")
                                     }
                                 }
                             })
-
-//
-//                            self.enableBackButton(enableButton: true)
-//                            if post.isFavorite {
-//                                self.posts.append(post)
-//                                self.posts.sort(by: { $0.date > $1.date })
-//                            }
                         default:
                             self.enableBackButton(enableButton: false)
                             self.posts.append(post)

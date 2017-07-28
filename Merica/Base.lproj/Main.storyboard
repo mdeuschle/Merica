@@ -695,17 +695,21 @@
                                                             <rect key="frame" x="202.5" y="0.0" width="101.5" height="20"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="PPf-yI-gvl">
-                                                                    <rect key="frame" x="19" y="-0.5" width="64" height="22"/>
+                                                                    <rect key="frame" x="18" y="-1" width="66" height="22"/>
                                                                     <subviews>
-                                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyShare" translatesAutoresizingMaskIntoConstraints="NO" id="BN1-J8-h2n">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Da4-W7-CPk">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="22"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="width" constant="22" id="eyX-ai-kyl"/>
-                                                                                <constraint firstAttribute="height" constant="22" id="rMJ-aK-uid"/>
+                                                                                <constraint firstAttribute="width" constant="24" id="6o8-HI-C25"/>
+                                                                                <constraint firstAttribute="height" constant="22" id="u8i-cq-n07"/>
                                                                             </constraints>
-                                                                        </imageView>
+                                                                            <state key="normal" title="Button" image="greyShare"/>
+                                                                            <connections>
+                                                                                <action selector="shareTapped:" destination="4Da-tk-yzj" eventType="touchUpInside" id="Qa9-wJ-ZwA"/>
+                                                                            </connections>
+                                                                        </button>
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-21-5DG">
-                                                                            <rect key="frame" x="31" y="0.0" width="33" height="22"/>
+                                                                            <rect key="frame" x="33" y="0.0" width="33" height="22"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                             <color key="textColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
@@ -772,7 +776,6 @@
                                             <outlet property="postImageView" destination="7Yv-ch-iby" id="PO9-Xh-0Gx"/>
                                             <outlet property="postTitleLabel" destination="eRd-rf-WmL" id="BaZ-t8-FL0"/>
                                             <outlet property="saveLabel" destination="GIZ-FN-Gd8" id="AEK-Nc-zuw"/>
-                                            <outlet property="shareImage" destination="BN1-J8-h2n" id="yLG-Fz-IKF"/>
                                             <outlet property="shareLabel" destination="xtG-21-5DG" id="whg-kg-Poc"/>
                                             <outlet property="timeStampLabel" destination="cDH-yQ-WRX" id="M5o-Qy-CHQ"/>
                                             <outlet property="upVoteImage" destination="aZJ-c9-vUo" id="mau-uH-tHU"/>
@@ -803,7 +806,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dH5-vw-1te" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4352" y="146"/>
+            <point key="canvasLocation" x="4351.875" y="145.77464788732394"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="3Hm-mr-yB3">

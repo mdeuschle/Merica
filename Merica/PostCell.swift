@@ -28,7 +28,6 @@ class PostCell: UITableViewCell {
     @IBOutlet var downVoteImage: UIImageView!
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
-    @IBOutlet var shareImage: UIImageView!
     @IBOutlet var shareLabel: UILabel!
 
     var post: Post!
@@ -41,8 +40,7 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
-        shareImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
-        shareLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTapped(sender:))))
+        shareLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTap(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
     }
@@ -61,7 +59,11 @@ class PostCell: UITableViewCell {
         }
     }
 
-    func shareTapped(sender: UITapGestureRecognizer) {
+    func shareTap(sender: UITapGestureRecognizer) {
+        share()
+    }
+
+    func share() {
         if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
             delegate.shareButtonTapped(title: postTitle, image: postImage)
         }
@@ -172,6 +174,9 @@ class PostCell: UITableViewCell {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
             }
         })
+    }
+    @IBAction func shareTapped(_ sender: UIButton) {
+        share()
     }
 }
 
