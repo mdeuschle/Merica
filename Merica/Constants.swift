@@ -86,9 +86,9 @@ enum ReusableID: String {
 
 enum ProfileCellLabel: String {
     case logOut = "Log out"
-    case posts = "Posts"
-    case favorites = "Favorites"
-    case upVotes = "Up Votes"
+    case posts = "My Posts"
+    case favorites = "My Favorites"
+    case upVotes = "My Up Votes"
     case more = "More"
     case est = "Est: "
 }
