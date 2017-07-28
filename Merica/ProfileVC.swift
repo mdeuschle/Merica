@@ -16,6 +16,7 @@ class ProfileVC: UIViewController {
     @IBOutlet var userTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
                 self.title = ViewControllerTitle.hi.rawValue + name
