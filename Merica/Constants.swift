@@ -80,7 +80,7 @@ enum ViewControllerID: String {
 enum ReusableCell: String {
     case profileCell = "ProfileCell"
     case postCell = "PostCell"
-    case myPostsCell = "myPostsCell"
+    case myPostsCell = "MyPostsCell"
     case moreCell = "moreCell"
 }
 

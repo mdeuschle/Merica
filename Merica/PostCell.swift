@@ -155,6 +155,7 @@ class PostCell: UITableViewCell {
             }
         })
     }
+
     @IBAction func shareTapped(_ sender: UIButton) {
         if let title = postTitleLabel.text, let image = postImageView.image {
             let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)

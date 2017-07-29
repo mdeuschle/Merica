@@ -206,13 +206,13 @@
 				A83B4E871F105F0E008595E8 /* LoginVC.swift */,
 				A83B4E891F105F2D008595E8 /* SignUpVC.swift */,
 				A83B4E991F1310BB008595E8 /* HomeVC.swift */,
+				A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */,
 				A83B4E9B1F131110008595E8 /* ProfileVC.swift */,
 				A83B4E9D1F131130008595E8 /* PostVC.swift */,
 				A83B4EA01F13115B008595E8 /* MapVC.swift */,
 				A8D4DBA01F2BE92F00D37555 /* MoreVC.swift */,
 				A8D4DBA21F2BE95000D37555 /* TermsVC.swift */,
 				A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */,
-				A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

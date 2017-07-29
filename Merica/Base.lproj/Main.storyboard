@@ -1040,6 +1040,9 @@
                                                                                 <constraint firstAttribute="width" constant="24" id="Dh9-5e-gAt"/>
                                                                             </constraints>
                                                                             <state key="normal" title="Button" image="greyShare"/>
+                                                                            <connections>
+                                                                                <action selector="shareTapped:" destination="8le-JH-ISu" eventType="touchUpInside" id="ArX-FI-Ocb"/>
+                                                                            </connections>
                                                                         </button>
                                                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tA7-de-2LJ">
                                                                             <rect key="frame" x="33" y="0.0" width="33" height="22"/>
@@ -1073,13 +1076,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="myDownVoteImage" destination="yuG-2V-vLA" id="1mt-CH-iAN"/>
-                                            <outlet property="myFavoriteImage" destination="azs-x2-G9U" id="Xk4-Kq-v55"/>
-                                            <outlet property="myPostTitleLabel" destination="GMN-Sm-AFM" id="WZH-J4-9rY"/>
-                                            <outlet property="mySaveLabel" destination="rAQ-Np-EOA" id="LfO-Iq-Giw"/>
-                                            <outlet property="myShareLabel" destination="tA7-de-2LJ" id="LzO-jE-rr0"/>
-                                            <outlet property="myUpVoteImage" destination="xrA-Ft-JXn" id="WMZ-Pe-bFX"/>
-                                            <outlet property="myVoteCountLabel" destination="jhR-No-iBG" id="aMv-8b-txy"/>
+                                            <outlet property="downVoteImage" destination="yuG-2V-vLA" id="VYw-oE-mGX"/>
+                                            <outlet property="favoriteImage" destination="azs-x2-G9U" id="g1H-nl-AVN"/>
+                                            <outlet property="postTitleLabel" destination="GMN-Sm-AFM" id="sQt-LY-80Q"/>
+                                            <outlet property="saveLabel" destination="rAQ-Np-EOA" id="zuR-A8-1Bd"/>
+                                            <outlet property="upVoteImage" destination="xrA-Ft-JXn" id="trD-mZ-02s"/>
+                                            <outlet property="voteCountLabel" destination="jhR-No-iBG" id="Vvk-cu-Owb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1100,6 +1102,9 @@
                     <navigationItem key="navigationItem" title="My Posts" id="6ZW-lW-Z62">
                         <barButtonItem key="backBarButtonItem" title=" " id="Yva-tZ-2kb"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="postTableView" destination="dRL-H8-NxY" id="YMF-1P-Jrs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQS-Qp-Mgs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
