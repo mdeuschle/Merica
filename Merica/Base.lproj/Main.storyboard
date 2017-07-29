@@ -504,7 +504,9 @@
                             <constraint firstItem="Ov6-0C-ff5" firstAttribute="top" secondItem="gw1-i6-C0s" secondAttribute="bottom" constant="30" id="wqt-My-uCw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="02N-QB-1Tq"/>
+                    <navigationItem key="navigationItem" id="02N-QB-1Tq">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Faw-jJ-MKW"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
@@ -924,28 +926,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="126" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRL-H8-NxY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelectionDuringEditing="YES" rowHeight="120" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dRL-H8-NxY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="40" minY="0.0" maxX="40" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyPostsCell" rowHeight="126" id="8le-JH-ISu" customClass="MyPostsCell" customModule="Merica" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="126"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyPostsCell" rowHeight="120" id="8le-JH-ISu" customClass="MyPostsCell" customModule="Merica" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8le-JH-ISu" id="bu3-0K-3KV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="126"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMN-Sm-AFM">
-                                                    <rect key="frame" x="23" y="13" width="274" height="54"/>
+                                                    <rect key="frame" x="23" y="13" width="274" height="51.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="gO3-ca-AcY">
-                                                    <rect key="frame" x="8" y="85.5" width="304" height="20"/>
+                                                    <rect key="frame" x="8" y="79.5" width="304" height="20"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kb4-iG-LIT">
                                                             <rect key="frame" x="0.0" y="0.0" width="101.5" height="20"/>
@@ -1068,6 +1070,7 @@
                                             <constraints>
                                                 <constraint firstItem="GMN-Sm-AFM" firstAttribute="leading" secondItem="bu3-0K-3KV" secondAttribute="leadingMargin" constant="15" id="OR4-VY-Zrv"/>
                                                 <constraint firstItem="GMN-Sm-AFM" firstAttribute="top" secondItem="bu3-0K-3KV" secondAttribute="topMargin" constant="5" id="Vi2-s2-Yu6"/>
+                                                <constraint firstItem="gO3-ca-AcY" firstAttribute="top" secondItem="GMN-Sm-AFM" secondAttribute="bottom" constant="15" id="YXg-dO-W0C"/>
                                                 <constraint firstItem="gO3-ca-AcY" firstAttribute="leading" secondItem="bu3-0K-3KV" secondAttribute="leadingMargin" id="ZYO-qD-hdP"/>
                                                 <constraint firstItem="gO3-ca-AcY" firstAttribute="trailing" secondItem="bu3-0K-3KV" secondAttribute="trailingMargin" id="ewG-Pe-MV2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gO3-ca-AcY" secondAttribute="bottom" constant="12" id="iPO-YD-4J1"/>
