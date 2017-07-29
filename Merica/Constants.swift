@@ -15,6 +15,7 @@ enum Segue: String {
     case toCommentsVC = "toCommentsVC"
     case toMoreVC = "toMoreVC"
     case toTermsAndConditinos = "toTermsAndConditinos"
+    case toMyPosts = "toMyPosts"
 }
 
 enum DatabaseID: String {
@@ -79,7 +80,7 @@ enum ViewControllerID: String {
 enum ReusableCell: String {
     case profileCell = "ProfileCell"
     case postCell = "PostCell"
-    case myPostCell = "myPostCell"
+    case myPostsCell = "myPostsCell"
     case moreCell = "moreCell"
 }
 

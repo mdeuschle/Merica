@@ -16,6 +16,8 @@ class ProfileVC: UIViewController {
     @IBOutlet var userTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = false
+
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
@@ -27,6 +29,10 @@ class ProfileVC: UIViewController {
                 self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
             }
         })
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -48,7 +54,8 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
         case 0:
-            filteredFeed(navTitle: ViewControllerTitle.myPosts.rawValue, selectedIndex: 0)
+            performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
+//            filteredFeed(navTitle: ViewControllerTitle.myPosts.rawValue, selectedIndex: 0)
         case 1:
             filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
         case 2:

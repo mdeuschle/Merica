@@ -26,7 +26,7 @@ class HomeVC: UIViewController {
         readPostData()
         configBackButton()
     }
-
+    
     func configBackButton() {
         backButton = UIBarButtonItem(image: UIImage(), style: .plain, target: self, action: #selector(HomeVC.backButtonTapped))
         backButton.isEnabled = false

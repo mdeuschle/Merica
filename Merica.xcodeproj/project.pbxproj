@@ -33,6 +33,8 @@
 		A8D4DBA11F2BE92F00D37555 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4DBA01F2BE92F00D37555 /* MoreVC.swift */; };
 		A8D4DBA31F2BE95000D37555 /* TermsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4DBA21F2BE95000D37555 /* TermsVC.swift */; };
 		A8D4DBA51F2BE98D00D37555 /* MoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4DBA41F2BE98D00D37555 /* MoreCell.swift */; };
+		A8D4DBA71F2C05DB00D37555 /* MyPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4DBA61F2C05DB00D37555 /* MyPostsCell.swift */; };
+		A8D4DBA91F2C103400D37555 /* MyPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */; };
 		A8D94CD41F1EB24000DE148F /* PostAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */; };
 		A8D94CD61F1F1AFD00DE148F /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D94CD51F1F1AFD00DE148F /* ColorExtension.swift */; };
 		A8FC68CA1F15525B00DEED82 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FC68C91F15525B00DEED82 /* Post.swift */; };
@@ -96,6 +98,8 @@
 		A8D4DBA01F2BE92F00D37555 /* MoreVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		A8D4DBA21F2BE95000D37555 /* TermsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsVC.swift; sourceTree = "<group>"; };
 		A8D4DBA41F2BE98D00D37555 /* MoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCell.swift; sourceTree = "<group>"; };
+		A8D4DBA61F2C05DB00D37555 /* MyPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostsCell.swift; sourceTree = "<group>"; };
+		A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPostsVC.swift; sourceTree = "<group>"; };
 		A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAnnotation.swift; sourceTree = "<group>"; };
 		A8D94CD51F1F1AFD00DE148F /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A8FC68C91F15525B00DEED82 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				A8D4DBA01F2BE92F00D37555 /* MoreVC.swift */,
 				A8D4DBA21F2BE95000D37555 /* TermsVC.swift */,
 				A8FC68CD1F16AD7C00DEED82 /* TabBarController.swift */,
+				A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 				A83B4EA41F1442CF008595E8 /* ProfileCell.swift */,
 				A83B4EA61F149476008595E8 /* PostCell.swift */,
 				A8D4DBA41F2BE98D00D37555 /* MoreCell.swift */,
+				A8D4DBA61F2C05DB00D37555 /* MyPostsCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -576,6 +582,7 @@
 				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
 				A83B4E9C1F131110008595E8 /* ProfileVC.swift in Sources */,
 				A8FC68CA1F15525B00DEED82 /* Post.swift in Sources */,
+				A8D4DBA91F2C103400D37555 /* MyPostsVC.swift in Sources */,
 				A83B4E9E1F131130008595E8 /* PostVC.swift in Sources */,
 				A8FC68D21F16CF4F00DEED82 /* DateHelper.swift in Sources */,
 				A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */,
@@ -587,6 +594,7 @@
 				A83B4EA51F1442CF008595E8 /* ProfileCell.swift in Sources */,
 				A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */,
 				A8D4DBA51F2BE98D00D37555 /* MoreCell.swift in Sources */,
+				A8D4DBA71F2C05DB00D37555 /* MyPostsCell.swift in Sources */,
 				A8CF0DE21F1E8274005B8EA6 /* LocationService.swift in Sources */,
 				A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */,
 				A8D94CD61F1F1AFD00DE148F /* ColorExtension.swift in Sources */,
