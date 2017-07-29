@@ -17,6 +17,7 @@ enum Segue: String {
     case toTermsAndConditinos = "toTermsAndConditinos"
     case toMyPosts = "toMyPosts"
     case fromMyPostsToDetail = "fromMyPostsToDetail"
+    case fromMapToDetail = "fromMapToDetail"
 }
 
 enum DatabaseID: String {

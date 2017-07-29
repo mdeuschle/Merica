@@ -91,6 +91,16 @@ class MapVC: UIViewController, MKMapViewDelegate {
             })
         }
     }
+
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: Segue.fromMapToDetail.rawValue, sender: nil)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailVC, let selectedPost = mapView.selectedAnnotations.first as? PostAnnotation {
+            destination.post = selectedPost.mapPost
+        }
+    }
 }
 
 
