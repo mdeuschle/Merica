@@ -43,6 +43,14 @@ class DataService {
     func createFirebaseDBUser(uid: String, userData: [String: String]) {
         refUsers.child(uid).updateChildValues(userData)
     }
+
+    func upVotesRef(postKey: String) -> DatabaseReference {
+        return refCurrentUser.child(DatabaseID.upVotes.rawValue).child(postKey)
+    }
+
+    func downVotesRef(postKey: String) -> DatabaseReference {
+        return refCurrentUser.child(DatabaseID.downVotes.rawValue).child(postKey)
+    }
 }
 
 
