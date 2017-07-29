@@ -16,7 +16,8 @@ class DetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let cityAndState = post.cityName + Divider.pipe.rawValue + post.stateName
+        title = cityAndState
     }
 }
 
