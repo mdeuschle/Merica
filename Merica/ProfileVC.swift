@@ -16,7 +16,6 @@ class ProfileVC: UIViewController {
     @IBOutlet var userTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = false
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
@@ -54,25 +53,10 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.row {
         case 0:
             performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
-//            filteredFeed(navTitle: ViewControllerTitle.myPosts.rawValue, selectedIndex: 0)
         case 1:
             filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
         case 2:
             filteredFeed(navTitle: ViewControllerTitle.myFavorites.rawValue, selectedIndex: 2)
-//        case 3:
-//            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
-//            do {
-//
-//                try Auth.auth().signOut()
-//
-//                //TODO: Figure out how to go back to login
-//
-//
-//            } catch {
-//                present(UIAlertController.withError(error: error),
-//                        animated: true,
-//                        completion: nil)
-//            }
         case 3:
             performSegue(withIdentifier: Segue.toMoreVC.rawValue, sender: self)
         default:

@@ -12,12 +12,27 @@ import Firebase
 class DetailVC: UIViewController {
 
     @IBOutlet var detailTableView: UITableView!
+    @IBOutlet var deleteButton: UIBarButtonItem!
+
     var post: Post!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let cityAndState = post.cityName + Divider.pipe.rawValue + post.stateName
         title = cityAndState
+    }
+    @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
+        present(UIAlertController.withMessageAndAction(alertTitle: Alert.deletePost.rawValue,
+                                                       alertMessage: post.postTitle,
+                                                       actionButtonTitle: Alert.delete.rawValue,
+                                                       handler: { action in
+                                                        DataService.shared.refPosts.child(self.post.postKey).removeValue()
+                                                        self.navigationController?.popViewController(animated: true)
+
+        }), animated: true, completion: nil)
+    }
+    func reloadTableView() {
+        detailTableView.reloadData()
     }
 }
 

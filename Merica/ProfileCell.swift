@@ -42,7 +42,6 @@ class ProfileCell: UITableViewCell {
         self.cellLabel.text = cellLabel.cellLabel
         self.cellImage.image = cellLabel.cellImage
     }
-
 }
 
 

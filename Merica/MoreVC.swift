@@ -7,14 +7,14 @@
 //
 
 import UIKit
+import Firebase
+import SwiftKeychainWrapper
 
 class MoreVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarController?.tabBar.isHidden = false
-
-
+        tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -28,13 +28,22 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.moreCell.rawValue) as? MoreCell else {
             return MoreCell()
         }
-
+        cell.configCell(row: indexPath.row)
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 1 {
-            performSegue(withIdentifier: Segue.toTermsAndConditinos.rawValue, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
+            do {
+                try Auth.auth().signOut()
+                navigationController?.popViewController(animated: true)
+            } catch {
+                present(UIAlertController.withError(error: error),
+                        animated: true,
+                        completion: nil)
+            }
         }
     }
 }

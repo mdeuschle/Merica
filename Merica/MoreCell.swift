@@ -10,7 +10,30 @@ import UIKit
 
 class MoreCell: UITableViewCell {
 
+    @IBOutlet var cellImage: UIImageView!
+    @IBOutlet var cellLabel: UILabel!
+
+    let logOut = CellLabel(cellLabel: ProfileCellLabel.logOut.rawValue, cellImage: #imageLiteral(resourceName: "greyLogout"))
+    let terms = CellLabel(cellLabel: ProfileCellLabel.terms.rawValue, cellImage: #imageLiteral(resourceName: "help"))
+
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    func configCell(row: Int) {
+        self.textLabel?.textColor = .white
+        switch row {
+        case 0:
+            config(cellLabel: logOut)
+        case 1:
+            config(cellLabel: terms)
+        default:
+            break
+        }
+    }
+
+    private func config(cellLabel: CellLabel) {
+        self.cellLabel.text = cellLabel.cellLabel
+        self.cellImage.image = cellLabel.cellImage
     }
 }
