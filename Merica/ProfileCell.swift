@@ -13,6 +13,11 @@ class ProfileCell: UITableViewCell {
     @IBOutlet var cellImage: UIImageView!
     @IBOutlet var cellLabel: UILabel!
 
+    let myPosts = CellLabel(cellLabel: ProfileCellLabel.posts.rawValue, cellImage: #imageLiteral(resourceName: "greyPost"))
+    let myUpVotes = CellLabel(cellLabel: ProfileCellLabel.upVotes.rawValue, cellImage: #imageLiteral(resourceName: "greyUpArrow"))
+    let myFavorites = CellLabel(cellLabel: ProfileCellLabel.favorites.rawValue, cellImage: #imageLiteral(resourceName: "greyFavorite"))
+    let more = CellLabel(cellLabel: ProfileCellLabel.more.rawValue, cellImage: #imageLiteral(resourceName: "greyMore"))
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -21,21 +26,21 @@ class ProfileCell: UITableViewCell {
         self.textLabel?.textColor = .white
         switch row {
         case 0:
-            config(label: ProfileCellLabel.posts.rawValue, image: #imageLiteral(resourceName: "greyPost"))
+            config(cellLabel: myPosts)
         case 1:
-            config(label: ProfileCellLabel.upVotes.rawValue, image: #imageLiteral(resourceName: "greyUpArrow"))
+            config(cellLabel: myUpVotes)
         case 2:
-            config(label: ProfileCellLabel.favorites.rawValue, image: #imageLiteral(resourceName: "greyFavorite"))
+            config(cellLabel: myFavorites)
         case 3:
-            config(label: ProfileCellLabel.more.rawValue, image: #imageLiteral(resourceName: "greyMore"))
+            config(cellLabel: more)
         default:
             break
         }
     }
 
-    private func config(label: String, image: UIImage) {
-        cellLabel.text = label
-        cellImage.image = image
+    private func config(cellLabel: CellLabel) {
+        self.cellLabel.text = cellLabel.cellLabel
+        self.cellImage.image = cellLabel.cellImage
     }
 
 }

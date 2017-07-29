@@ -12,6 +12,8 @@ class MoreVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = false
+
 
     }
 }

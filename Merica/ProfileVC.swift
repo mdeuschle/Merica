@@ -17,7 +17,6 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = false
-
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
@@ -76,7 +75,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 //            }
         case 3:
             performSegue(withIdentifier: Segue.toMoreVC.rawValue, sender: self)
-
         default:
             print("Default")
         }

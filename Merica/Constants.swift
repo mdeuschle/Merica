@@ -13,11 +13,11 @@ enum Segue: String {
     case signUpSuccess = "signUpSuccess"
     case toMainFeed = "toMainFeed"
     case toCommentsVC = "toCommentsVC"
-    case toMoreVC = "toMoreVC"
     case toTermsAndConditinos = "toTermsAndConditinos"
     case toMyPosts = "toMyPosts"
     case fromMyPostsToDetail = "fromMyPostsToDetail"
     case fromMapToDetail = "fromMapToDetail"
+    case toMoreVC = "toMoreVC"
 }
 
 enum DatabaseID: String {
