@@ -48,6 +48,7 @@ class MyPostsVC: UIViewController {
         if segue.identifier == Segue.fromMyPostsToDetail.rawValue {
             if let destination = segue.destination as? DetailVC {
                 destination.post = selectedPost
+                destination.isMyPost = true
             }
         }
     }
