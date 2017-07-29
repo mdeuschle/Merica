@@ -51,6 +51,10 @@ class DataService {
     func downVotesRef(postKey: String) -> DatabaseReference {
         return refCurrentUser.child(DatabaseID.downVotes.rawValue).child(postKey)
     }
+
+    func favoriteRef(postKey: String) -> DatabaseReference {
+        return refCurrentUser.child(DatabaseID.isFavorite.rawValue).child(postKey)
+    }
 }
 
 

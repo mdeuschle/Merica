@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MyPostsCell: UITableViewCell {
 
@@ -17,6 +18,7 @@ class MyPostsCell: UITableViewCell {
     @IBOutlet var myFavoriteImage: UIImageView!
     @IBOutlet var mySaveLabel: UILabel!
     @IBOutlet var myShareLabel: UILabel!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
