@@ -124,7 +124,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
             return PostCell()
         }
-        cell.parentViewController = self
+        cell.parentVC = self
         cell.disableViews(isMyUpVotes: isMyUpVotes, isMyFavorites: isMyFavorites)
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {

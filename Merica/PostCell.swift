@@ -20,13 +20,12 @@ class PostCell: UITableViewCell {
     @IBOutlet var downVoteImage: UIImageView!
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
-    @IBOutlet var shareLabel: UILabel!
 
     var post: Post!
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
-    weak var parentViewController = UIViewController()
+    weak var parentVC = UIViewController()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -158,7 +157,7 @@ class PostCell: UITableViewCell {
     @IBAction func shareTapped(_ sender: UIButton) {
         if let title = postTitleLabel.text, let image = postImageView.image {
             let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
-            parentViewController?.present(vc, animated: true)
+            parentVC?.present(vc, animated: true)
         }
     }
 }

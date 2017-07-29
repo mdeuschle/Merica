@@ -1,17 +1,20 @@
 //
-//  MyPostsCell.swift
+//  DetailCell.swift
 //  Merica
 //
-//  Created by Matt Deuschle on 7/28/17.
+//  Created by Matt Deuschle on 7/29/17.
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class MyPostsCell: UITableViewCell {
+class DetailCell: UITableViewCell {
 
     @IBOutlet var postTitleLabel: UILabel!
+    @IBOutlet var postImageView: UIImageView!
+    @IBOutlet var timeStampLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
@@ -30,6 +33,20 @@ class MyPostsCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
+    }
+
+    func disableViews(isMyUpVotes: Bool, isMyFavorites: Bool) {
+        if isMyUpVotes || isMyFavorites {
+            upVoteImage.isUserInteractionEnabled = false
+            downVoteImage.isUserInteractionEnabled = false
+            favoriteImage.isUserInteractionEnabled = false
+            saveLabel.isUserInteractionEnabled = false
+        } else {
+            upVoteImage.isUserInteractionEnabled = true
+            downVoteImage.isUserInteractionEnabled = true
+            favoriteImage.isUserInteractionEnabled = true
+            saveLabel.isUserInteractionEnabled = true
+        }
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -85,14 +102,35 @@ class MyPostsCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post) {
+    func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
+        timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        let location = post.cityName + Divider.pipe.rawValue + post.stateName
+        locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
+        if image != nil {
+            self.postImageView.image = image
+        } else {
+            let ref = Storage.storage().reference(forURL: post.postImageURL)
+            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("Unable to download image from Firebase storage")
+                } else {
+                    print("Image downloaded from Firebase storage")
+                    if let imageData = data {
+                        if let img = UIImage(data: imageData) {
+                            self.postImageView.image = img
+                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as NSString)
+                        }
+                    }
+                }
+            })
+        }
         upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
@@ -115,10 +153,12 @@ class MyPostsCell: UITableViewCell {
             }
         })
     }
+
     @IBAction func shareTapped(_ sender: Any) {
-        if let title = postTitleLabel.text {
-            let vc = UIActivityViewController(activityItems: [title], applicationActivities: nil)
+        if let title = postTitleLabel.text, let image = postImageView.image {
+            let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
             parentVC?.present(vc, animated: true)
         }
+
     }
 }

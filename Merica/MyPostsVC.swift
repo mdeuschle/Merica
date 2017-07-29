@@ -13,6 +13,7 @@ class MyPostsVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
     var posts = [Post]()
+    var selectedPost: Post!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,14 @@ class MyPostsVC: UIViewController {
             self.postTableView.reloadData()
         })
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.fromMyPostsToDetail.rawValue {
+            if let destination = segue.destination as? DetailVC {
+                destination.post = selectedPost
+            }
+        }
+    }
 }
 
 extension MyPostsVC: UITableViewDataSource, UITableViewDelegate {
@@ -54,7 +63,7 @@ extension MyPostsVC: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.myPostsCell.rawValue) as? MyPostsCell else {
             return MyPostsCell()
         }
-        cell.parentViewController = self
+        cell.parentVC = self
         let post = posts[indexPath.row]
         cell.configCell(post: post)
         
@@ -62,7 +71,9 @@ extension MyPostsVC: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Touch")
+        selectedPost = posts[indexPath.row]
+        performSegue(withIdentifier: Segue.fromMyPostsToDetail.rawValue, sender: self)
+        print("Touched: \(selectedPost.postTitle)")
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

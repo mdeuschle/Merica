@@ -16,12 +16,13 @@ enum Segue: String {
     case toMoreVC = "toMoreVC"
     case toTermsAndConditinos = "toTermsAndConditinos"
     case toMyPosts = "toMyPosts"
+    case fromMyPostsToDetail = "fromMyPostsToDetail"
 }
 
 enum DatabaseID: String {
     case posts = "posts"
     case users = "users"
-    case pics = "pics"
+    case pics = "pics"  
     case provider = "provider"
     case userName = "userName"
     case postTitle = "postTitle"
@@ -83,6 +84,7 @@ enum ReusableCell: String {
     case postCell = "PostCell"
     case myPostsCell = "MyPostsCell"
     case moreCell = "moreCell"
+    case detailCell = "detailCell"  
 }
 
 enum ReusableID: String {
