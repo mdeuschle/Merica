@@ -89,25 +89,29 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
 
     func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
-        if let postText = postTextField.text {
-            let postDic: [String: Any] = [
-                DatabaseID.postImageURL.rawValue: imageURL as Any,
-                DatabaseID.postTitle.rawValue: postText as Any,
-                DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
-                DatabaseID.upVotes.rawValue: 0 as Any,
-                DatabaseID.downVotes.rawValue: 0 as Any,
-                DatabaseID.isFavorite.rawValue: false as Any,
-                DatabaseID.latitude.rawValue: lat as Any,
-                DatabaseID.longitude.rawValue: lon as Any,
-                DatabaseID.cityName.rawValue: cityName as Any,
-                DatabaseID.stateName.rawValue: stateName as Any,
-                DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
-            ]
-            DataService.shared.refPosts.childByAutoId().setValue(postDic)
-            self.tabBarController?.selectedIndex = 0
+        if postTextField.text == "" {
+            present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
+        } else {
+            if let postText = postTextField.text {
+                let postDic: [String: Any] = [
+                    DatabaseID.postImageURL.rawValue: imageURL as Any,
+                    DatabaseID.postTitle.rawValue: postText as Any,
+                    DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
+                    DatabaseID.upVotes.rawValue: 0 as Any,
+                    DatabaseID.downVotes.rawValue: 0 as Any,
+                    DatabaseID.isFavorite.rawValue: false as Any,
+                    DatabaseID.latitude.rawValue: lat as Any,
+                    DatabaseID.longitude.rawValue: lon as Any,
+                    DatabaseID.cityName.rawValue: cityName as Any,
+                    DatabaseID.stateName.rawValue: stateName as Any,
+                    DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
+                ]
+                DataService.shared.refPosts.childByAutoId().setValue(postDic)
+                self.tabBarController?.selectedIndex = 0
+            }
+            postTextField.text = ""
+            imageView.image = #imageLiteral(resourceName: "greyPhoto")
         }
-        postTextField.text = ""
-        imageView.image = #imageLiteral(resourceName: "greyPhoto")
     }
 
     @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {

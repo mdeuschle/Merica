@@ -64,6 +64,7 @@ enum Alert: String {
     case cancel = "Cancel"
     case locationNotFound = "Location not found"
     case unknownError = "Unknown error"
+    case addTitle = "Please say something interesting about your awesome photo."
 }
 
 enum StoryboardID: String {

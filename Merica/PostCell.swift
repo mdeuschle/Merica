@@ -114,7 +114,6 @@ class PostCell: UITableViewCell {
         locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
-
         if image != nil {
             self.postImageView.image = image
         } else {
