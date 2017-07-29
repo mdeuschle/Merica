@@ -1072,6 +1072,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="myDownVoteImage" destination="yuG-2V-vLA" id="1mt-CH-iAN"/>
+                                            <outlet property="myFavoriteImage" destination="azs-x2-G9U" id="Xk4-Kq-v55"/>
+                                            <outlet property="myPostTitleLabel" destination="GMN-Sm-AFM" id="WZH-J4-9rY"/>
+                                            <outlet property="mySaveLabel" destination="rAQ-Np-EOA" id="LfO-Iq-Giw"/>
+                                            <outlet property="myShareLabel" destination="tA7-de-2LJ" id="LzO-jE-rr0"/>
+                                            <outlet property="myUpVoteImage" destination="xrA-Ft-JXn" id="WMZ-Pe-bFX"/>
+                                            <outlet property="myVoteCountLabel" destination="jhR-No-iBG" id="aMv-8b-txy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

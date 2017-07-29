@@ -10,6 +10,14 @@ import UIKit
 
 class MyPostsCell: UITableViewCell {
 
+    @IBOutlet var myPostTitleLabel: UILabel!
+    @IBOutlet var myUpVoteImage: UIImageView!
+    @IBOutlet var myVoteCountLabel: UILabel!
+    @IBOutlet var myDownVoteImage: UIImageView!
+    @IBOutlet var myFavoriteImage: UIImageView!
+    @IBOutlet var mySaveLabel: UILabel!
+    @IBOutlet var myShareLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
