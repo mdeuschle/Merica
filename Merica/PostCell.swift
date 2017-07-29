@@ -9,14 +9,6 @@
 import UIKit
 import Firebase
 
-protocol ShareButtonTapped {
-    func shareButtonTapped(title: String, image: UIImage)
-}
-
-protocol CommentsButtonTapped {
-    func commentsButtonTapped(commentsImage: UIImageView)
-}
-
 class PostCell: UITableViewCell {
 
     @IBOutlet var postTitleLabel: UILabel!
@@ -34,13 +26,12 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
-    var shareButtonDelegate: ShareButtonTapped?
+    weak var parentViewController = UIViewController()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         upVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(upVotesTapped(sender:))))
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
-        shareLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(shareTap(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
     }
@@ -56,16 +47,6 @@ class PostCell: UITableViewCell {
             downVoteImage.isUserInteractionEnabled = true
             favoriteImage.isUserInteractionEnabled = true
             saveLabel.isUserInteractionEnabled = true
-        }
-    }
-
-    func shareTap(sender: UITapGestureRecognizer) {
-        share()
-    }
-
-    func share() {
-        if let delegate = shareButtonDelegate, let postTitle = postTitleLabel.text, let postImage = postImageView.image {
-            delegate.shareButtonTapped(title: postTitle, image: postImage)
         }
     }
 
@@ -175,7 +156,10 @@ class PostCell: UITableViewCell {
         })
     }
     @IBAction func shareTapped(_ sender: UIButton) {
-        share()
+        if let title = postTitleLabel.text, let image = postImageView.image {
+            let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
+            parentViewController?.present(vc, animated: true)
+        }
     }
 }
 

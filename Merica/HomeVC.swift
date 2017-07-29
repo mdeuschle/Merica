@@ -109,7 +109,7 @@ class HomeVC: UIViewController {
     }
 }
 
-extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped {
+extension HomeVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
@@ -120,16 +120,11 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate, ShareButtonTapped 
         return UITableViewAutomaticDimension
     }
 
-    func shareButtonTapped(title: String, image: UIImage) {
-        let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
-        present(vc, animated: true)
-    }
-
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.postCell.rawValue) as? PostCell else {
             return PostCell()
         }
-        cell.shareButtonDelegate = self
+        cell.parentViewController = self
         cell.disableViews(isMyUpVotes: isMyUpVotes, isMyFavorites: isMyFavorites)
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
