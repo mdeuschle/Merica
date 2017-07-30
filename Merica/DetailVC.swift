@@ -16,6 +16,7 @@ class DetailVC: UIViewController {
 
     var post: Post!
     var isMyPost = false
+    var isMyUpVote = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class DetailVC: UIViewController {
             navigationItem.rightBarButtonItem = nil
         }
     }
-    
+
     @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
         if isMyPost {
             present(UIAlertController.withMessageAndAction(alertTitle: Alert.deletePost.rawValue,

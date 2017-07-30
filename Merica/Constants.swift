@@ -18,6 +18,8 @@ enum Segue: String {
     case fromMyPostsToDetail = "fromMyPostsToDetail"
     case fromMapToDetail = "fromMapToDetail"
     case toMoreVC = "toMoreVC"
+    case toMyUpVotes = "toMyUpVotes"
+    case fromMyUpVotesToDetail = "fromMyUpVotesToDetail"    
 }
 
 enum DatabaseID: String {
@@ -85,7 +87,8 @@ enum ReusableCell: String {
     case postCell = "PostCell"
     case myPostsCell = "MyPostsCell"
     case moreCell = "moreCell"
-    case detailCell = "detailCell"  
+    case detailCell = "detailCell"
+    case myUpVotesCell = "myUpVotesCell"    
 }
 
 enum ReusableID: String {

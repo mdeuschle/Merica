@@ -54,7 +54,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             performSegue(withIdentifier: Segue.toMyPosts.rawValue, sender: self)
         case 1:
-            filteredFeed(navTitle: ViewControllerTitle.myUpVotes.rawValue, selectedIndex: 1)
+            performSegue(withIdentifier: Segue.toMyUpVotes.rawValue, sender: self)
         case 2:
             filteredFeed(navTitle: ViewControllerTitle.myFavorites.rawValue, selectedIndex: 2)
         case 3:

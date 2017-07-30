@@ -1,19 +1,20 @@
 //
-//  MyPostsVC.swift
+//  MyUpVotesVC.swift
 //  Merica
 //
-//  Created by Matt Deuschle on 7/28/17.
+//  Created by Matt Deuschle on 7/29/17.
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class MyPostsVC: UIViewController {
+class MyUpVotesVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
     var posts = [Post]()
     var selectedPost: Post!
+    var upVotesRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,52 +27,57 @@ class MyPostsVC: UIViewController {
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
-                    print("SNAP!: \(snap)")
+                    print("SNAPPY!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        if let currentUserID = Auth.auth().currentUser?.uid {
-                            if currentUserID == post.userKey {
-                                self.posts.append(post)
-                                self.posts.sort(by: { $0.date > $1.date })
+                        print("POST NAME: \(post.postTitle)")
+                        self.upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
+                        self.upVotesRef.observeSingleEvent(of: .value, with: { (upVoteSnap) in
+                            if let upVote = upVoteSnap.value as? Bool {
+                                if upVote {
+                                    print("UPVOTE: \(post.postTitle)")
+                                    self.posts.append(post)
+                                    self.posts.sort(by: { $0.date > $1.date })
+                                    self.postTableView.reloadData()
+                                }
                             }
-                        }
+                        })
                     }
                 }
             }
-            self.postTableView.reloadData()
         })
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segue.fromMyPostsToDetail.rawValue {
+        if segue.identifier == Segue.fromMyUpVotesToDetail.rawValue {
             if let destination = segue.destination as? DetailVC {
                 destination.post = selectedPost
-                destination.isMyPost = true
+                destination.isMyUpVote = true
             }
         }
     }
 }
 
-extension MyPostsVC: UITableViewDataSource, UITableViewDelegate {
+extension MyUpVotesVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.myPostsCell.rawValue) as? MyPostsCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.myUpVotesCell.rawValue) as? MyUpVotesCell else {
             return MyPostsCell()
         }
         cell.parentVC = self
         let post = posts[indexPath.row]
         cell.configCell(post: post)
-        
+
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPost = posts[indexPath.row]
-        performSegue(withIdentifier: Segue.fromMyPostsToDetail.rawValue, sender: self)
+        performSegue(withIdentifier: Segue.fromMyUpVotesToDetail.rawValue, sender: self)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
