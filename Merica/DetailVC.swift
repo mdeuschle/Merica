@@ -17,6 +17,7 @@ class DetailVC: UIViewController {
     var post: Post!
     var isMyPost = false
     var isMyUpVote = false
+    var isMyFavorite = false
 
     override func viewDidLoad() {
         super.viewDidLoad()

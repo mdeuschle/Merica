@@ -1,17 +1,16 @@
 //
-//  MyUpVotesCell.swift
+//  MyFavoritesCell.swift
 //  Merica
 //
 //  Created by Matt Deuschle on 7/29/17.
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
-
 import UIKit
-import Firebase
+import Firebase 
 
-class MyUpVotesCell: UITableViewCell {
-    
+class MyFavoritesCell: UITableViewCell {
+
     @IBOutlet var postTitleLabel: UILabel!
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var voteCountLabel: UILabel!
@@ -116,6 +115,7 @@ class MyUpVotesCell: UITableViewCell {
             }
         })
     }
+    
     @IBAction func shareTapped(_ sender: Any) {
         if let title = postTitleLabel.text {
             let vc = UIActivityViewController(activityItems: [title], applicationActivities: nil)

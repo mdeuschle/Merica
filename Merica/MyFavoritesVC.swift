@@ -1,5 +1,5 @@
 //
-//  MyUpVotesVC.swift
+//  MyFavoritesVC.swift
 //  Merica
 //
 //  Created by Matt Deuschle on 7/29/17.
@@ -9,12 +9,13 @@
 import UIKit
 import Firebase
 
-class MyUpVotesVC: UIViewController {
+class MyFavoritesVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
+
     var posts = [Post]()
     var selectedPost: Post!
-    var upVotesRef: DatabaseReference!
+    var favoritesRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +30,10 @@ class MyUpVotesVC: UIViewController {
                 for snap in snapShot {
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        self.upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
-                        self.upVotesRef.observeSingleEvent(of: .value, with: { (upVoteSnap) in
-                            if let isUpVote = upVoteSnap.value as? Bool {
-                                if isUpVote {
+                        self.favoritesRef = DataService.shared.favoriteRef(postKey: post.postKey)
+                        self.favoritesRef.observeSingleEvent(of: .value, with: { (favoriteSnap) in
+                            if let isFavorite = favoriteSnap.value as? Bool {
+                                if isFavorite {
                                     self.posts.append(post)
                                     self.posts.sort(by: { $0.date > $1.date })
                                     self.postTableView.reloadData()
@@ -46,24 +47,24 @@ class MyUpVotesVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Segue.fromMyUpVotesToDetail.rawValue {
+        if segue.identifier == Segue.fromMyFavoritesToDetail.rawValue {
             if let destination = segue.destination as? DetailVC {
                 destination.post = selectedPost
-                destination.isMyUpVote = true
+                destination.isMyFavorite = true
             }
         }
     }
 }
 
-extension MyUpVotesVC: UITableViewDataSource, UITableViewDelegate {
+extension MyFavoritesVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.myUpVotesCell.rawValue) as? MyUpVotesCell else {
-            return MyUpVotesCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ReusableCell.myFavoritesCell.rawValue) as? MyFavoritesCell else {
+            return MyFavoritesCell()
         }
         cell.parentVC = self
         let post = posts[indexPath.row]
@@ -74,7 +75,7 @@ extension MyUpVotesVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedPost = posts[indexPath.row]
-        performSegue(withIdentifier: Segue.fromMyUpVotesToDetail.rawValue, sender: self)
+        performSegue(withIdentifier: Segue.fromMyFavoritesToDetail.rawValue, sender: self)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
