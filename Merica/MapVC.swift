@@ -15,11 +15,9 @@ class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     var posts = [Post]()
-    var postAnnotation: MKPointAnnotation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        postAnnotation = MKPointAnnotation()
         getPosts {
             self.dropPins()
         }
