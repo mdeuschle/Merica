@@ -25,6 +25,10 @@ class MapVC: UIViewController, MKMapViewDelegate {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
+
     func getPosts(handler: @escaping () -> ()) {
         DataService.shared.refPosts.observe(.value, with: { snapShot in
             self.posts = []

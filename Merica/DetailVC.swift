@@ -20,6 +20,7 @@ class DetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
         let cityAndState = post.cityName + Divider.pipe.rawValue + post.stateName
         title = cityAndState
         if isMyPost {
