@@ -63,27 +63,6 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             print("Default")
         }
     }
-
-    func filteredFeed(navTitle: String, selectedIndex: Int) {
-        tabBarController?.selectedIndex = 0
-        tabBarController?.tabBar.isHidden = true
-        let navController = self.tabBarController?.viewControllers![0] as! UINavigationController
-        let vc = navController.topViewController as! HomeVC
-        vc.title = navTitle
-        vc.readPostData()
-        switch selectedIndex {
-        case 0:
-            vc.isMyPosts = true
-        case 1:
-            vc.isMyUpVotes = true
-        case 2:
-            vc.isMyFavorites = true
-        default:
-            break
-        }
-    }
-    
-    
 }
 
 
