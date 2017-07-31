@@ -14,14 +14,19 @@ class HomeVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
+    var postRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        postRef = DataService.shared.refPosts
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         readPostData()
     }
 
     func readPostData() {
-        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
+        postRef.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

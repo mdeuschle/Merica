@@ -21,6 +21,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var selectedImage: UIImage?
     var currentLocation: CLLocation!
     var locationManager: CLLocationManager!
+    var postRef: DatabaseReference!
+    var picsRef: StorageReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,8 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
+        postRef = DataService.shared.refPosts
+        picsRef = DataService.shared.refPics
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -106,7 +110,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                     DatabaseID.stateName.rawValue: stateName as Any,
                     DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
                 ]
-                DataService.shared.refPosts.childByAutoId().setValue(postDic)
+                postRef.childByAutoId().setValue(postDic)
                 self.tabBarController?.selectedIndex = 0
             }
             postTextField.text = ""
@@ -125,7 +129,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                     let imageID = NSUUID().uuidString
                     let metaData = StorageMetadata()
                     metaData.contentType = ContentType.imagePng.rawValue
-                    DataService.shared.refPics.child(imageID).putData(imageData, metadata: metaData, completion: { (metaData, error) in
+                    picsRef.child(imageID).putData(imageData, metadata: metaData, completion: { (metaData, error) in
                         if error != nil {
                             self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                         } else {

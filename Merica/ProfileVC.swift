@@ -14,24 +14,27 @@ class ProfileVC: UIViewController {
 
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
+    var currentUser: DatabaseReference!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentUser = DataService.shared.refCurrentUser
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
-        DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let name = snapshot.value as? String {
                 self.title = ViewControllerTitle.hi.rawValue + name
             }
             DataService.shared.refCurrentUser.removeAllObservers()
         })
-        DataService.shared.refCurrentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+        currentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let timeStamp = snapshot.value as? String {
                 self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
             }
             DataService.shared.refCurrentUser.removeAllObservers()
         })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
     }
 }

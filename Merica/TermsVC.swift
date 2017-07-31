@@ -10,6 +10,8 @@ import UIKit
 
 class TermsVC: UIViewController {
 
+    @IBOutlet var termsWebView: UIWebView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }

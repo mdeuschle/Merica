@@ -16,15 +16,20 @@ class MyFavoritesVC: UIViewController {
     var posts = [Post]()
     var selectedPost: Post!
     var favoritesRef: DatabaseReference!
+    var postRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        postRef = DataService.shared.refPosts
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         readPostData()
     }
 
     func readPostData() {
-        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
+        postRef.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

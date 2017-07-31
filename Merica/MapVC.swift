@@ -15,18 +15,20 @@ class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     var posts = [Post]()
+    var postRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getPosts()
+        postRef = DataService.shared.refPosts
     }
 
     override func viewWillAppear(_ animated: Bool) {
         tabBarController?.tabBar.isHidden = false
+        getPosts()
     }
 
     func getPosts() {
-        DataService.shared.refPosts.observe(.value, with: { snapShot in
+        postRef.observe(.value, with: { snapShot in
             self.posts = []
             if let snapShot = snapShot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
@@ -34,7 +36,6 @@ class MapVC: UIViewController, MKMapViewDelegate {
                         let post = Post(postKey: snap.key, postDic: postDic)
                         self.posts.append(post)
                         self.dropPins()
-                        DataService.shared.refPosts.removeAllObservers()
                     }
                 }
             }

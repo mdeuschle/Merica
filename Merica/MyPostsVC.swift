@@ -14,10 +14,15 @@ class MyPostsVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
     var posts = [Post]()
     var selectedPost: Post!
+    var postData: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        postData = DataService.shared.refPosts
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         readPostData()
     }
 
@@ -26,7 +31,7 @@ class MyPostsVC: UIViewController {
     }
 
     func readPostData() {
-        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
+        postData.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

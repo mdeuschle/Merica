@@ -18,6 +18,7 @@ class DetailVC: UIViewController {
     var isMyPost = false
     var isMyUpVote = false
     var isMyFavorite = false
+    var postRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,15 @@ class DetailVC: UIViewController {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
+        postRef = DataService.shared.refPosts
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         readPostData()
     }
 
     func readPostData() {
-        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
+        postRef.observe(.value, with: { (snapshot) in
             if let _ = snapshot.children.allObjects as? [DataSnapshot] {
                 self.detailTableView.reloadData()
             }
