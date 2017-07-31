@@ -1457,10 +1457,41 @@
                     <navigationItem key="navigationItem" id="SMo-iI-qL3">
                         <barButtonItem key="backBarButtonItem" title=" " id="Z2H-6b-p8G"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="wkR-DA-pBo" kind="show" identifier="toTermsVC" id="B9X-Mt-yWJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAq-Do-Wdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6129.375" y="145.77464788732394"/>
+            <point key="canvasLocation" x="5252" y="146"/>
+        </scene>
+        <!--TermsVC-->
+        <scene sceneID="3FR-pS-nZW">
+            <objects>
+                <viewController storyboardIdentifier="TermsVC" id="wkR-DA-pBo" customClass="TermsVC" customModule="Merica" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dnt-5n-dXr"/>
+                        <viewControllerLayoutGuide type="bottom" id="CeB-CA-Y3l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M6w-he-vvq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNi-Pi-NkN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="termsWebView" destination="pNi-Pi-NkN" id="2ap-nA-hHU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UIk-Iz-vKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6127.5" y="145.77464788732394"/>
         </scene>
         <!--My Up Votes-->
         <scene sceneID="Alq-hi-57i">
@@ -1660,7 +1691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aM-U9-hYO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6184" y="1800"/>
+            <point key="canvasLocation" x="6129" y="1800"/>
         </scene>
         <!--My Favorites-->
         <scene sceneID="qat-So-Rkw">
@@ -1881,6 +1912,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aGa-Ld-f99"/>
-        <segue reference="Nwl-n8-4Pw"/>
+        <segue reference="TCA-hu-Vt9"/>
     </inferredMetricsTieBreakers>
 </document>
