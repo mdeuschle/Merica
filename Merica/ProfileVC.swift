@@ -21,11 +21,13 @@ class ProfileVC: UIViewController {
             if let name = snapshot.value as? String {
                 self.title = ViewControllerTitle.hi.rawValue + name
             }
+            DataService.shared.refCurrentUser.removeAllObservers()
         })
         DataService.shared.refCurrentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
             if let timeStamp = snapshot.value as? String {
                 self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
             }
+            DataService.shared.refCurrentUser.removeAllObservers()
         })
     }
 

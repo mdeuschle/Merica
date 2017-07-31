@@ -29,6 +29,15 @@ class DetailVC: UIViewController {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
+        readPostData()
+    }
+
+    func readPostData() {
+        DataService.shared.refPosts.observe(.value, with: { (snapshot) in
+            if let _ = snapshot.children.allObjects as? [DataSnapshot] {
+                self.detailTableView.reloadData()
+            }
+        })
     }
 
     @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {

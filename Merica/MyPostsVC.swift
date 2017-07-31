@@ -21,6 +21,10 @@ class MyPostsVC: UIViewController {
         readPostData()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        DataService.shared.refPosts.removeAllObservers()
+    }
+
     func readPostData() {
         DataService.shared.refPosts.observe(.value, with: { (snapshot) in
             self.posts = []

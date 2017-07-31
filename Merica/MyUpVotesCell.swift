@@ -44,6 +44,7 @@ class MyUpVotesCell: UITableViewCell {
                 self.post.adjustFavorites(didFavorite: false)
                 self.favoriteRef.removeValue()
             }
+            self.favoriteRef.removeAllObservers()
         })
     }
 
@@ -60,6 +61,7 @@ class MyUpVotesCell: UITableViewCell {
                 self.post.adjustUpVotes(didUpVote: false)
                 self.upVotesRef.removeValue()
             }
+            self.upVotesRef.removeAllObservers()
         })
     }
 
@@ -76,6 +78,7 @@ class MyUpVotesCell: UITableViewCell {
                 self.post.adjustDownVotes(didDownVote: false)
                 self.downVotesRef.removeValue()
             }
+            self.downVotesRef.removeAllObservers()
         })
     }
 
@@ -100,6 +103,7 @@ class MyUpVotesCell: UITableViewCell {
             } else {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greenUpArrow")
             }
+            self.upVotesRef.removeAllObservers()
         })
         downVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
@@ -107,6 +111,7 @@ class MyUpVotesCell: UITableViewCell {
             } else {
                 self.downVoteImage.image = #imageLiteral(resourceName: "greenDownArrow")
             }
+            self.downVotesRef.removeAllObservers()
         })
         favoriteRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
@@ -114,6 +119,7 @@ class MyUpVotesCell: UITableViewCell {
             } else {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
             }
+            self.favoriteRef.removeAllObservers()
         })
     }
     @IBAction func shareTapped(_ sender: Any) {
