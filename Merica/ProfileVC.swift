@@ -10,19 +10,41 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
+    @IBOutlet var profileImage: UIImageView!
+
     var currentUser: DatabaseReference!
+    var imagePicker: UIImagePickerController!
+    var selectedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = DataService.shared.refCurrentUser
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        configImagePicker()
 
-//        currentUser.child(DatabaseID.userName.rawValue).updateChildValues(["yourKey": yourValue])
+        //        currentUser.updateChildValues([DatabaseID.userName.rawValue: "Fred"])
 
+    }
+
+    func configImagePicker() {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        imagePicker.sourceType = .photoLibrary
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectedImage = image
+            profileImage.image = image
+        } else {
+            present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,6 +63,10 @@ class ProfileVC: UIViewController {
                 self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
             }
         })
+    }
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        print("EDIT TAPPED")
+        present(imagePicker, animated: true, completion: nil)
     }
 }
 
@@ -76,7 +102,37 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-
+//
+//    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
+//        if postTextField.text == "" {
+//            present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
+//        } else {
+//            if let postText = postTextField.text {
+//                let postDic: [String: Any] = [
+//                    DatabaseID.postImageURL.rawValue: imageURL as Any,
+//                    DatabaseID.postTitle.rawValue: postText as Any,
+//                    DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
+//                    DatabaseID.upVotes.rawValue: 0 as Any,
+//                    DatabaseID.downVotes.rawValue: 0 as Any,
+//                    DatabaseID.isFavorite.rawValue: false as Any,
+//                    DatabaseID.latitude.rawValue: lat as Any,
+//                    DatabaseID.longitude.rawValue: lon as Any,
+//                    DatabaseID.cityName.rawValue: cityName as Any,
+//                    DatabaseID.stateName.rawValue: stateName as Any,
+//                    DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
+//                ]
+//                postRef.childByAutoId().setValue(postDic)
+//                self.tabBarController?.selectedIndex = 0
+//            }
+//            postTextField.text = ""
+//            imageView.image = #imageLiteral(resourceName: "greyPhoto")
+//        }
+//    }
+//
+//    @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
+//        present(imagePicker, animated: true, completion: nil)
+//}
+//
 
 
 

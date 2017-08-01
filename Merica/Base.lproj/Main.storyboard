@@ -508,9 +508,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="02N-QB-1Tq">
                         <barButtonItem key="backBarButtonItem" title=" " id="Faw-jJ-MKW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="CLW-oQ-8iv">
+                            <connections>
+                                <action selector="editButtonTapped:" destination="mlw-DY-eks" id="x9S-sH-J2u"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
+                        <outlet property="profileImage" destination="Ov6-0C-ff5" id="sGE-nG-3jx"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
                         <segue destination="SVE-oa-n7A" kind="show" identifier="toMyPosts" id="m9r-ic-wle"/>
                         <segue destination="Jho-zM-SZj" kind="show" identifier="toMoreVC" id="alZ-l7-KBE"/>
@@ -611,7 +617,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="434"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Da-tk-yzj" id="BYD-Jj-SLk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="433.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="7Yv-ch-iby">
@@ -944,7 +950,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8le-JH-ISu" id="bu3-0K-3KV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMN-Sm-AFM">
@@ -1169,7 +1175,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="434"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDN-bi-bhb" id="HCP-Ie-GVz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="433.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Jiz-ad-Z37">
@@ -1520,7 +1526,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xI-9v-UmU" id="5sT-an-Un3">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-VY-Tf1">
@@ -1720,7 +1726,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5rf-Yv-oRm" id="L4A-m0-Glc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpM-x5-uWH">
