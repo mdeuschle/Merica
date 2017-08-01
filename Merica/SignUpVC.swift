@@ -72,12 +72,21 @@ class SignUpVC: UIViewController {
                     if error != nil {
                         self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                     } else {
-                        print("Successfully authenticated with Firebase")
                         if let user = user {
-                            let userData = [DatabaseID.provider.rawValue: user.providerID,
-                                            DatabaseID.userName.rawValue: userName,
-                                            DatabaseID.estDate.rawValue: DateHelper.dateToMedString()]
-                            self.completeSignUp(id: user.uid, userData: userData)
+                            let profileRef = DataService.shared.refPics.child(DatabaseID.greyProfile.rawValue)
+                            profileRef.downloadURL { url, error in
+                                if let error = error {
+                                    self.present(UIAlertController.withError(error: error), animated: true, completion: nil)
+                                } else {
+                                    if let url = url {
+                                        let userData = [DatabaseID.provider.rawValue: user.providerID,
+                                                        DatabaseID.userName.rawValue: userName,
+                                                        DatabaseID.estDate.rawValue: DateHelper.dateToMedString(),
+                                                        DatabaseID.profileImageURL.rawValue: url.absoluteString]
+                                        self.completeSignUp(id: user.uid, userData: userData)
+                                    }
+                                }
+                            }
                         }
                     }
                 })

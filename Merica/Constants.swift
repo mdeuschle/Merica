@@ -32,6 +32,7 @@ enum DatabaseID: String {
     case userName = "userName"
     case postTitle = "postTitle"
     case postImageURL = "postImageURL"
+    case profileImageURL = "profileImageURL"
     case timeStamp = "timeStamp"
     case upVotes = "upVotes"
     case downVotes = "downVotes"
@@ -43,6 +44,7 @@ enum DatabaseID: String {
     case stateName = "stateName"
     case coordinate = "coordinate"
     case estDate = "estDate"
+    case greyProfile = "greyProfile.png"
 }
 
 enum KeyChain: String {
