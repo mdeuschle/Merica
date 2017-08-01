@@ -25,9 +25,6 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readPostData()
-        handle = postRef.observe(.value, with: { (snapshot) in
-            print("HOME SNAP: \(snapshot.childrenCount)")
-        })
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -36,7 +33,7 @@ class HomeVC: UIViewController {
     }
 
     func readPostData() {
-        postRef.observe(.value, with: { (snapshot) in
+        handle = postRef.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

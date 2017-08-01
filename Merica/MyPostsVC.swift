@@ -25,7 +25,6 @@ class MyPostsVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        handle = postData.observe(.value, with: { (snapshot) in })
         readPostData()
     }
 
@@ -36,7 +35,7 @@ class MyPostsVC: UIViewController {
     }
 
     func readPostData() {
-        postData.observe(.value, with: { (snapshot) in
+        handle = postData.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

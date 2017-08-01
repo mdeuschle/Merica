@@ -37,7 +37,6 @@ class DetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readPostData()
-        handle = postRef.observe(.value, with: { (snapshot) in })
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -47,7 +46,7 @@ class DetailVC: UIViewController {
 
 
     func readPostData() {
-        postRef.observe(.value, with: { (snapshot) in
+        handle = postRef.observe(.value, with: { (snapshot) in
             if let _ = snapshot.children.allObjects as? [DataSnapshot] {
                 self.detailTableView.reloadData()
             }

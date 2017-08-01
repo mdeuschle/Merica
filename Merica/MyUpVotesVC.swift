@@ -28,7 +28,6 @@ class MyUpVotesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readPostData()
-        postHandler = postRef.observe(.value, with: { (snapshot) in })
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -40,7 +39,7 @@ class MyUpVotesVC: UIViewController {
     }
 
     func readPostData() {
-        postRef.observe(.value, with: { (snapshot) in
+        postHandler = postRef.observe(.value, with: { (snapshot) in
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {

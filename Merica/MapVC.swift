@@ -32,7 +32,6 @@ class MapVC: UIViewController, MKMapViewDelegate {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
         getPosts()
-        handle = postRef.observe(.value, with: { (snapshot) in })
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -41,7 +40,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
     }
 
     func getPosts() {
-        postRef.observe(.value, with: { snapShot in
+        handle = postRef.observe(.value, with: { snapShot in
             self.posts = []
             if let snapShot = snapShot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
