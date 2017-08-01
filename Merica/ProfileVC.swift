@@ -19,15 +19,14 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var currentUser: DatabaseReference!
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
+    var picsRef: StorageReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         currentUser = DataService.shared.refCurrentUser
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         configImagePicker()
-
-        //        currentUser.updateChildValues([DatabaseID.userName.rawValue: "Fred"])
-
+        picsRef = DataService.shared.refPics
     }
 
     func configImagePicker() {
@@ -36,7 +35,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
     }
-    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedImage = image
@@ -44,7 +43,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         } else {
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
         }
-        imagePicker.dismiss(animated: true, completion: nil)
+        imagePicker.dismiss(animated: true, completion: uploadNewProfileImage)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -99,40 +98,28 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
             print("Default")
         }
     }
+
+    func uploadNewProfileImage() {
+        if let image = selectedImage {
+            if let reSizedImage = image.resize(width: 100) {
+                if let imageData = UIImagePNGRepresentation(reSizedImage) {
+                    let imageID = NSUUID().uuidString
+                    let metadata = StorageMetadata()
+                    metadata.contentType = ContentType.imagePng.rawValue
+                    picsRef.child(imageID).putData(imageData, metadata: metadata, completion: { (metaData, error) in
+                        if let error = error {
+                            self.present(UIAlertController.withError(error: error), animated: true, completion: nil)
+                        } else {
+                            if let url = metaData?.downloadURL()?.absoluteString {
+                                self.currentUser.updateChildValues([DatabaseID.profileImageURL.rawValue: url])
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
 }
-
-
-//
-//    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
-//        if postTextField.text == "" {
-//            present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
-//        } else {
-//            if let postText = postTextField.text {
-//                let postDic: [String: Any] = [
-//                    DatabaseID.postImageURL.rawValue: imageURL as Any,
-//                    DatabaseID.postTitle.rawValue: postText as Any,
-//                    DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
-//                    DatabaseID.upVotes.rawValue: 0 as Any,
-//                    DatabaseID.downVotes.rawValue: 0 as Any,
-//                    DatabaseID.isFavorite.rawValue: false as Any,
-//                    DatabaseID.latitude.rawValue: lat as Any,
-//                    DatabaseID.longitude.rawValue: lon as Any,
-//                    DatabaseID.cityName.rawValue: cityName as Any,
-//                    DatabaseID.stateName.rawValue: stateName as Any,
-//                    DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
-//                ]
-//                postRef.childByAutoId().setValue(postDic)
-//                self.tabBarController?.selectedIndex = 0
-//            }
-//            postTextField.text = ""
-//            imageView.image = #imageLiteral(resourceName: "greyPhoto")
-//        }
-//    }
-//
-//    @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
-//        present(imagePicker, animated: true, completion: nil)
-//}
-//
 
 
 
