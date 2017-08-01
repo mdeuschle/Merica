@@ -10,7 +10,7 @@ import Foundation
 import MapKit
 import UIKit
 
-class PostAnnotation : MKPointAnnotation {
+class PostAnnotation: MKPointAnnotation {
 
     var mapPost: Post!
     var mapImage: UIImage!

@@ -22,12 +22,16 @@ class MapVC: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         postRef = DataService.shared.refPosts
-        getPosts()
+    }
+
+    deinit {
+        print("MAP VC")
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
+        getPosts()
         handle = postRef.observe(.value, with: { (snapshot) in })
     }
 
