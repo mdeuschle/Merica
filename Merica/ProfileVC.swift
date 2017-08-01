@@ -23,17 +23,21 @@ class ProfileVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-//        currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let name = snapshot.value as? String {
-//                self.title = ViewControllerTitle.hi.rawValue + name
-//            }
-//        })
-//        currentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let timeStamp = snapshot.value as? String {
-//                self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
-//            }
-//        })
+        readUserData()
         tabBarController?.tabBar.isHidden = false
+    }
+
+    func readUserData() {
+        currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let name = snapshot.value as? String {
+                self.title = ViewControllerTitle.hi.rawValue + name
+            }
+        })
+        currentUser.child(DatabaseID.estDate.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let timeStamp = snapshot.value as? String {
+                self.memeberSinceLabel.text =  ProfileCellLabel.est.rawValue + timeStamp
+            }
+        })
     }
 }
 

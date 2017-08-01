@@ -30,7 +30,6 @@ class MyPostsVC: UIViewController {
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        DataService.shared.refPosts.removeAllObservers()
         postData.removeObserver(withHandle: handle)
     }
 
