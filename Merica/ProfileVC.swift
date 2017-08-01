@@ -20,6 +20,9 @@ class ProfileVC: UIViewController {
         super.viewDidLoad()
         currentUser = DataService.shared.refCurrentUser
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+
+//        currentUser.child(DatabaseID.userName.rawValue).updateChildValues(["yourKey": yourValue])
+
     }
 
     override func viewWillAppear(_ animated: Bool) {

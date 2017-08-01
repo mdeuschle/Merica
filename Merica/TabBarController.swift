@@ -13,13 +13,11 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var didSignUp = false
     var didLogIn = false
-    var currentUserRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         welcomePopUp(didLogIn: didLogIn, didSignUp: didSignUp)
-        currentUserRef = DataService.shared.refCurrentUser
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -28,7 +26,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     func welcomePopUp(didLogIn: Bool, didSignUp: Bool) {
         if didSignUp || didLogIn {
-            currentUserRef.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let name = snapshot.value as? String {
                     var message = ""
                     if didLogIn {
