@@ -16,15 +16,24 @@ class MapVC: UIViewController, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     var posts = [Post]()
     var postRef: DatabaseReference!
+    var storageRef: StorageReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         postRef = DataService.shared.refPosts
+        getPosts()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
-        getPosts()
+        handle = postRef.observe(.value, with: { (snapshot) in })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: handle)
     }
 
     func getPosts() {
@@ -75,8 +84,8 @@ class MapVC: UIViewController, MKMapViewDelegate {
             newPin.title = post.postTitle
             newPin.subtitle = post.cityName + Divider.pipe.rawValue + post.stateName
             newPin.mapPost = post
-            let ref = Storage.storage().reference(forURL: post.postImageURL)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            storageRef = Storage.storage().reference(forURL: post.postImageURL)
+            storageRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil {
                     self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                 } else {

@@ -19,6 +19,7 @@ class DetailVC: UIViewController {
     var isMyUpVote = false
     var isMyFavorite = false
     var postRef: DatabaseReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +35,16 @@ class DetailVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readPostData()
+        handle = postRef.observe(.value, with: { (snapshot) in })
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: handle)
+    }
+
 
     func readPostData() {
         postRef.observe(.value, with: { (snapshot) in

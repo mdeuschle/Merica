@@ -17,6 +17,8 @@ class MyFavoritesVC: UIViewController {
     var selectedPost: Post!
     var favoritesRef: DatabaseReference!
     var postRef: DatabaseReference!
+    var favoritesHandler: UInt!
+    var postHandler: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,17 @@ class MyFavoritesVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readPostData()
+        postHandler = postRef.observe(.value, with: { (snapshot) in })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: postHandler)
+        if let ref = favoritesRef, let handler = favoritesHandler {
+            ref.removeObserver(withHandle: handler)
+        }
     }
 
     func readPostData() {
@@ -42,6 +54,7 @@ class MyFavoritesVC: UIViewController {
                                     self.posts.append(post)
                                     self.posts.sort(by: { $0.date > $1.date })
                                     self.postTableView.reloadData()
+                                    self.favoritesHandler = self.favoritesRef.observe(.value, with: { (snapshot) in })
                                 }
                             }
                         })

@@ -15,6 +15,7 @@ class HomeVC: UIViewController {
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     var postRef: DatabaseReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,16 @@ class HomeVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readPostData()
+        handle = postRef.observe(.value, with: { (snapshot) in
+            print("HOME SNAP: \(snapshot.childrenCount)")
+        })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: handle)
     }
 
     func readPostData() {
@@ -30,7 +40,6 @@ class HomeVC: UIViewController {
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
-                    print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
                         self.posts.append(post)

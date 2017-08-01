@@ -14,8 +14,10 @@ class MyUpVotesVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
     var posts = [Post]()
     var selectedPost: Post!
-    var upVotesRef: DatabaseReference!
     var postRef: DatabaseReference!
+    var upVotesRef: DatabaseReference!
+    var postHandler: UInt!
+    var upVotesHandler: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,17 @@ class MyUpVotesVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         readPostData()
+        postHandler = postRef.observe(.value, with: { (snapshot) in })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: postHandler)
+        if let ref = upVotesRef, let handler = upVotesHandler {
+            ref.removeObserver(withHandle: handler)
+        }
     }
 
     func readPostData() {
@@ -41,6 +53,7 @@ class MyUpVotesVC: UIViewController {
                                     self.posts.append(post)
                                     self.posts.sort(by: { $0.date > $1.date })
                                     self.postTableView.reloadData()
+                                    self.upVotesHandler = self.upVotesRef.observe(.value, with: { (snapshot) in })
                                 }
                             }
                         })

@@ -7,21 +7,35 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     var didSignUp = false
     var didLogIn = false
+    var currentUserRef: DatabaseReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         welcomePopUp(didLogIn: didLogIn, didSignUp: didSignUp)
+        currentUserRef = DataService.shared.refCurrentUser
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = currentUserRef.observe(.value, with: { (snapshot) in })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        currentUserRef.removeObserver(withHandle: handle)
     }
 
     func welcomePopUp(didLogIn: Bool, didSignUp: Bool) {
         if didSignUp || didLogIn {
-            DataService.shared.refCurrentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            currentUserRef.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
                 if let name = snapshot.value as? String {
                     var message = ""
                     if didLogIn {

@@ -15,6 +15,7 @@ class MyPostsVC: UIViewController {
     var posts = [Post]()
     var selectedPost: Post!
     var postData: DatabaseReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,15 @@ class MyPostsVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        handle = postData.observe(.value, with: { (snapshot) in })
         readPostData()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         DataService.shared.refPosts.removeAllObservers()
+        postData.removeObserver(withHandle: handle)
     }
 
     func readPostData() {
@@ -35,7 +40,6 @@ class MyPostsVC: UIViewController {
             self.posts = []
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
-                    print("SNAP!: \(snap)")
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
                         if let currentUserID = Auth.auth().currentUser?.uid {
