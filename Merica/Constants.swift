@@ -116,7 +116,6 @@ enum ViewControllerTitle: String {
     case myPosts = "My Posts"
     case myUpVotes = "My Up Votes"
     case myFavorites = "My Favorites"
-    case hi = "Hi, "
     case merica = "'Merica"
 }
 
