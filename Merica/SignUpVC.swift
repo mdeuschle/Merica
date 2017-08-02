@@ -73,7 +73,7 @@ class SignUpVC: UIViewController {
                         self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                     } else {
                         if let user = user {
-                            let profileRef = DataService.shared.refPics.child(DatabaseID.greyProfile.rawValue)
+                            let profileRef = DataService.shared.refPics.child(DatabaseID.defaultProfile.rawValue)
                             profileRef.downloadURL { url, error in
                                 if let error = error {
                                     self.present(UIAlertController.withError(error: error), animated: true, completion: nil)

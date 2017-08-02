@@ -30,7 +30,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         picsRef = DataService.shared.refPics
         editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileVC.editTapped))
         navigationItem.rightBarButtonItem = editButton
-        profileImage.image = #imageLiteral(resourceName: "greyProfile")
+        profileImage.image = #imageLiteral(resourceName: "defaultProfile")
     }
 
     func configImagePicker() {

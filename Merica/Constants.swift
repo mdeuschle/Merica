@@ -44,7 +44,7 @@ enum DatabaseID: String {
     case stateName = "stateName"
     case coordinate = "coordinate"
     case estDate = "estDate"
-    case greyProfile = "greyProfile.png"
+    case defaultProfile = "defaultProfile.png"
 }
 
 enum KeyChain: String {
