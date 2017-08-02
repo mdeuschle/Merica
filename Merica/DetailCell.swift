@@ -34,6 +34,7 @@ class DetailCell: UITableViewCell {
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         currentUserRef = DataService.shared.refCurrentUser
+        postImageView.image = UIImage()
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -89,7 +90,7 @@ class DetailCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, image: UIImage? = nil) {
+    func configCell(post: Post) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
@@ -102,24 +103,19 @@ class DetailCell: UITableViewCell {
         })
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
-        if image != nil {
-            self.postImageView.image = image
-        } else {
-            let ref = Storage.storage().reference(forURL: post.postImageURL)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print("Unable to download image from Firebase storage")
-                } else {
-                    print("Image downloaded from Firebase storage")
-                    if let imageData = data {
-                        if let img = UIImage(data: imageData) {
-                            self.postImageView.image = img
-                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as NSString)
-                        }
+        let ref = Storage.storage().reference(forURL: post.postImageURL)
+        ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            if error != nil {
+                print("Unable to download image from Firebase storage")
+            } else {
+                print("Image downloaded from Firebase storage")
+                if let imageData = data {
+                    if let img = UIImage(data: imageData) {
+                        self.postImageView.image = img
                     }
                 }
-            })
-        }
+            }
+        })
         upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")

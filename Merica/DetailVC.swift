@@ -83,11 +83,7 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             return DetailCell()
         }
         cell.parentVC = self
-        if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
-            cell.configCell(post: post, image: image)
-        } else {
-            cell.configCell(post: post)
-        }
+        cell.configCell(post: post)
         return cell
     }
 }
