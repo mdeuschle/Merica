@@ -14,7 +14,6 @@ class DetailCell: UITableViewCell {
     @IBOutlet var postTitleLabel: UILabel!
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var timeStampLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
@@ -101,8 +100,6 @@ class DetailCell: UITableViewCell {
                 self.timeStampLabel.text = name + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
             }
         })
-        let location = post.cityName + Divider.pipe.rawValue + post.stateName
-        locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
         if image != nil {

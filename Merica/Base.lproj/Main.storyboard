@@ -1342,7 +1342,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YYw-e6-Nlk">
-                                                    <rect key="frame" x="23" y="331" width="274" height="34.5"/>
+                                                    <rect key="frame" x="23" y="353.5" width="274" height="12"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 hours ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axr-P2-1GF">
                                                             <rect key="frame" x="0.0" y="0.0" width="274" height="12"/>
@@ -1350,17 +1350,9 @@
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los Angeles | California" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTp-1F-mbi">
-                                                            <rect key="frame" x="0.0" y="14" width="274" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="axr-P2-1GF" secondAttribute="trailing" id="EJb-vv-ZD1"/>
-                                                        <constraint firstAttribute="trailing" secondItem="DTp-1F-mbi" secondAttribute="trailing" id="Gs0-4B-WlP"/>
-                                                        <constraint firstItem="DTp-1F-mbi" firstAttribute="leading" secondItem="YYw-e6-Nlk" secondAttribute="leading" id="qtw-1x-NJR"/>
                                                         <constraint firstItem="axr-P2-1GF" firstAttribute="leading" secondItem="YYw-e6-Nlk" secondAttribute="leading" id="z3f-UA-dwV"/>
                                                     </constraints>
                                                 </stackView>
@@ -1395,7 +1387,6 @@
                                         <connections>
                                             <outlet property="downVoteImage" destination="jN0-Oj-JYg" id="NNf-bF-wzX"/>
                                             <outlet property="favoriteImage" destination="MwO-FA-24w" id="xuu-eX-QVA"/>
-                                            <outlet property="locationLabel" destination="DTp-1F-mbi" id="J4x-2n-ful"/>
                                             <outlet property="postImageView" destination="Jiz-ad-Z37" id="4y7-mf-3Fs"/>
                                             <outlet property="postTitleLabel" destination="u5O-9N-e4r" id="YXE-o9-GQF"/>
                                             <outlet property="saveLabel" destination="36V-9s-iJG" id="P49-M8-XQv"/>
