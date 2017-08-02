@@ -120,7 +120,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                         self.imageView.image = #imageLiteral(resourceName: "greyPhoto")
                         self.postTextField.text = ""
                     }
-                }
+                } 
             })
         }
     }
