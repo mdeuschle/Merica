@@ -53,6 +53,7 @@ enum KeyChain: String {
 
 enum Divider: String {
     case pipe = " | "
+    case dot = " ・ "
 }
 
 enum ContentType: String {
