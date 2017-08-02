@@ -12,6 +12,7 @@ import Firebase
 class Post {
 
     private var _postTitle: String!
+    private var _userName: String!
     private var _postImageURL: String?
     private var _timeStamp: String?
     private var _upVotes: Int!
@@ -27,6 +28,9 @@ class Post {
 
     var postTitle: String {
         return _postTitle ?? ""
+    }
+    var userName: String {
+        return _userName ?? ""
     }
     var postImageURL: String {
         return _postImageURL ?? ""
@@ -71,8 +75,9 @@ class Post {
         }
     }
 
-    init(postTitle: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
+    init(postTitle: String, userName: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
+        _userName = userName
         _postImageURL = postImageURL
         _timeStamp = timeStamp
         _upVotes = upVotes
@@ -89,6 +94,9 @@ class Post {
         _postKey = postKey
         if let postTitle = postDic[DatabaseID.postTitle.rawValue] as? String {
             _postTitle = postTitle
+        }
+        if let userName = postDic[DatabaseID.userName.rawValue] as? String {
+            _userName = userName
         }
         if let postImageURL = postDic[DatabaseID.postImageURL.rawValue] as? String {
             _postImageURL = postImageURL

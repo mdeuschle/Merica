@@ -32,7 +32,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
                     if didLogIn {
                         message = Alert.welcomBack.rawValue + name + "!"
                     } else {
-                        message = Alert.welcome.rawValue + name + Alert.signUpThanks.rawValue
+                        message = Alert.welcome.rawValue + name
                     }
                     self.present(UIAlertController.withMessage(message: message), animated: true, completion: nil)
                 }

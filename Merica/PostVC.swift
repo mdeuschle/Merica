@@ -23,6 +23,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var locationManager: CLLocationManager!
     var postRef: DatabaseReference!
     var picsRef: StorageReference!
+    var currentUser: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         locationManager.delegate = self
         postRef = DataService.shared.refPosts
         picsRef = DataService.shared.refPics
+        currentUser = DataService.shared.refCurrentUser
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -96,25 +98,30 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         if postTextField.text == "" {
             present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
         } else {
-            if let postText = postTextField.text {
-                let postDic: [String: Any] = [
-                    DatabaseID.postImageURL.rawValue: imageURL as Any,
-                    DatabaseID.postTitle.rawValue: postText as Any,
-                    DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
-                    DatabaseID.upVotes.rawValue: 0 as Any,
-                    DatabaseID.downVotes.rawValue: 0 as Any,
-                    DatabaseID.isFavorite.rawValue: false as Any,
-                    DatabaseID.latitude.rawValue: lat as Any,
-                    DatabaseID.longitude.rawValue: lon as Any,
-                    DatabaseID.cityName.rawValue: cityName as Any,
-                    DatabaseID.stateName.rawValue: stateName as Any,
-                    DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
-                ]
-                postRef.childByAutoId().setValue(postDic)
-                self.tabBarController?.selectedIndex = 0
-            }
-            postTextField.text = ""
-            imageView.image = #imageLiteral(resourceName: "greyPhoto")
+            currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let name = snapshot.value as? String {
+                    if let postText = self.postTextField.text {
+                        let postDic: [String: Any] = [
+                            DatabaseID.postImageURL.rawValue: imageURL as Any,
+                            DatabaseID.postTitle.rawValue: postText as Any,
+                            DatabaseID.userName.rawValue: name as Any,
+                            DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
+                            DatabaseID.upVotes.rawValue: 0 as Any,
+                            DatabaseID.downVotes.rawValue: 0 as Any,
+                            DatabaseID.isFavorite.rawValue: false as Any,
+                            DatabaseID.latitude.rawValue: lat as Any,
+                            DatabaseID.longitude.rawValue: lon as Any,
+                            DatabaseID.cityName.rawValue: cityName as Any,
+                            DatabaseID.stateName.rawValue: stateName as Any,
+                            DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
+                        ]
+                        self.postRef.childByAutoId().setValue(postDic)
+                        self.tabBarController?.selectedIndex = 0
+                        self.imageView.image = #imageLiteral(resourceName: "greyPhoto")
+                        self.postTextField.text = ""
+                    }
+                }
+            })
         }
     }
 
