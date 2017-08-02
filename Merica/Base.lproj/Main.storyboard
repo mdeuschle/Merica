@@ -650,7 +650,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRd-rf-WmL">
-                                                    <rect key="frame" x="23" y="13" width="274" height="30.5"/>
+                                                    <rect key="frame" x="58" y="13" width="239" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -797,22 +797,31 @@
                                                         <constraint firstItem="TZr-QJ-10F" firstAttribute="leading" secondItem="cbl-Ze-epB" secondAttribute="leading" id="tat-pH-wqj"/>
                                                     </constraints>
                                                 </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="OJt-na-GFX" customClass="CircleView" customModule="Merica" customModuleProvider="target">
+                                                    <rect key="frame" x="23" y="16.5" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="EoT-9H-MZH"/>
+                                                        <constraint firstAttribute="height" constant="25" id="vyv-Kq-0ZR"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.00075607019239999997" green="0.03111508302" blue="0.1307746172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" id="2U3-QB-P1b"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="eRd-rf-WmL" secondAttribute="trailing" constant="15" id="2xR-3L-GZA"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="trailing" secondItem="BYD-Jj-SLk" secondAttribute="trailingMargin" id="7ZR-Qc-VgY"/>
-                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" constant="15" id="JUj-po-957"/>
+                                                <constraint firstItem="OJt-na-GFX" firstAttribute="centerY" secondItem="eRd-rf-WmL" secondAttribute="centerY" id="BOP-Sl-Yht"/>
                                                 <constraint firstItem="cbl-Ze-epB" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" constant="15" id="Nqk-XG-01J"/>
                                                 <constraint firstAttribute="trailing" secondItem="7Yv-ch-iby" secondAttribute="trailing" id="S5R-P8-RsQ"/>
+                                                <constraint firstItem="OJt-na-GFX" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leadingMargin" constant="15" id="V7U-7Q-GWQ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="eRd-rf-WmL" secondAttribute="trailing" constant="15" id="Vfi-QW-30N"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Gbc-pN-0k1" secondAttribute="bottom" constant="12" id="XBs-dj-Psn"/>
+                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="leading" secondItem="OJt-na-GFX" secondAttribute="trailing" constant="10" id="a4X-Zg-lg4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="cbl-Ze-epB" secondAttribute="trailing" constant="15" id="as4-L2-pmt"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="top" secondItem="cbl-Ze-epB" secondAttribute="bottom" constant="28" id="bEG-dh-8JW"/>
-                                                <constraint firstItem="7Yv-ch-iby" firstAttribute="top" secondItem="eRd-rf-WmL" secondAttribute="bottom" constant="15" id="jez-Ck-ppn"/>
                                                 <constraint firstItem="7Yv-ch-iby" firstAttribute="leading" secondItem="BYD-Jj-SLk" secondAttribute="leading" id="l5c-ka-Bhr"/>
-                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="top" secondItem="BYD-Jj-SLk" secondAttribute="topMargin" constant="5" id="u5M-L5-Oui"/>
+                                                <constraint firstItem="7Yv-ch-iby" firstAttribute="top" secondItem="eRd-rf-WmL" secondAttribute="bottom" constant="15" id="tfi-ag-AjL"/>
                                                 <constraint firstItem="Gbc-pN-0k1" firstAttribute="top" secondItem="7Yv-ch-iby" secondAttribute="bottom" constant="15" id="v5P-Sc-khb"/>
+                                                <constraint firstItem="eRd-rf-WmL" firstAttribute="top" secondItem="BYD-Jj-SLk" secondAttribute="topMargin" constant="5" id="y12-TC-LMy"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.00075607019239999997" green="0.03111508302" blue="0.1307746172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
