@@ -38,7 +38,7 @@ class DetailCell: UITableViewCell {
     func favoriteTapped(sender: UITapGestureRecognizer) {
         favoriteRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
-                self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
+                self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
                 self.post.adjustFavorites(didFavorite: true)
                 self.favoriteRef.setValue(true)
             } else {
@@ -135,7 +135,7 @@ class DetailCell: UITableViewCell {
             if let _ = snapshot.value as? NSNull {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
             } else {
-                self.favoriteImage.image = #imageLiteral(resourceName: "greenFavorite")
+                self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
             }
         })
     }

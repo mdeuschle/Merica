@@ -192,7 +192,7 @@
                                     <constraint firstAttribute="height" constant="20" id="Ibm-QC-Yuc"/>
                                     <constraint firstAttribute="width" constant="20" id="nSv-yv-nL1"/>
                                 </constraints>
-                                <state key="normal" image="greenBack"/>
+                                <state key="normal" image="whiteBack"/>
                                 <connections>
                                     <segue destination="mhZ-gY-m36" kind="unwind" unwindAction="unwindToWecomeVCWithSegue:" id="V9O-fH-MSh"/>
                                 </connections>
@@ -357,7 +357,7 @@
                                     <constraint firstAttribute="height" constant="20" id="G1v-vY-4BC"/>
                                     <constraint firstAttribute="width" constant="20" id="eX4-ja-9vp"/>
                                 </constraints>
-                                <state key="normal" image="greenBack"/>
+                                <state key="normal" image="whiteBack"/>
                                 <connections>
                                     <segue destination="mMi-Vn-vn4" kind="unwind" unwindAction="unwindToWecomeVCWithSegue:" id="Bg0-Fw-TFp"/>
                                 </connections>
@@ -1404,7 +1404,7 @@
                     <navigationItem key="navigationItem" title="'Merica" id="SzD-yp-P4M">
                         <barButtonItem key="backBarButtonItem" title=" " id="cgl-WY-shi"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="R6w-8r-ehr">
-                            <color key="tintColor" red="0.39390163030000003" green="0.92368802790000004" blue="0.8979859898" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="0.0" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="deleteButtonTapped:" destination="eeh-lb-tfZ" id="fmA-cq-qws"/>
                             </connections>
@@ -1929,7 +1929,6 @@
     </scenes>
     <resources>
         <image name="defaultProfile" width="102" height="102"/>
-        <image name="greenBack" width="15" height="24"/>
         <image name="greyCamera" width="30" height="22"/>
         <image name="greyDownArrow" width="24" height="24"/>
         <image name="greyFavorite" width="28" height="23"/>
@@ -1942,9 +1941,10 @@
         <image name="greyShare" width="31" height="27"/>
         <image name="greyUpArrow" width="24" height="24"/>
         <image name="logo" width="337" height="342"/>
+        <image name="whiteBack" width="16" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aGa-Ld-f99"/>
+        <segue reference="saJ-HK-P9v"/>
         <segue reference="vhG-jG-KDj"/>
     </inferredMetricsTieBreakers>
 </document>
