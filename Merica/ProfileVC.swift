@@ -46,7 +46,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         tabBarController?.tabBar.isHidden = false
     }
 
-
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedImage = image

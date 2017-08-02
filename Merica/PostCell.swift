@@ -25,6 +25,7 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
+    var currentUser: DatabaseReference!
     weak var parentVC = UIViewController()
 
     override func awakeFromNib() {
@@ -33,6 +34,7 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
+        currentUser = DataService.shared.refCurrentUser
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -94,7 +96,11 @@ class PostCell: UITableViewCell {
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
-        timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let name = snapshot.value as? String {
+                self.timeStampLabel.text = name + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+            }
+        })
         let location = post.cityName + Divider.pipe.rawValue + post.stateName
         locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
