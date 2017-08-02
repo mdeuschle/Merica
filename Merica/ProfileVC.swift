@@ -30,6 +30,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         picsRef = DataService.shared.refPics
         editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileVC.editTapped))
         navigationItem.rightBarButtonItem = editButton
+        profileImage.image = #imageLiteral(resourceName: "greyProfile")
     }
 
     func configImagePicker() {
@@ -39,6 +40,13 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         imagePicker.sourceType = .photoLibrary
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        readUserData()
+        readProfilePic()
+        tabBarController?.tabBar.isHidden = false
+    }
+
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedImage = image
@@ -47,11 +55,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
         }
         imagePicker.dismiss(animated: true, completion: uploadNewProfileImage)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        readUserData()
-        tabBarController?.tabBar.isHidden = false
     }
 
     func readUserData() {
@@ -66,6 +69,26 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
         })
     }
+
+    func readProfilePic() {
+        currentUser.child(DatabaseID.profileImageURL.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let url = snapshot.value as? String {
+                let ref = Storage.storage().reference(forURL: url)
+                ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                    if error != nil {
+                        self.present(UIAlertController.withMessage(message: Alert.unknownError.rawValue), animated: true, completion: nil)
+                    } else {
+                        if let imageData = data {
+                            if let img = UIImage(data: imageData) {
+                                self.profileImage.image = img
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    }
+
     func editTapped() {
         present(imagePicker, animated: true, completion: nil)
     }
@@ -114,6 +137,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
                         } else {
                             if let url = metaData?.downloadURL()?.absoluteString {
                                 self.currentUser.updateChildValues([DatabaseID.profileImageURL.rawValue: url])
+                                self.readProfilePic()
                             }
                         }
                     })
