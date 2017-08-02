@@ -20,6 +20,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
     var picsRef: StorageReference!
+    var editButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         configImagePicker()
         picsRef = DataService.shared.refPics
+        editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileVC.editTapped))
+        navigationItem.rightBarButtonItem = editButton
     }
 
     func configImagePicker() {
@@ -63,8 +66,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
             }
         })
     }
-    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-        print("EDIT TAPPED")
+    func editTapped() {
         present(imagePicker, animated: true, completion: nil)
     }
 }
