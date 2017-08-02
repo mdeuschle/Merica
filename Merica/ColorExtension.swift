@@ -22,6 +22,13 @@ extension UIColor {
         return colorWithRGBHex(hex24: 6750207)
     }
 
+    class func lightRed() -> UIColor {
+        return colorWithRGBHex(hex24: 16711749)
+    }
+
+    class func navyBlule() -> UIColor {
+        return colorWithRGBHex(hex24: 000821)
+    }
 
     class func slateGrey() -> UIColor {
         return colorWithRGBHex(hex24: 333333)

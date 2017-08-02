@@ -24,10 +24,6 @@ class MapVC: UIViewController, MKMapViewDelegate {
         postRef = DataService.shared.refPosts
     }
 
-    deinit {
-        print("MAP VC")
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = false
@@ -71,7 +67,7 @@ class MapVC: UIViewController, MKMapViewDelegate {
         if postAnnotation.mapImage != nil {
             annotatedView?.image = postAnnotation.mapImage!
             annotatedView?.layer.borderWidth = 3.0
-            annotatedView?.layer.borderColor = UIColor.iceBlue().cgColor
+            annotatedView?.layer.borderColor = UIColor.lightRed().cgColor
         }
         else {
             annotatedView?.image = #imageLiteral(resourceName: "greenMap")
