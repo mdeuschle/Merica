@@ -834,6 +834,7 @@
                                             <outlet property="saveLabel" destination="GIZ-FN-Gd8" id="AEK-Nc-zuw"/>
                                             <outlet property="timeStampLabel" destination="cDH-yQ-WRX" id="M5o-Qy-CHQ"/>
                                             <outlet property="upVoteImage" destination="aZJ-c9-vUo" id="mau-uH-tHU"/>
+                                            <outlet property="userView" destination="OJt-na-GFX" id="6Ea-h9-pjr"/>
                                             <outlet property="voteCountLabel" destination="ha2-Dl-MfV" id="Vfw-0O-lof"/>
                                         </connections>
                                     </tableViewCell>

@@ -13,6 +13,7 @@ class HomeVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    static var profileImageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     var postRef: DatabaseReference!
     var handle: UInt!
@@ -66,8 +67,8 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         }
         cell.parentVC = self
         let post = posts[indexPath.row]
-        if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString) {
-            cell.configCell(post: post, image: image)
+        if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString), let profileImage = HomeVC.profileImageCache.object(forKey: post.profileImageURL as NSString) {
+            cell.configCell(post: post, image: image, profileImage: profileImage)
         } else {
             cell.configCell(post: post)
         }

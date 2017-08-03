@@ -24,6 +24,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var postRef: DatabaseReference!
     var picsRef: StorageReference!
     var currentUser: DatabaseReference!
+    var profileURL = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +95,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.didReceiveMemoryWarning()
     }
 
-    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
+    func postToFirebse(profileImageURL: String, imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
         if postTextField.text == "" {
             present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
         } else {
@@ -102,6 +103,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 if let name = snapshot.value as? String {
                     if let postText = self.postTextField.text {
                         let postDic: [String: Any] = [
+                            DatabaseID.profileImageURL.rawValue: profileImageURL as Any,
                             DatabaseID.postImageURL.rawValue: imageURL as Any,
                             DatabaseID.postTitle.rawValue: postText as Any,
                             DatabaseID.userName.rawValue: name as Any,
@@ -120,7 +122,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                         self.imageView.image = #imageLiteral(resourceName: "greyPhoto")
                         self.postTextField.text = ""
                     }
-                } 
+                }
             })
         }
     }
@@ -142,8 +144,15 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                         } else {
                             print("Uploaded Image to Firebase Storage!")
                             LocationService.shared.getLocation(currentLocation: self.currentLocation, handler: { address, error, latitude, longitude in
-                                if let adrs = address, let city = adrs[LocationType.city.rawValue] as? String, let state = adrs[LocationType.state.rawValue] as? String, let lat = latitude, let lon = longitude, let url = metaData?.downloadURL()?.absoluteString {
-                                    self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
+                                if let adrs = address,
+                                    let city = adrs[LocationType.city.rawValue] as? String,
+                                    let state = adrs[LocationType.state.rawValue] as? String,
+                                    let lat = latitude,
+                                    let lon = longitude,
+                                    let url = metaData?.downloadURL()?.absoluteString {
+                                    self.saveAndGetProfileImage {
+                                        self.postToFirebse(profileImageURL: self.profileURL, imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
+                                    }
                                 } else {
                                     if let err = error {
                                         self.present(UIAlertController.withError(error: err), animated: true, completion: nil)
@@ -162,10 +171,46 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
         }
     }
+
+    func saveAndGetProfileImage(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.profileImageURL.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let url = snapshot.value as? String {
+                let ref = Storage.storage().reference(forURL: url)
+                ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                    if error != nil {
+                        print("Unable to download profile image from Firebase storage")
+                    } else {
+                        print("Profile image downloaded from Firebase storage")
+                        if let imageData = data {
+                            if let img = UIImage(data: imageData) {
+                                if let reSizedImage = img.resize(width: 40) {
+                                    if let imageData = UIImagePNGRepresentation(reSizedImage) {
+                                        let imageID = NSUUID().uuidString
+                                        let metaData = StorageMetadata()
+                                        metaData.contentType = ContentType.imagePng.rawValue
+                                        self.picsRef.child(imageID).putData(imageData, metadata: metaData, completion: { (metaData, error) in
+                                            if error != nil {
+                                                self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
+                                            } else {
+                                                print("Uploaded Image to Firebase Storage!")
+                                                self.profileURL = (metaData?.downloadURL()?.absoluteString)!
+                                                handler()
+                                            }
+                                        })
+                                    } else {
+                                        self.present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
+                                    }
+                                } else {
+                                    self.present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+        })
+    }
 }
-
-
-
 
 
 

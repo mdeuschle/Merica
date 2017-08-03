@@ -14,6 +14,7 @@ class Post {
     private var _postTitle: String!
     private var _userName: String!
     private var _postImageURL: String?
+    private var _profileImageURL: String?
     private var _timeStamp: String?
     private var _upVotes: Int!
     private var _downVotes: Int!
@@ -34,6 +35,9 @@ class Post {
     }
     var postImageURL: String {
         return _postImageURL ?? ""
+    }
+    var profileImageURL: String {
+        return _profileImageURL ?? ""
     }
     var timeStamp: String {
         return _timeStamp ?? ""
@@ -75,10 +79,11 @@ class Post {
         }
     }
 
-    init(postTitle: String, userName: String, postImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
+    init(postTitle: String, userName: String, postImageURL: String, profileImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
         _userName = userName
         _postImageURL = postImageURL
+        _profileImageURL = profileImageURL
         _timeStamp = timeStamp
         _upVotes = upVotes
         _downVotes = downVotes

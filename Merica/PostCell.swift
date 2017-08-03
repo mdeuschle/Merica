@@ -11,6 +11,7 @@ import Firebase
 
 class PostCell: UITableViewCell {
 
+    @IBOutlet var userView: CircleView!
     @IBOutlet var postTitleLabel: UILabel!
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var timeStampLabel: UILabel!
@@ -25,6 +26,7 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
+    var currentUserRef: DatabaseReference!
     weak var parentVC = UIViewController()
 
     override func awakeFromNib() {
@@ -33,6 +35,7 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
+        currentUserRef = DataService.shared.refCurrentUser
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -88,7 +91,7 @@ class PostCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, image: UIImage? = nil) {
+    func configCell(post: Post, image: UIImage? = nil, profileImage: UIImage? = nil) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
@@ -105,15 +108,37 @@ class PostCell: UITableViewCell {
             let ref = Storage.storage().reference(forURL: post.postImageURL)
             ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
                 if error != nil {
-                    print("Unable to download image from Firebase storage")
+                    print("Unable to download post image from Firebase storage")
                 } else {
-                    print("Image downloaded from Firebase storage")
+                    print("Post image downloaded from Firebase storage")
                     if let imageData = data {
                         if let img = UIImage(data: imageData) {
                             self.postImageView.image = img
                             HomeVC.imageCache.setObject(img, forKey: post.postImageURL as NSString)
                         }
                     }
+                }
+            })
+        }
+        if profileImage != nil {
+            self.userView.image = image
+        } else {
+            currentUserRef.child(DatabaseID.profileImageURL.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+                if let url = snapshot.value as? String {
+                    let ref = Storage.storage().reference(forURL: url)
+                    ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                        if error != nil {
+                            print("Unable to download profile image from Firebase storage")
+                        } else {
+                            print("Post image downloaded from Firebase storage")
+                            if let imageData = data {
+                                if let img = UIImage(data: imageData) {
+                                    self.userView.image = img
+                                    HomeVC.profileImageCache.setObject(img, forKey: post.profileImageURL as NSString)
+                                }
+                            }
+                        }
+                    })
                 }
             })
         }
