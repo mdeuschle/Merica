@@ -26,7 +26,7 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
-    var currentUserRef: DatabaseReference!
+    var currentUser: DatabaseReference!
     weak var parentVC = UIViewController()
 
     override func awakeFromNib() {
@@ -35,7 +35,7 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
-        currentUserRef = DataService.shared.refCurrentUser
+        currentUser = DataService.shared.refCurrentUser
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -91,7 +91,7 @@ class PostCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, image: UIImage? = nil, profileImage: UIImage? = nil) {
+    func configCell(post: Post, image: UIImage? = nil) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
@@ -120,28 +120,19 @@ class PostCell: UITableViewCell {
                 }
             })
         }
-        if profileImage != nil {
-            self.userView.image = image
-        } else {
-            currentUserRef.child(DatabaseID.profileImageURL.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-                if let url = snapshot.value as? String {
-                    let ref = Storage.storage().reference(forURL: url)
-                    ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                        if error != nil {
-                            print("Unable to download profile image from Firebase storage")
-                        } else {
-                            print("Post image downloaded from Firebase storage")
-                            if let imageData = data {
-                                if let img = UIImage(data: imageData) {
-                                    self.userView.image = img
-                                    HomeVC.profileImageCache.setObject(img, forKey: post.profileImageURL as NSString)
-                                }
-                            }
-                        }
-                    })
+        let profileRef = Storage.storage().reference(forURL: post.profileImageURL)
+        profileRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            if error != nil {
+                print("Unable to download profile image from Firebase storage")
+            } else {
+                print("profile image downloaded from Firebase storage")
+                if let profileImage = data {
+                    if let profileImg = UIImage(data: profileImage) {
+                        self.userView.image = profileImg
+                    }
                 }
-            })
-        }
+            }
+        })
         upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")

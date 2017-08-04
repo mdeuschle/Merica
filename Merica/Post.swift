@@ -106,6 +106,9 @@ class Post {
         if let postImageURL = postDic[DatabaseID.postImageURL.rawValue] as? String {
             _postImageURL = postImageURL
         }
+        if let profileImageURL = postDic[DatabaseID.profileImageURL.rawValue] as? String {
+            _profileImageURL = profileImageURL
+        }
         if let timeStamp = postDic[DatabaseID.timeStamp.rawValue] as? String {
             _timeStamp = timeStamp
         }
