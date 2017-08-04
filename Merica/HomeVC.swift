@@ -9,13 +9,15 @@
 import UIKit
 import Firebase
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, DidTapUserProfile {
 
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     var postRef: DatabaseReference!
     var handle: UInt!
+    var userKey: String!
+    var userName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +27,7 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         readPostData()
+        tabBarController?.tabBar.isHidden = false
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -32,6 +35,20 @@ class HomeVC: UIViewController {
         postRef.removeObserver(withHandle: handle)
     }
 
+    func userProfileTapped(post: Post) {
+        userKey = post.userKey
+        userName = post.userName
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segue.fromHomeToUserPosts.rawValue {
+            if let destination = segue.destination as? UserPostsVC {
+                destination.userKey = userKey
+                destination.userName = userName
+            }
+        }
+    }
+    
     func readPostData() {
         handle = postRef.observe(.value, with: { (snapshot) in
             self.posts = []
@@ -65,6 +82,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
             return PostCell()
         }
         cell.parentVC = self
+        cell.userProfileTappedDelegate = self
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString),
             let profileImage = HomeVC.imageCache.object(forKey: post.profileImageURL as NSString) {

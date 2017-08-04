@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0ABDA0F4FCA00805260EBA5D /* Pods_Merica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D900F9D6BB3570A8EBCF969 /* Pods_Merica.framework */; };
 		9BD20D7FF4D0B84D919C4CEB /* Pods_MericaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51878BD686C1CAEFAC4D3969 /* Pods_MericaTests.framework */; };
+		A81E62191F34E0BA00D252CB /* UserPostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81E62181F34E0BA00D252CB /* UserPostsCell.swift */; };
+		A81E621B1F34E0DC00D252CB /* UserPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */; };
 		A83B4E501F0F135F008595E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4E4F1F0F135F008595E8 /* AppDelegate.swift */; };
 		A83B4E551F0F135F008595E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E531F0F135F008595E8 /* Main.storyboard */; };
 		A83B4E571F0F135F008595E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A83B4E561F0F135F008595E8 /* Assets.xcassets */; };
@@ -76,6 +78,8 @@
 		51878BD686C1CAEFAC4D3969 /* Pods_MericaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MericaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA2A2E445A19D467342469C /* Pods-Merica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Merica.release.xcconfig"; path = "Pods/Target Support Files/Pods-Merica/Pods-Merica.release.xcconfig"; sourceTree = "<group>"; };
 		81DCC67C33CDA055550AAC98 /* Pods-MericaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MericaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MericaUITests/Pods-MericaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A81E62181F34E0BA00D252CB /* UserPostsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsCell.swift; sourceTree = "<group>"; };
+		A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPostsVC.swift; sourceTree = "<group>"; };
 		A83B4E4C1F0F135F008595E8 /* Merica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Merica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A83B4E4F1F0F135F008595E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A83B4E541F0F135F008595E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -234,6 +238,7 @@
 				A8D4DBA81F2C103400D37555 /* MyPostsVC.swift */,
 				A8D4DBB21F2D47ED00D37555 /* MyUpVotesVC.swift */,
 				A8D4DBB81F2D652200D37555 /* MyFavoritesVC.swift */,
+				A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */,
 				A8D4DBAA1F2CE24B00D37555 /* DetailVC.swift */,
 			);
 			name = Controllers;
@@ -244,11 +249,12 @@
 			children = (
 				A83B4EA41F1442CF008595E8 /* ProfileCell.swift */,
 				A83B4EA61F149476008595E8 /* PostCell.swift */,
-				A8D4DBA61F2C05DB00D37555 /* MyPostsCell.swift */,
 				A8D4DBA41F2BE98D00D37555 /* MoreCell.swift */,
 				A8D4DBAC1F2CE27500D37555 /* DetailCell.swift */,
+				A8D4DBA61F2C05DB00D37555 /* MyPostsCell.swift */,
 				A8D4DBB41F2D481800D37555 /* MyUpVotesCell.swift */,
 				A8D4DBB61F2D604C00D37555 /* MyFavoritesCell.swift */,
+				A81E62181F34E0BA00D252CB /* UserPostsCell.swift */,
 				A89B12471F3163640094574E /* CircleView.swift */,
 			);
 			name = Views;
@@ -622,6 +628,7 @@
 				A8D94CD41F1EB24000DE148F /* PostAnnotation.swift in Sources */,
 				A8D4DBAF1F2D14A700D37555 /* CellLabel.swift in Sources */,
 				A83B4E941F117983008595E8 /* DataService.swift in Sources */,
+				A81E62191F34E0BA00D252CB /* UserPostsCell.swift in Sources */,
 				A83B4EA51F1442CF008595E8 /* ProfileCell.swift in Sources */,
 				A8D4DBB31F2D47ED00D37555 /* MyUpVotesVC.swift in Sources */,
 				A83B4E861F105EE2008595E8 /* WelcomeVC.swift in Sources */,
@@ -632,6 +639,7 @@
 				A8D4DBAB1F2CE24B00D37555 /* DetailVC.swift in Sources */,
 				A8CF0DE21F1E8274005B8EA6 /* LocationService.swift in Sources */,
 				A83B4E881F105F0E008595E8 /* LoginVC.swift in Sources */,
+				A81E621B1F34E0DC00D252CB /* UserPostsVC.swift in Sources */,
 				A8D4DBAD1F2CE27500D37555 /* DetailCell.swift in Sources */,
 				A8D94CD61F1F1AFD00DE148F /* ColorExtension.swift in Sources */,
 			);

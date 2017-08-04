@@ -66,7 +66,7 @@ class MyUpVotesVC: UIViewController {
         if segue.identifier == Segue.fromMyUpVotesToDetail.rawValue {
             if let destination = segue.destination as? DetailVC {
                 destination.post = selectedPost
-                destination.isMyUpVote = true
+//                destination.isMyUpVote = true
             }
         }
     }

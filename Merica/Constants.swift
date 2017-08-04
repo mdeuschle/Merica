@@ -22,6 +22,8 @@ enum Segue: String {
     case fromMyUpVotesToDetail = "fromMyUpVotesToDetail"
     case toMyFavorites = "toMyFavorites"
     case fromMyFavoritesToDetail = "fromMyFavoritesToDetail"
+    case fromHomeToUserPosts = "fromHomeToUserPosts"
+    case fromUserPostsToDetail = "fromUserPostsToDetail"    
 }
 
 enum DatabaseID: String {
@@ -94,6 +96,7 @@ enum ReusableCell: String {
     case detailCell = "detailCell"
     case myUpVotesCell = "myUpVotesCell"
     case myFavoritesCell = "myFavoritesCell"
+    case userPostsCell = "userPostsCell"
 }
 
 enum ReusableID: String {

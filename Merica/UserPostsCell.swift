@@ -1,25 +1,17 @@
 //
-//  PostCell.swift
+//  UserPostsCell.swift
 //  Merica
 //
-//  Created by Matt Deuschle on 7/10/17.
+//  Created by Matt Deuschle on 8/4/17.
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-protocol DidTapUserProfile {
-    func userProfileTapped(post: Post)
-}
+class UserPostsCell: UITableViewCell {
 
-class PostCell: UITableViewCell {
-
-    @IBOutlet var userView: CircleView!
     @IBOutlet var postTitleLabel: UILabel!
-    @IBOutlet var postImageView: UIImageView!
-    @IBOutlet var timeStampLabel: UILabel!
-    @IBOutlet var locationLabel: UILabel!
     @IBOutlet var upVoteImage: UIImageView!
     @IBOutlet var voteCountLabel: UILabel!
     @IBOutlet var downVoteImage: UIImageView!
@@ -30,9 +22,7 @@ class PostCell: UITableViewCell {
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
-    var currentUser: DatabaseReference!
     weak var parentVC = UIViewController()
-    var userProfileTappedDelegate: DidTapUserProfile?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,15 +30,6 @@ class PostCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
-        userView.addGestureRecognizer(tapGestureGenerator(selector: #selector(userTapped(sender:))))
-        currentUser = DataService.shared.refCurrentUser
-    }
-
-    func userTapped(sender: UITapGestureRecognizer) {
-        if let delegate = userProfileTappedDelegate, let vc = parentVC {
-            delegate.userProfileTapped(post: post)
-            vc.performSegue(withIdentifier: Segue.fromHomeToUserPosts.rawValue, sender: vc)
-        }
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -104,53 +85,14 @@ class PostCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, image: UIImage? = nil, profileImage: UIImage? = nil) {
+    func configCell(post: Post) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
-        timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
-        let location = post.cityName + Divider.pipe.rawValue + post.stateName
-        locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
-        if image != nil {
-            self.postImageView.image = image
-        } else {
-            let ref = Storage.storage().reference(forURL: post.postImageURL)
-            ref.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print("Unable to download post image from Firebase storage")
-                } else {
-                    print("Post image downloaded from Firebase storage")
-                    if let imageData = data {
-                        if let img = UIImage(data: imageData) {
-                            self.postImageView.image = img
-                            HomeVC.imageCache.setObject(img, forKey: post.postImageURL as NSString)
-                        }
-                    }
-                }
-            })
-        }
-        if profileImage != nil {
-            self.userView.image = profileImage
-        } else {
-            let profileRef = Storage.storage().reference(forURL: post.profileImageURL)
-            profileRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-                if error != nil {
-                    print("Unable to download profile image from Firebase storage")
-                } else {
-                    print("profile image downloaded from Firebase storage")
-                    if let profileImage = data {
-                        if let profileImg = UIImage(data: profileImage) {
-                            self.userView.image = profileImg
-                            HomeVC.imageCache.setObject(profileImg, forKey: post.profileImageURL as NSString)
-                        }
-                    }
-                }
-            })
-        }
         upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
@@ -174,13 +116,10 @@ class PostCell: UITableViewCell {
         })
     }
 
-    @IBAction func shareTapped(_ sender: UIButton) {
-        if let title = postTitleLabel.text, let image = postImageView.image {
-            let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
+    @IBAction func shareTapped(_ sender: Any) {
+        if let title = postTitleLabel.text {
+            let vc = UIActivityViewController(activityItems: [title], applicationActivities: nil)
             parentVC?.present(vc, animated: true)
         }
     }
 }
-
-
-
