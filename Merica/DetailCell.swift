@@ -97,11 +97,7 @@ class DetailCell: UITableViewCell {
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
-        currentUserRef.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let name = snapshot.value as? String {
-                self.timeStampLabel.text = name + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
-            }
-        })
+        timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
         let ref = Storage.storage().reference(forURL: post.postImageURL)

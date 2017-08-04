@@ -97,7 +97,7 @@ class PostCell: UITableViewCell {
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
-        self.timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         let location = post.cityName + Divider.pipe.rawValue + post.stateName
         locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
