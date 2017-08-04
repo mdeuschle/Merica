@@ -12,9 +12,12 @@ import SwiftKeychainWrapper
 
 class MoreVC: UIViewController {
 
+    var appDelegate: AppDelegate!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        appDelegate = UIApplication.shared.delegate as! AppDelegate
     }
 }
 
@@ -35,10 +38,22 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.row == 0 {
-            KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
             do {
                 try Auth.auth().signOut()
-                navigationController?.popViewController(animated: true)
+                KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
+                if let isWelcomeRoot = appDelegate.isWelcomeRoot {
+                    if isWelcomeRoot {
+                        performSegue(withIdentifier: "unwindToHome", sender: self)
+                        print("Welcome already root")
+                    } else {
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        if let vc = storyboard.instantiateViewController(withIdentifier: StoryboardID.welcome.rawValue) as? WelcomeVC {
+                            appDelegate.window?.rootViewController = vc
+                            performSegue(withIdentifier: "unwindToHome", sender: self)
+                            print("Welcome NOT already root")
+                        }
+                    }
+                }
             } catch {
                 present(UIAlertController.withError(error: error),
                         animated: true,
@@ -47,3 +62,4 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+

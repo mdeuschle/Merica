@@ -64,6 +64,11 @@ class HomeVC: UIViewController, DidTapUserProfile {
             }
         })
     }
+
+    @IBAction func unwindToHome(segue:UIStoryboardSegue) {
+        print("UNWIND WORKED")
+        dismiss(animated: false, completion: nil)
+    }
 }
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate {

@@ -14,7 +14,7 @@ import SwiftKeychainWrapper
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var isWelcomeRoot: Bool?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
@@ -23,8 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let _ = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) {
             print("ID found in keychain")
+            isWelcomeRoot = false
             initialViewController = storyboard.instantiateViewController(withIdentifier: StoryboardID.tabBar.rawValue)
         } else {
+            isWelcomeRoot = true
             initialViewController = storyboard.instantiateViewController(withIdentifier: StoryboardID.welcome.rawValue)
         }
 
