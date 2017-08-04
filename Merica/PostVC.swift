@@ -106,7 +106,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         super.didReceiveMemoryWarning()
     }
 
-    func postToFirebse(imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
+    func postToFirebse(profileURL: String, imageURL: String, lat: Double, lon: Double, cityName: String, stateName: String) {
         if postTextField.text == "" {
             present(UIAlertController.withMessage(message: Alert.addTitle.rawValue), animated: true, completion: nil)
         } else {
@@ -134,34 +134,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
 
-    //
-    //            currentUser.child(DatabaseID.userName.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
-    //                if let name = snapshot.value as? String {
-    //                    if let postText = self.postTextField.text {
-    //                        let postDic: [String: Any] = [
-    //                            DatabaseID.profileImageURL.rawValue: profileImageURL as Any,
-    //                            DatabaseID.postImageURL.rawValue: imageURL as Any,
-    //                            DatabaseID.postTitle.rawValue: postText as Any,
-    //                            DatabaseID.userName.rawValue: name as Any,
-    //                            DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
-    //                            DatabaseID.upVotes.rawValue: 0 as Any,
-    //                            DatabaseID.downVotes.rawValue: 0 as Any,
-    //                            DatabaseID.isFavorite.rawValue: false as Any,
-    //                            DatabaseID.latitude.rawValue: lat as Any,
-    //                            DatabaseID.longitude.rawValue: lon as Any,
-    //                            DatabaseID.cityName.rawValue: cityName as Any,
-    //                            DatabaseID.stateName.rawValue: stateName as Any,
-    //                            DatabaseID.userKey.rawValue: KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) as Any
-    //                        ]
-    //                        self.postRef.childByAutoId().setValue(postDic)
-    //                        self.tabBarController?.selectedIndex = 0
-    //                        self.imageView.image = #imageLiteral(resourceName: "greyPhoto")
-    //                        self.postTextField.text = ""
-    //                    }
-    //                }
-    //            })
-
-
     @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
         present(imagePicker, animated: true, completion: nil)
     }
@@ -185,7 +157,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                                     let lat = latitude,
                                     let lon = longitude,
                                     let url = metaData?.downloadURL()?.absoluteString {
-                                    self.postToFirebse(imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
+                                    self.postToFirebse(profileURL: self.profileURL, imageURL: url, lat: lat, lon: lon, cityName: city, stateName: state)
                                 } else {
                                     if let err = error {
                                         self.present(UIAlertController.withError(error: err), animated: true, completion: nil)

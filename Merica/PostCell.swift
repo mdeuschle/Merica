@@ -91,7 +91,7 @@ class PostCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, image: UIImage? = nil) {
+    func configCell(post: Post, image: UIImage? = nil, profileImage: UIImage? = nil) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
@@ -120,19 +120,24 @@ class PostCell: UITableViewCell {
                 }
             })
         }
-        let profileRef = Storage.storage().reference(forURL: post.profileImageURL)
-        profileRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
-            if error != nil {
-                print("Unable to download profile image from Firebase storage")
-            } else {
-                print("profile image downloaded from Firebase storage")
-                if let profileImage = data {
-                    if let profileImg = UIImage(data: profileImage) {
-                        self.userView.image = profileImg
+        if profileImage != nil {
+            self.userView.image = profileImage
+        } else {
+            let profileRef = Storage.storage().reference(forURL: post.profileImageURL)
+            profileRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+                if error != nil {
+                    print("Unable to download profile image from Firebase storage")
+                } else {
+                    print("profile image downloaded from Firebase storage")
+                    if let profileImage = data {
+                        if let profileImg = UIImage(data: profileImage) {
+                            self.userView.image = profileImg
+                            HomeVC.imageCache.setObject(profileImg, forKey: post.profileImageURL as NSString)
+                        }
                     }
                 }
-            }
-        })
+            })
+        }
         upVotesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let _ = snapshot.value as? NSNull {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
