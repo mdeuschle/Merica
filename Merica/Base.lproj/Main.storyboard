@@ -1390,6 +1390,7 @@
                                             <outlet property="favoriteImage" destination="MwO-FA-24w" id="xuu-eX-QVA"/>
                                             <outlet property="postImageView" destination="Jiz-ad-Z37" id="4y7-mf-3Fs"/>
                                             <outlet property="postTitleLabel" destination="u5O-9N-e4r" id="YXE-o9-GQF"/>
+                                            <outlet property="profileView" destination="FWW-d6-akC" id="Mr3-TU-r7S"/>
                                             <outlet property="saveLabel" destination="36V-9s-iJG" id="P49-M8-XQv"/>
                                             <outlet property="timeStampLabel" destination="axr-P2-1GF" id="cKT-Ju-faZ"/>
                                             <outlet property="upVoteImage" destination="9EZ-Yz-VX1" id="Fxg-Wm-BMo"/>
@@ -1955,6 +1956,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="saJ-HK-P9v"/>
-        <segue reference="TCA-hu-Vt9"/>
+        <segue reference="vhG-jG-KDj"/>
     </inferredMetricsTieBreakers>
 </document>

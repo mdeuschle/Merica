@@ -19,6 +19,7 @@ class DetailCell: UITableViewCell {
     @IBOutlet var downVoteImage: UIImageView!
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
+    @IBOutlet var profileView: CircleView!
 
     var post: Post!
     var upVotesRef: DatabaseReference!
@@ -112,6 +113,19 @@ class DetailCell: UITableViewCell {
                 if let imageData = data {
                     if let img = UIImage(data: imageData) {
                         self.postImageView.image = img
+                    }
+                }
+            }
+        })
+        let profileRef = Storage.storage().reference(forURL: post.profileImageURL)
+        profileRef.getData(maxSize: 2 * 1024 * 1024, completion: { (data, error) in
+            if error != nil {
+                print("Unable to download profile image from Firebase storage")
+            } else {
+                print("profile image downloaded from Firebase storage")
+                if let profileImage = data {
+                    if let profileImg = UIImage(data: profileImage) {
+                        self.profileView.image = profileImg
                     }
                 }
             }
