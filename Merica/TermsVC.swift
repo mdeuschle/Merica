@@ -4,15 +4,27 @@
 //
 //  Created by Matt Deuschle on 7/28/17.
 //  Copyright © 2017 Matt Deuschle. All rights reserved.
-//
 
-import UIKit
 
-class TermsVC: UIViewController {
+import WebKit
 
-    @IBOutlet var termsWebView: UIWebView!
+class TermsVC: UIViewController, WKNavigationDelegate {
+
+    var webView: WKWebView!
+
+    override func loadView() {
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        view = webView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = ViewControllerTitle.about.rawValue
+        if let url = URL(string: URLString.privacyPoliy.rawValue) {
+            webView.load(URLRequest(url: url))
+        }
     }
 }
+
+

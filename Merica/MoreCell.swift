@@ -14,7 +14,7 @@ class MoreCell: UITableViewCell {
     @IBOutlet var cellLabel: UILabel!
 
     let logOut = CellLabel(cellLabel: ProfileCellLabel.logOut.rawValue, cellImage: #imageLiteral(resourceName: "greyLogout"))
-    let terms = CellLabel(cellLabel: ProfileCellLabel.terms.rawValue, cellImage: #imageLiteral(resourceName: "help"))
+    let privacyPolicy = CellLabel(cellLabel: ProfileCellLabel.privacyPolicy.rawValue, cellImage: #imageLiteral(resourceName: "help"))
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +26,7 @@ class MoreCell: UITableViewCell {
         case 0:
             config(cellLabel: logOut)
         case 1:
-            config(cellLabel: terms)
+            config(cellLabel: privacyPolicy)
         default:
             break
         }

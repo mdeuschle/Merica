@@ -13,7 +13,7 @@ enum Segue: String {
     case signUpSuccess = "signUpSuccess"
     case toMainFeed = "toMainFeed"
     case toCommentsVC = "toCommentsVC"
-    case toTermsAndConditinos = "toTermsAndConditinos"
+    case toTermsVC = "toTermsVC"
     case toMyPosts = "toMyPosts"
     case fromMyPostsToDetail = "fromMyPostsToDetail"
     case fromMapToDetail = "fromMapToDetail"
@@ -110,7 +110,7 @@ enum ProfileCellLabel: String {
     case upVotes = "My Up Votes"
     case more = "More"
     case est = "Est: "
-    case terms = "Terms & Conditions"
+    case privacyPolicy = "Privacy Policy"
 }
 
 enum NotificationKey: String {
@@ -122,11 +122,16 @@ enum ViewControllerTitle: String {
     case myUpVotes = "My Up Votes"
     case myFavorites = "My Favorites"
     case merica = "'Merica"
+    case about = "About"
 }
 
 enum LocationType: String {
     case city = "City"
     case state = "State"
+}
+
+enum URLString: String {
+    case privacyPoliy = "https://sites.google.com/view/merica/privacy-policy"
 }
 
 

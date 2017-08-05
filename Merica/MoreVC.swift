@@ -59,6 +59,8 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
                         animated: true,
                         completion: nil)
             }
+        } else {
+            performSegue(withIdentifier: Segue.toTermsVC.rawValue, sender: self)
         }
     }
 }
