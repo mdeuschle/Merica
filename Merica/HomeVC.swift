@@ -66,7 +66,7 @@ class HomeVC: UIViewController, DidTapUserProfile {
     }
 
     @IBAction func unwindToHome(segue:UIStoryboardSegue) {
-        print("UNWIND WORKED")
+        postRef.removeObserver(withHandle: handle)
         dismiss(animated: false, completion: nil)
     }
 }

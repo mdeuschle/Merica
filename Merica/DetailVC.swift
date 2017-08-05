@@ -16,8 +16,6 @@ class DetailVC: UIViewController {
 
     var post: Post!
     var isMyPost = false
-//    var isMyUpVote = false
-//    var isMyFavorite = false
     var postRef: DatabaseReference!
     var handle: UInt!
 
@@ -43,7 +41,6 @@ class DetailVC: UIViewController {
         super.viewDidDisappear(animated)
         postRef.removeObserver(withHandle: handle)
     }
-
 
     func readPostData() {
         handle = postRef.observe(.value, with: { (snapshot) in
