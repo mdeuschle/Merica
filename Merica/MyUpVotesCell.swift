@@ -24,6 +24,7 @@ class MyUpVotesCell: UITableViewCell {
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
     weak var parentVC = UIViewController()
+    weak var appDelegate: AppDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +32,7 @@ class MyUpVotesCell: UITableViewCell {
         downVoteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(downVotesTapped(sender:))))
         favoriteImage.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
+        appDelegate = UIApplication.shared.delegate as? AppDelegate
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -39,6 +41,7 @@ class MyUpVotesCell: UITableViewCell {
                 self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
                 self.post.adjustFavorites(didFavorite: true)
                 self.favoriteRef.setValue(true)
+                self.appDelegate?.scheduleNotification(post: self.post, message: NotificationMessage.favorite.rawValue)
             } else {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
                 self.post.adjustFavorites(didFavorite: false)
@@ -54,6 +57,7 @@ class MyUpVotesCell: UITableViewCell {
                 self.downVoteImage.isUserInteractionEnabled = false
                 self.post.adjustUpVotes(didUpVote: true)
                 self.upVotesRef.setValue(true)
+                self.appDelegate?.scheduleNotification(post: self.post, message: NotificationMessage.upvote.rawValue)
             } else {
                 self.upVoteImage.image = #imageLiteral(resourceName: "greyUpArrow")
                 self.downVoteImage.isUserInteractionEnabled = true

@@ -134,6 +134,16 @@ enum URLString: String {
     case privacyPoliy = "https://sites.google.com/view/merica/privacy-policy"
 }
 
+enum NotificationID: String {
+    case textNotification = "textNotification"
+}
+
+enum NotificationMessage: String {
+    case upvote = "☞ My post was just upvoted! 🕺🏻"
+    case favorite = "☞ My post was just favorited! ❤️"
+}
+
+
 
 
 
