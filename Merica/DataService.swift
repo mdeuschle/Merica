@@ -55,6 +55,10 @@ class DataService {
     func favoriteRef(postKey: String) -> DatabaseReference {
         return refCurrentUser.child(DatabaseID.isFavorite.rawValue).child(postKey)
     }
+
+    func topPostRef(postKey: String) -> DatabaseReference {
+        return refCurrentUser.child(DatabaseID.isTopPost.rawValue).child(postKey)
+    }
 }
 
 
