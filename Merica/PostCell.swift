@@ -185,6 +185,13 @@ class PostCell: UITableViewCell {
                 self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
             }
         })
+        isTopPostRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.logoImage.isHidden = true
+            } else {
+                self.logoImage.isHidden = false
+            }
+        })
     }
 
     @IBAction func shareTapped(_ sender: UIButton) {

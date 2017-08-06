@@ -20,12 +20,14 @@ class DetailCell: UITableViewCell {
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
     @IBOutlet var profileView: CircleView!
+    @IBOutlet var logoImage: UIImageView!
 
     var post: Post!
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
     var currentUserRef: DatabaseReference!
+    var isTopPostRef: DatabaseReference!
     weak var parentVC = UIViewController()
     weak var appDelegate: AppDelegate?
 
@@ -38,6 +40,7 @@ class DetailCell: UITableViewCell {
         currentUserRef = DataService.shared.refCurrentUser
         postImageView.image = UIImage()
         appDelegate = UIApplication.shared.delegate as? AppDelegate
+        logoImage.isHidden = true
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -100,6 +103,7 @@ class DetailCell: UITableViewCell {
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
+        isTopPostRef = DataService.shared.topPostRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         let totalVotes = post.upVotes - post.downVotes
@@ -149,6 +153,13 @@ class DetailCell: UITableViewCell {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
             } else {
                 self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
+            }
+        })
+        isTopPostRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let _ = snapshot.value as? NSNull {
+                self.logoImage.isHidden = true
+            } else {
+                self.logoImage.isHidden = false
             }
         })
     }
