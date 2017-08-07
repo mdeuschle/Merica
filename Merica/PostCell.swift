@@ -25,14 +25,12 @@ class PostCell: UITableViewCell {
     @IBOutlet var downVoteImage: UIImageView!
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
-    @IBOutlet var logoImage: UIImageView!
 
     var post: Post!
     var upVotesRef: DatabaseReference!
     var downVotesRef: DatabaseReference!
     var favoriteRef: DatabaseReference!
     var currentUser: DatabaseReference!
-    var isTopPostRef: DatabaseReference!
     weak var parentVC = UIViewController()
     var userProfileTappedDelegate: DidTapUserProfile?
     weak var appDelegate: AppDelegate?
@@ -46,7 +44,6 @@ class PostCell: UITableViewCell {
         userView.addGestureRecognizer(tapGestureGenerator(selector: #selector(userTapped(sender:))))
         currentUser = DataService.shared.refCurrentUser
         appDelegate = UIApplication.shared.delegate as? AppDelegate
-        logoImage.isHidden = true
     }
 
     func userTapped(sender: UITapGestureRecognizer) {
@@ -111,23 +108,17 @@ class PostCell: UITableViewCell {
         return tap
     }
 
-    func configCell(post: Post, posts: [Post], image: UIImage? = nil, profileImage: UIImage? = nil) {
+    func configCell(post: Post, image: UIImage? = nil, profileImage: UIImage? = nil) {
         self.post = post
         upVotesRef = DataService.shared.upVotesRef(postKey: post.postKey)
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
-        isTopPostRef = DataService.shared.topPostRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
         timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         let location = post.cityName + Divider.pipe.rawValue + post.stateName
         locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
         voteCountLabel.text = "\(totalVotes)"
-        if post === posts.first {
-            logoImage.isHidden = false
-            self.post.adjustTopPost(isTopPost: true)
-            isTopPostRef.setValue(true)
-        }
         if image != nil {
             self.postImageView.image = image
         } else {
@@ -183,13 +174,6 @@ class PostCell: UITableViewCell {
                 self.favoriteImage.image = #imageLiteral(resourceName: "greyFavorite")
             } else {
                 self.favoriteImage.image = #imageLiteral(resourceName: "redFavorite")
-            }
-        })
-        isTopPostRef.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let _ = snapshot.value as? NSNull {
-                self.logoImage.isHidden = true
-            } else {
-                self.logoImage.isHidden = false
             }
         })
     }

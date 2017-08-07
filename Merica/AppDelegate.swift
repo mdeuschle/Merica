@@ -34,11 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = initialViewController
         window?.makeKeyAndVisible()
 
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
-            if !accepted {
-                print("Notification access denied.")
-            }
-        }
         return true
     }
 

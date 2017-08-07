@@ -67,7 +67,6 @@ class MyFavoritesVC: UIViewController {
         if segue.identifier == Segue.fromMyFavoritesToDetail.rawValue {
             if let destination = segue.destination as? DetailVC {
                 destination.post = selectedPost
-//                destination.isMyFavorite = true
             }
         }
     }

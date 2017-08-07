@@ -19,7 +19,6 @@ class Post {
     private var _upVotes: Int!
     private var _downVotes: Int!
     private var _isFavorite: Bool!
-    private var _isTopPost: Bool!
     private var _latitude: Double?
     private var _longitude: Double?
     private var _cityName: String?
@@ -52,9 +51,6 @@ class Post {
     var isFavorite: Bool {
         return _isFavorite
     }
-    var isTopPost: Bool {
-        return _isTopPost
-    }
     var latitude: Double {
         return _latitude ?? 0.0
     }
@@ -83,7 +79,7 @@ class Post {
         }
     }
 
-    init(postTitle: String, userName: String, postImageURL: String, profileImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, isTopPost: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
+    init(postTitle: String, userName: String, postImageURL: String, profileImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
         _userName = userName
         _postImageURL = postImageURL
@@ -92,7 +88,6 @@ class Post {
         _upVotes = upVotes
         _downVotes = downVotes
         _isFavorite = isFavorite
-        _isTopPost = isTopPost
         _latitude = latitude
         _longitude = longitude
         _cityName = cityName
@@ -125,9 +120,6 @@ class Post {
         }
         if let isFavorite = postDic[DatabaseID.isFavorite.rawValue] as? Bool {
             _isFavorite = isFavorite
-        }
-        if let isTopPost = postDic[DatabaseID.isTopPost.rawValue] as? Bool {
-            _isTopPost = isTopPost
         }
         if let latitude = postDic[DatabaseID.latitude.rawValue] as? Double {
             _latitude = latitude
@@ -173,16 +165,6 @@ class Post {
         }
         _postRef.child(DatabaseID.isFavorite.rawValue).setValue(_isFavorite)
     }
-
-    func adjustTopPost(isTopPost: Bool) {
-        if isTopPost {
-            _isTopPost = true
-        } else {
-            _isTopPost = false
-        }
-        _postRef.child(DatabaseID.isTopPost.rawValue).setValue(_isTopPost)
-    }
-
 }
 
 

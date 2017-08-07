@@ -12,6 +12,7 @@ import SwiftKeychainWrapper
 
 class SignUpVC: UIViewController {
 
+    @IBOutlet var mericaLabel: UILabel!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
@@ -115,6 +116,7 @@ extension SignUpVC: UITextFieldDelegate {
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         logoImage.isHidden = true
+        mericaLabel.isHidden = true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

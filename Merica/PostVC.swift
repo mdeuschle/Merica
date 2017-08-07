@@ -11,6 +11,7 @@ import Firebase
 import SwiftKeychainWrapper
 import CoreLocation
 import MapKit
+import UserNotifications
 
 class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
@@ -119,7 +120,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                     DatabaseID.timeStamp.rawValue: DateHelper.convertDateToString() as Any,
                     DatabaseID.upVotes.rawValue: 0 as Any,
                     DatabaseID.downVotes.rawValue: 0 as Any,
-                    DatabaseID.isFavorite.rawValue: false as Any,
                     DatabaseID.latitude.rawValue: lat as Any,
                     DatabaseID.longitude.rawValue: lon as Any,
                     DatabaseID.cityName.rawValue: cityName as Any,
@@ -139,6 +139,11 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
 
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+            }
+        }
         if let image = selectedImage {
             if let reSizedImage = image.resize(width: 300) {
                 if let imageData = UIImagePNGRepresentation(reSizedImage) {

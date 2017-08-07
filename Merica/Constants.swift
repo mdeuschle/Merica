@@ -39,7 +39,6 @@ enum DatabaseID: String {
     case upVotes = "upVotes"
     case downVotes = "downVotes"
     case isFavorite = "isFavorite"
-    case isTopPost = "isTopPost"
     case userKey = "userKey"
     case latitude = "latitude"
     case longitude = "longitude"
@@ -141,8 +140,7 @@ enum NotificationID: String {
 
 enum NotificationMessage: String {
     case upvote = "☞ My post was just upvoted! 🕺🏻"
-    case favorite = "☞ My post was just favorited! ❤️"
-}
+    case favorite = "☞ My post was just favorited! ❤️"}
 
 
 

@@ -91,10 +91,9 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString),
             let profileImage = HomeVC.imageCache.object(forKey: post.profileImageURL as NSString) {
-            cell.configCell(post: post, posts: posts, image: image, profileImage: profileImage)
-//            cell.configCell(post: post, image: image, profileImage: profileImage)
+            cell.configCell(post: post, image: image, profileImage: profileImage)
         } else {
-            cell.configCell(post: post, posts: posts)
+            cell.configCell(post: post)
         }
         return cell
     }
