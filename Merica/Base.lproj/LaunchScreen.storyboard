@@ -22,6 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mountain" translatesAutoresizingMaskIntoConstraints="NO" id="enU-jS-6QE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.65000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="16w-be-DR5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.00075607019239999997" green="0.03111508302" blue="0.1307746172" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="HSz-Zz-WUa">
                                 <rect key="frame" x="76" y="100" width="223" height="120"/>
                                 <constraints>
@@ -31,18 +38,27 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.13725490200000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="enU-jS-6QE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="4Ne-gV-OG3"/>
+                            <constraint firstItem="16w-be-DR5" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="6uB-gc-B2q"/>
+                            <constraint firstItem="16w-be-DR5" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="U9R-J0-9oG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HSz-Zz-WUa" secondAttribute="trailing" constant="60" id="auf-aL-7G4"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="16w-be-DR5" secondAttribute="bottom" id="en4-BF-sIx"/>
+                            <constraint firstItem="enU-jS-6QE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="fcw-9v-LQp"/>
+                            <constraint firstAttribute="trailing" secondItem="16w-be-DR5" secondAttribute="trailing" id="nle-BH-sUX"/>
                             <constraint firstItem="HSz-Zz-WUa" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="80" id="qgG-Rn-4Vm"/>
                             <constraint firstItem="HSz-Zz-WUa" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="60" id="vXG-oE-SM2"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="enU-jS-6QE" secondAttribute="bottom" id="vlf-R0-QUJ"/>
+                            <constraint firstAttribute="trailing" secondItem="enU-jS-6QE" secondAttribute="trailing" id="yT0-mT-T3d"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+            <point key="canvasLocation" x="-378.39999999999998" y="393.55322338830587"/>
         </scene>
     </scenes>
     <resources>
-        <image name="logo" width="337" height="342"/>
+        <image name="logo" width="200" height="200"/>
+        <image name="mountain" width="640" height="1136"/>
     </resources>
 </document>
