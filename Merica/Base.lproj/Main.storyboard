@@ -459,7 +459,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="keR-aE-3ls">
-                                <rect key="frame" x="0.0" y="238" width="320" height="281"/>
+                                <rect key="frame" x="0.0" y="258" width="320" height="261"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.13725490200000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0039215686269999999" green="0.13725490200000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -512,33 +512,48 @@
                                     <constraint firstAttribute="height" constant="100" id="opP-5O-Yxw"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Est. June, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
-                                <rect key="frame" x="16" y="197" width="288" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34 Kudos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQh-kj-8Jh">
+                                <rect key="frame" x="16" y="223" width="288" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="zDD-tw-WdI"/>
+                                    <constraint firstAttribute="height" constant="15" id="OAY-PO-8KU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Est. June, 2017" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoo-qM-Yyj">
+                                <rect key="frame" x="16" y="199" width="288" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="Dlz-GM-uPT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BenjaminFranklin" family="Benjamin Franklin" pointSize="19"/>
+                                <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.5" height="0.5"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.13725490200000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leadingMargin" id="BoS-zS-Yzs"/>
-                            <constraint firstItem="keR-aE-3ls" firstAttribute="top" secondItem="Qoo-qM-Yyj" secondAttribute="bottom" constant="20" id="Fy8-KB-3Vs"/>
-                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="top" secondItem="Ov6-0C-ff5" secondAttribute="bottom" constant="8" id="OMZ-4y-GZg"/>
+                            <constraint firstItem="keR-aE-3ls" firstAttribute="top" secondItem="RQh-kj-8Jh" secondAttribute="bottom" constant="20" id="I2t-wE-WQH"/>
+                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="top" secondItem="Ov6-0C-ff5" secondAttribute="bottom" constant="10" id="LPQ-8Z-ugx"/>
                             <constraint firstItem="keR-aE-3ls" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leading" id="TRH-Bv-G9z"/>
                             <constraint firstItem="Ov6-0C-ff5" firstAttribute="centerX" secondItem="5h5-8n-TFm" secondAttribute="centerX" id="UE5-GH-oIZ"/>
                             <constraint firstItem="0e1-Cq-Rqv" firstAttribute="top" secondItem="keR-aE-3ls" secondAttribute="bottom" id="WWT-2y-2nI"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qoo-qM-Yyj" secondAttribute="trailing" id="dNv-8B-BQE"/>
+                            <constraint firstItem="RQh-kj-8Jh" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leadingMargin" id="bqR-mH-n6R"/>
+                            <constraint firstItem="RQh-kj-8Jh" firstAttribute="top" secondItem="Qoo-qM-Yyj" secondAttribute="bottom" constant="4" id="cKx-8v-hIT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Qoo-qM-Yyj" secondAttribute="trailing" id="hvt-5u-WZq"/>
                             <constraint firstAttribute="trailing" secondItem="keR-aE-3ls" secondAttribute="trailing" id="nWT-I8-ei0"/>
+                            <constraint firstItem="RQh-kj-8Jh" firstAttribute="trailing" secondItem="5h5-8n-TFm" secondAttribute="trailingMargin" id="pAm-QW-XZL"/>
                             <constraint firstItem="Ov6-0C-ff5" firstAttribute="top" secondItem="gw1-i6-C0s" secondAttribute="bottom" constant="25" id="xJQ-D1-u6J"/>
+                            <constraint firstItem="Qoo-qM-Yyj" firstAttribute="leading" secondItem="5h5-8n-TFm" secondAttribute="leadingMargin" id="yim-y6-ghf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="02N-QB-1Tq">
                         <barButtonItem key="backBarButtonItem" title=" " id="Faw-jJ-MKW"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="kudosLabel" destination="RQh-kj-8Jh" id="C2n-Ki-1VM"/>
                         <outlet property="memeberSinceLabel" destination="Qoo-qM-Yyj" id="sge-cT-34n"/>
                         <outlet property="profileImage" destination="Ov6-0C-ff5" id="sGE-nG-3jx"/>
                         <outlet property="userTableView" destination="keR-aE-3ls" id="Yel-LJ-4EE"/>
@@ -641,7 +656,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="434"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Da-tk-yzj" id="BYD-Jj-SLk">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="433.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="7Yv-ch-iby">
@@ -985,7 +1000,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8le-JH-ISu" id="bu3-0K-3KV">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMN-Sm-AFM">
@@ -1210,7 +1225,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="434"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDN-bi-bhb" id="HCP-Ie-GVz">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="434"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="433.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greyPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Jiz-ad-Z37">
@@ -1555,7 +1570,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xI-9v-UmU" id="5sT-an-Un3">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jt1-VY-Tf1">
@@ -1755,7 +1770,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5rf-Yv-oRm" id="L4A-m0-Glc">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpM-x5-uWH">
@@ -1955,7 +1970,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wm7-Wb-NRd" id="8kt-pk-LLn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="119.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is a test title for a post that has two lines posted. It should stop once two lines are reached." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rvk-1C-MXe">

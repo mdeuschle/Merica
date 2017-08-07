@@ -109,8 +109,9 @@ enum ProfileCellLabel: String {
     case favorites = "My Favorites"
     case upVotes = "My Up Votes"
     case more = "More"
-    case est = "Est: "
+    case est = "Est. "
     case privacyPolicy = "Privacy Policy"
+    case kudos = "Kudos "
 }
 
 enum NotificationKey: String {

@@ -15,12 +15,15 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     @IBOutlet var memeberSinceLabel: UILabel!
     @IBOutlet var userTableView: UITableView!
     @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var kudosLabel: UILabel!
 
     var currentUser: DatabaseReference!
     var imagePicker: UIImagePickerController!
     var selectedImage: UIImage?
     var picsRef: StorageReference!
     var editButton: UIBarButtonItem!
+    var postRef: DatabaseReference!
+    var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,37 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ProfileVC.editTapped))
         navigationItem.rightBarButtonItem = editButton
         profileImage.image = #imageLiteral(resourceName: "defaultProfile")
+        postRef = DataService.shared.refPosts
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        readUserData()
+        readPostData()
+        readProfilePic()
+        tabBarController?.tabBar.isHidden = false
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        postRef.removeObserver(withHandle: handle)
+    }
+
+    func readPostData() {
+        handle = postRef.observe(.value, with: { (snapshot) in
+            if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
+                var kudos = 0
+                for snap in snapShot {
+                    if let postDic = snap.value as? [String: Any] {
+                        let post = Post(postKey: snap.key, postDic: postDic)
+                        if let currentUserID = Auth.auth().currentUser?.uid {
+                            if currentUserID == post.userKey {
+                                kudos += Int(post.upVotes)                            }
+                        }
+                    }
+                }
+                self.kudosLabel.text = ProfileCellLabel.kudos.rawValue + "\(kudos)"
+            }
+        })
     }
 
     func configImagePicker() {
@@ -38,12 +72,6 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
         imagePicker.sourceType = .photoLibrary
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        readUserData()
-        readProfilePic()
-        tabBarController?.tabBar.isHidden = false
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
