@@ -141,7 +141,8 @@ enum NotificationID: String {
 
 enum NotificationMessage: String {
     case upvote = "☞ My post was just upvoted! 🕺🏻"
-    case favorite = "☞ My post was just favorited! ❤️"}
+    case favorite = "☞ My post was just favorited! ❤️"
+}
 
 
 
