@@ -113,7 +113,6 @@ class SignUpVC: UIViewController {
 }
 
 extension SignUpVC: UITextFieldDelegate {
-
     func textFieldDidBeginEditing(_ textField: UITextField) {
         logoImage.isHidden = true
         mericaLabel.isHidden = true

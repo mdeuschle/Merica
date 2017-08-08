@@ -1567,6 +1567,7 @@
                     <connections>
                         <segue destination="wkR-DA-pBo" kind="show" identifier="toTermsVC" id="B9X-Mt-yWJ"/>
                         <segue destination="EwK-Ec-fsl" kind="unwind" identifier="unwindToHome" unwindAction="unwindToHomeWithSegue:" id="ckU-Lu-USA"/>
+                        <segue destination="EwK-Ec-fsl" kind="unwind" identifier="unwindToWelcome" unwindAction="unwindToWelcomeWithSegue:" id="CMq-If-STF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAq-Do-Wdv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2211,7 +2212,7 @@
         <image name="whiteBack" width="16" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="TCA-hu-Vt9"/>
         <segue reference="aGa-Ld-f99"/>
-        <segue reference="UsD-QF-iVZ"/>
     </inferredMetricsTieBreakers>
 </document>

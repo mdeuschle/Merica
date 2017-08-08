@@ -147,7 +147,7 @@ extension ProfileVC: UITableViewDelegate, UITableViewDataSource {
         case 3:
             performSegue(withIdentifier: Segue.toMoreVC.rawValue, sender: self)
         default:
-            print("Default")
+            break
         }
     }
 

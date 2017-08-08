@@ -21,7 +21,6 @@ class LocationService {
                 geoCoder.reverseGeocodeLocation(currentLoc, completionHandler: { placemarks, error in
                     if let err = error {
                         handler(nil, err, nil, nil)
-                        print("Location Error: \(err)")
                     } else {
                         let places = placemarks
                         var placeMark: CLPlacemark!
@@ -32,8 +31,6 @@ class LocationService {
                         handler(address, nil, currentLoc.coordinate.latitude, currentLoc.coordinate.longitude)
                     }
                 })
-            } else {
-                print("Location Error")
             }
         }
     }

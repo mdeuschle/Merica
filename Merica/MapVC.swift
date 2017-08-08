@@ -88,7 +88,6 @@ class MapVC: UIViewController, MKMapViewDelegate {
                 if error != nil {
                     self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                 } else {
-                    print("Image downloaded from Firebase storage")
                     if let imageData = data {
                         if let img = UIImage(data: imageData) {
                             if let resizedImage = img.resize(width: 40) {

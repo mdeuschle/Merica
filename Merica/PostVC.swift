@@ -141,7 +141,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
             if !accepted {
-                print("Notification access denied.")
+                return
             }
         }
         if let image = selectedImage {
@@ -154,7 +154,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                         if error != nil {
                             self.present(UIAlertController.withError(error: error!), animated: true, completion: nil)
                         } else {
-                            print("Uploaded Image to Firebase Storage!")
                             LocationService.shared.getLocation(currentLocation: self.currentLocation, handler: { address, error, latitude, longitude in
                                 if let adrs = address,
                                     let city = adrs[LocationType.city.rawValue] as? String,

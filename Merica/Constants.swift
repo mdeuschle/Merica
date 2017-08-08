@@ -23,7 +23,9 @@ enum Segue: String {
     case toMyFavorites = "toMyFavorites"
     case fromMyFavoritesToDetail = "fromMyFavoritesToDetail"
     case fromHomeToUserPosts = "fromHomeToUserPosts"
-    case fromUserPostsToDetail = "fromUserPostsToDetail"    
+    case fromUserPostsToDetail = "fromUserPostsToDetail"
+    case unwindToWelcome = "unwindToWelcome"
+    case unwindToHome = "unwindToHome"
 }
 
 enum DatabaseID: String {

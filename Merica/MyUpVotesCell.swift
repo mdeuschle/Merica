@@ -120,6 +120,7 @@ class MyUpVotesCell: UITableViewCell {
             }
         })
     }
+    
     @IBAction func shareTapped(_ sender: Any) {
         if let title = postTitleLabel.text {
             let vc = UIActivityViewController(activityItems: [title], applicationActivities: nil)

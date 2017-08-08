@@ -43,14 +43,12 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
                 KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
                 if let isWelcomeRoot = appDelegate.isWelcomeRoot {
                     if isWelcomeRoot {
-                        performSegue(withIdentifier: "unwindToHome", sender: self)
-                        print("Welcome already root")
+                        performSegue(withIdentifier: Segue.unwindToWelcome.rawValue, sender: self)
                     } else {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
                         if let vc = storyboard.instantiateViewController(withIdentifier: StoryboardID.welcome.rawValue) as? WelcomeVC {
                             appDelegate.window?.rootViewController = vc
-                            performSegue(withIdentifier: "unwindToHome", sender: self)
-                            print("Welcome NOT already root")
+                            performSegue(withIdentifier: Segue.unwindToHome.rawValue, sender: self)
                         }
                     }
                 }

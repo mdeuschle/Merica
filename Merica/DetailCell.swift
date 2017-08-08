@@ -109,7 +109,6 @@ class DetailCell: UITableViewCell {
             if error != nil {
                 print("Unable to download image from Firebase storage")
             } else {
-                print("Image downloaded from Firebase storage")
                 if let imageData = data {
                     if let img = UIImage(data: imageData) {
                         self.postImageView.image = img
@@ -122,7 +121,6 @@ class DetailCell: UITableViewCell {
             if error != nil {
                 print("Unable to download profile image from Firebase storage")
             } else {
-                print("profile image downloaded from Firebase storage")
                 if let profileImage = data {
                     if let profileImg = UIImage(data: profileImage) {
                         self.profileView.image = profileImg
