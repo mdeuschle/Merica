@@ -24,7 +24,7 @@ class MoreVC: UIViewController {
 extension MoreVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,8 +60,6 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
             }
         case 1:
             performSegue(withIdentifier: Segue.toTermsVC.rawValue, sender: self)
-        case 2:
-            print("DELETE TAPPED")
         default:
             break
         }

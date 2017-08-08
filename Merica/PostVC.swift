@@ -134,11 +134,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         }
     }
 
-    @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
-        present(imagePicker, animated: true, completion: nil)
-    }
-
-    @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
+    func postTapped() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
             if !accepted {
                 return
@@ -179,6 +175,24 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         } else {
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
         }
+    }
+
+    @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
+        postTapped()
+    }
+}
+
+extension PostVC: UITextFieldDelegate {
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            postTapped()
+        }
+        return true
     }
 }
 
