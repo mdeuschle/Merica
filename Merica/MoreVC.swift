@@ -24,7 +24,7 @@ class MoreVC: UIViewController {
 extension MoreVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,7 +37,8 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.row == 0 {
+        switch indexPath.row {
+        case 0:
             do {
                 try Auth.auth().signOut()
                 KeychainWrapper.standard.removeObject(forKey: KeyChain.uid.rawValue)
@@ -45,7 +46,7 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
                     if isWelcomeRoot {
                         performSegue(withIdentifier: Segue.unwindToWelcome.rawValue, sender: self)
                     } else {
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let storyboard = UIStoryboard(name: StoryboardID.main.rawValue, bundle: nil)
                         if let vc = storyboard.instantiateViewController(withIdentifier: StoryboardID.welcome.rawValue) as? WelcomeVC {
                             appDelegate.window?.rootViewController = vc
                             performSegue(withIdentifier: Segue.unwindToHome.rawValue, sender: self)
@@ -57,9 +58,14 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
                         animated: true,
                         completion: nil)
             }
-        } else {
+        case 1:
             performSegue(withIdentifier: Segue.toTermsVC.rawValue, sender: self)
+        case 2:
+            print("DELETE TAPPED")
+        default:
+            break
         }
     }
 }
+
 

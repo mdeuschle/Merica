@@ -11,7 +11,6 @@ import MapKit
 import UIKit
 
 class PostAnnotation: MKPointAnnotation {
-
     var mapPost: Post!
     var mapImage: UIImage!
 }

@@ -9,7 +9,6 @@
 import Foundation
 
 class SortHelper {
-
     static func sortPosts(posts: [Post]) -> [Post] {
         var olderPosts = posts
         olderPosts.sort(by: { $0.date > $1.date })

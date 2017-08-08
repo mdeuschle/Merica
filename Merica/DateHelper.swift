@@ -9,7 +9,6 @@
 import Foundation
 
 class DateHelper {
-
     static func convertDateToString() -> String {
         let currentDate = Date()
         let formatter = DateFormatter()

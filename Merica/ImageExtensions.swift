@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIImage {
-
     func resize(width: CGFloat) -> UIImage? {
         let height = CGFloat(ceil(width/self.size.width * self.size.height))
         let cgSize = CGSize(width: width, height: height)

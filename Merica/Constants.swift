@@ -114,6 +114,7 @@ enum ProfileCellLabel: String {
     case est = "Est. "
     case privacyPolicy = "Privacy Policy"
     case kudos = "Kudos "
+    case deleteAccount = "Delete Account"
 }
 
 enum NotificationKey: String {
