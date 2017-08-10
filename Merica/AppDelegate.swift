@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import SwiftKeychainWrapper
-import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -35,37 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
-    }
-
-    func scheduleNotification(post: Post, message: String) {
-        let userID = Auth.auth().currentUser?.uid
-        if post.userKey == userID && post.upVotes < 10 {
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let content = UNMutableNotificationContent()
-            content.title = post.postTitle
-            content.body = message
-            content.sound = UNNotificationSound.default()
-            if let path = Bundle.main.path(forResource: randomGifGenerator(), ofType: "gif") {
-                let url = URL(fileURLWithPath: path)
-                do {
-                    let attachment = try UNNotificationAttachment(identifier: "gif", url: url, options: nil)
-                    content.attachments = [attachment]
-                } catch {
-                    print("The attachment was not loaded.")
-                }
-            }
-            let request = UNNotificationRequest(identifier: NotificationID.textNotification.rawValue, content: content, trigger: trigger)
-            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-            UNUserNotificationCenter.current().add(request) {(error) in
-                if let error = error {
-                    print("notification error: \(error)")
-                }
-            }
-        }
-    }
-
-    func randomGifGenerator() -> String {
-        return "gif" + String(Int(arc4random_uniform(8) + 1))
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
