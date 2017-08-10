@@ -11,7 +11,6 @@ import Firebase
 import SwiftKeychainWrapper
 import CoreLocation
 import MapKit
-import UserNotifications
 
 class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
@@ -135,11 +134,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
 
     func postTapped() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
-            if !accepted {
-                return
-            }
-        }
         if let image = selectedImage {
             if let reSizedImage = image.resize(width: 300) {
                 if let imageData = UIImagePNGRepresentation(reSizedImage) {
