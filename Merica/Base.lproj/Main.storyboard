@@ -1481,7 +1481,7 @@
                     <navigationItem key="navigationItem" title="'Merica" id="SzD-yp-P4M">
                         <barButtonItem key="backBarButtonItem" title=" " id="cgl-WY-shi"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="R6w-8r-ehr">
-                            <color key="tintColor" red="1" green="0.0" blue="0.27058823529999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="deleteButtonTapped:" destination="eeh-lb-tfZ" id="fmA-cq-qws"/>
                             </connections>
