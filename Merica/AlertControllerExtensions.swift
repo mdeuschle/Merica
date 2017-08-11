@@ -43,5 +43,33 @@ extension UIAlertController {
         alert.addAction(cancelAction)
         return alert
     }
+
+    static func actionSheet(handler1: @escaping ((UIAlertAction!) -> Void), handler2: @escaping ((UIAlertAction!) -> Void)) -> UIAlertController {
+        let alert = UIAlertController(title: nil,
+                                      message: nil,
+                                      preferredStyle: .actionSheet)
+        let reportButton = UIAlertAction(title: Alert.reportPost.rawValue,
+                                         style: .default,
+                                         handler: handler1)
+        alert.addAction(reportButton)
+        let blockButton = UIAlertAction(title: Alert.blockUser.rawValue,
+                                         style: .default,
+                                         handler: handler2)
+        alert.addAction(blockButton)
+        let cancelButton = UIAlertAction(title: Alert.cancel.rawValue,
+                                         style: .cancel,
+                                         handler: nil)
+        alert.addAction(cancelButton)
+        return alert
+    }
 }
+
+
+
+
+
+
+
+
+
 

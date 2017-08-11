@@ -8,13 +8,20 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
 protocol DidTapUserProfile {
     func userProfileTapped(post: Post)
 }
 
+protocol ReportPost {
+    func reportButtonTapped(post: Post)
+}
+
 class PostCell: UITableViewCell {
 
+    @IBOutlet var userButton: UIButton!
+    @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var userView: CircleView!
     @IBOutlet var postTitleLabel: UILabel!
     @IBOutlet var postImageView: UIImageView!
@@ -33,6 +40,7 @@ class PostCell: UITableViewCell {
     var currentUser: DatabaseReference!
     weak var parentVC = UIViewController()
     var userProfileTappedDelegate: DidTapUserProfile?
+    var reportButtonDelegate: ReportPost?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -48,6 +56,12 @@ class PostCell: UITableViewCell {
         if let delegate = userProfileTappedDelegate, let vc = parentVC {
             delegate.userProfileTapped(post: post)
             vc.performSegue(withIdentifier: Segue.fromHomeToUserPosts.rawValue, sender: vc)
+        }
+    }
+
+    func reportTapped() {
+        if let delegate = reportButtonDelegate {
+            delegate.reportButtonTapped(post: post)
         }
     }
 
@@ -110,7 +124,8 @@ class PostCell: UITableViewCell {
         downVotesRef = DataService.shared.downVotesRef(postKey: post.postKey)
         favoriteRef = DataService.shared.favoriteRef(postKey: post.postKey)
         postTitleLabel.text = post.postTitle
-        timeStampLabel.text = post.userName + Divider.dot.rawValue + DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
+        userNameLabel.text = post.userName
+        timeStampLabel.text = DateHelper.calcuateTimeStamp(dateString: post.timeStamp)
         let location = post.cityName + Divider.pipe.rawValue + post.stateName
         locationLabel.text = location
         let totalVotes = post.upVotes - post.downVotes
@@ -179,6 +194,10 @@ class PostCell: UITableViewCell {
             let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
             parentVC?.present(vc, animated: true)
         }
+    }
+
+    @IBAction func reportButtonTapped(_ sender: UIButton) {
+        reportTapped()
     }
 }
 

@@ -77,6 +77,9 @@ enum Alert: String {
     case locationNotFound = "Location not found"
     case unknownError = "Unknown error"
     case addTitle = "A photo this awesome deserves a title"
+    case reportPost = "Report Post"
+    case blockUser = "Block User"
+    case noEmail = "Unable to send email"
 }
 
 enum StoryboardID: String {
@@ -138,14 +141,14 @@ enum URLString: String {
     case privacyPoliy = "https://sites.google.com/view/merica/privacy-policy"
 }
 
-enum NotificationID: String {
-    case textNotification = "textNotification"
+enum Report: String {
+    case email = "mdeuschle@gmail.com"
+    case subject = "Flag: "
+    case objectionalPost = "The follwing post is objectional: "
+    case postTitle = "Post Title: "
+    case postKey = "Post Key: "
 }
 
-enum NotificationMessage: String {
-    case upvote = "☞ My post was just upvoted! 🕺🏻"
-    case favorite = "☞ My post was just favorited! ❤️"
-}
 
 
 

@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class DetailVC: UIViewController {
+class DetailVC: UIViewController, ReportDetailPost {
 
     @IBOutlet var detailTableView: UITableView!
     @IBOutlet var deleteButton: UIBarButtonItem!
@@ -40,6 +40,14 @@ class DetailVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         postRef.removeObserver(withHandle: handle)
+    }
+
+    func reportButtonTapped(post: Post) {
+        present(UIAlertController.actionSheet(handler1: { (action1) in
+            print("ACTION 1 Tapped")
+        }, handler2: { (action2) in
+            print("ACTION 2 Tapped")
+        }), animated: true, completion: nil)
     }
 
     func readPostData() {
@@ -80,6 +88,7 @@ extension DetailVC: UITableViewDelegate, UITableViewDataSource {
             return DetailCell()
         }
         cell.parentVC = self
+        cell.reportButtonDelegate = self
         cell.configCell(post: post)
         return cell
     }

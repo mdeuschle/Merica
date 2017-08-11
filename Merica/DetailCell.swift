@@ -9,8 +9,14 @@
 import UIKit
 import Firebase
 
+protocol ReportDetailPost {
+    func reportButtonTapped(post: Post)
+}
+
 class DetailCell: UITableViewCell {
 
+    @IBOutlet var userButton: UIButton!
+    @IBOutlet var userNameLabel: UILabel!
     @IBOutlet var postTitleLabel: UILabel!
     @IBOutlet var postImageView: UIImageView!
     @IBOutlet var timeStampLabel: UILabel!
@@ -20,6 +26,7 @@ class DetailCell: UITableViewCell {
     @IBOutlet var favoriteImage: UIImageView!
     @IBOutlet var saveLabel: UILabel!
     @IBOutlet var profileView: CircleView!
+    var reportButtonDelegate: ReportDetailPost?
 
     var post: Post!
     var upVotesRef: DatabaseReference!
@@ -36,6 +43,12 @@ class DetailCell: UITableViewCell {
         saveLabel.addGestureRecognizer(tapGestureGenerator(selector: #selector(favoriteTapped(sender:))))
         currentUserRef = DataService.shared.refCurrentUser
         postImageView.image = UIImage()
+    }
+
+    func reportTapped() {
+        if let delegate = reportButtonDelegate {
+            delegate.reportButtonTapped(post: post)
+        }
     }
 
     func favoriteTapped(sender: UITapGestureRecognizer) {
@@ -147,11 +160,14 @@ class DetailCell: UITableViewCell {
         })
     }
 
+    @IBAction func reportButtonTapped(_ sender: UIButton) {
+        reportTapped()
+    }
+
     @IBAction func shareTapped(_ sender: Any) {
         if let title = postTitleLabel.text, let image = postImageView.image {
             let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
             parentVC?.present(vc, animated: true)
         }
-
     }
 }

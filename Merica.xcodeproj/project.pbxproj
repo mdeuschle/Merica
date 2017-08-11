@@ -240,6 +240,7 @@
 				A8D4DBB81F2D652200D37555 /* MyFavoritesVC.swift */,
 				A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */,
 				A8D4DBAA1F2CE24B00D37555 /* DetailVC.swift */,
+				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -273,7 +274,6 @@
 			isa = PBXGroup;
 			children = (
 				A83B4E8E1F107698008595E8 /* Constants.swift */,
-				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
 				A8FC68CF1F16BF0700DEED82 /* ImageExtensions.swift */,
 				A8FC68D11F16CF4F00DEED82 /* DateHelper.swift */,
 				A8D94CD31F1EB24000DE148F /* PostAnnotation.swift */,

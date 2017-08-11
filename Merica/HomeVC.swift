@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
-class HomeVC: UIViewController, DidTapUserProfile {
+class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
 
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
@@ -38,6 +39,18 @@ class HomeVC: UIViewController, DidTapUserProfile {
     func userProfileTapped(post: Post) {
         userKey = post.userKey
         userName = post.userName
+    }
+
+    func reportButtonTapped(post: Post) {
+        present(UIAlertController.actionSheet(handler1: { (action1) in
+            print("ACTION 1 Tapped")
+        }, handler2: { (action2) in
+            print("ACTION 2 Tapped")
+        }), animated: true, completion: nil)
+    }
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,6 +101,7 @@ extension HomeVC: UITableViewDataSource, UITableViewDelegate {
         }
         cell.parentVC = self
         cell.userProfileTappedDelegate = self
+        cell.reportButtonDelegate = self
         let post = posts[indexPath.row]
         if let image = HomeVC.imageCache.object(forKey: post.postImageURL as NSString),
             let profileImage = HomeVC.imageCache.object(forKey: post.profileImageURL as NSString) {
