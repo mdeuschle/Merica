@@ -49,7 +49,7 @@ enum DatabaseID: String {
     case coordinate = "coordinate"
     case estDate = "estDate"
     case defaultProfile = "defaultProfile.png"
-    case reportedPosts = "reportedPost"
+    case reportedPosts = "reportedPosts"
 }
 
 enum KeyChain: String {

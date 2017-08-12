@@ -18,7 +18,6 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     var postRef: DatabaseReference!
     var reportedPostRef: DatabaseReference!
     var handle: UInt!
-    var reportedPostHandle: UInt!
     var userKey: String!
     var userName: String!
 
@@ -37,7 +36,6 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         postRef.removeObserver(withHandle: handle)
-        reportedPostRef.removeObserver(withHandle: reportedPostHandle)
     }
 
     func userProfileTapped(post: Post) {

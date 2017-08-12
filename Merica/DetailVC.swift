@@ -17,6 +17,7 @@ class DetailVC: UIViewController, ReportDetailPost {
     var post: Post!
     var isMyPost = false
     var postRef: DatabaseReference!
+    var reportedPost: DatabaseReference!
     var handle: UInt!
 
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class DetailVC: UIViewController, ReportDetailPost {
             navigationItem.rightBarButtonItem = nil
         }
         postRef = DataService.shared.refPosts
+        reportedPost = DataService.shared.reportedPosts
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +46,8 @@ class DetailVC: UIViewController, ReportDetailPost {
 
     func reportButtonTapped(post: Post) {
         present(UIAlertController.actionSheet(handler1: { (action1) in
-            print("ACTION 1 Tapped")
+            self.reportedPost.childByAutoId().setValue(post.postKey)
+            self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in
             print("ACTION 2 Tapped")
         }), animated: true, completion: nil)
