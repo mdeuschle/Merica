@@ -16,13 +16,16 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
     var postRef: DatabaseReference!
+    var reportedPostRef: DatabaseReference!
     var handle: UInt!
+    var reportedPostHandle: UInt!
     var userKey: String!
     var userName: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         postRef = DataService.shared.refPosts
+        reportedPostRef = DataService.shared.reportedPosts
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +37,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         postRef.removeObserver(withHandle: handle)
+        reportedPostRef.removeObserver(withHandle: reportedPostHandle)
     }
 
     func userProfileTapped(post: Post) {
@@ -43,6 +47,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
 
     func reportButtonTapped(post: Post) {
         present(UIAlertController.actionSheet(handler1: { (action1) in
+            self.reportedPostRef.childByAutoId().setValue(post.postKey)
             print("ACTION 1 Tapped")
         }, handler2: { (action2) in
             print("ACTION 2 Tapped")
