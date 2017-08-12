@@ -229,6 +229,7 @@
 				A83B4E871F105F0E008595E8 /* LoginVC.swift */,
 				A83B4E891F105F2D008595E8 /* SignUpVC.swift */,
 				A83B4E991F1310BB008595E8 /* HomeVC.swift */,
+				A8D4DBAA1F2CE24B00D37555 /* DetailVC.swift */,
 				A83B4E9B1F131110008595E8 /* ProfileVC.swift */,
 				A83B4E9D1F131130008595E8 /* PostVC.swift */,
 				A83B4EA01F13115B008595E8 /* MapVC.swift */,
@@ -239,7 +240,6 @@
 				A8D4DBB21F2D47ED00D37555 /* MyUpVotesVC.swift */,
 				A8D4DBB81F2D652200D37555 /* MyFavoritesVC.swift */,
 				A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */,
-				A8D4DBAA1F2CE24B00D37555 /* DetailVC.swift */,
 				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
 			);
 			name = Controllers;

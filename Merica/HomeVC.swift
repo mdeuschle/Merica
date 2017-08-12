@@ -58,10 +58,6 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
         }), animated: true, completion: nil)
     }
 
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true, completion: nil)
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segue.fromHomeToUserPosts.rawValue {
             if let destination = segue.destination as? UserPostsVC {

@@ -15,11 +15,12 @@ class DetailVC: UIViewController, ReportDetailPost {
     @IBOutlet var deleteButton: UIBarButtonItem!
 
     var post: Post!
+    var reportedUsers = [String]()
     var isMyPost = false
     var postRef: DatabaseReference!
     var reportedPost: DatabaseReference!
     var reportedUserRef: DatabaseReference!
-    var handle: UInt!
+    var currentUser: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +32,8 @@ class DetailVC: UIViewController, ReportDetailPost {
         } else {
             navigationItem.rightBarButtonItem = nil
         }
-        postRef = DataService.shared.refPosts
         reportedPost = DataService.shared.reportedPosts
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        readPostData()
-    }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        postRef.removeObserver(withHandle: handle)
+        currentUser = DataService.shared.refCurrentUser
     }
 
     func reportButtonTapped(post: Post) {
@@ -52,14 +43,25 @@ class DetailVC: UIViewController, ReportDetailPost {
             self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in
             self.reportedUserRef.setValue(true)
-            self.present(UIAlertController.withMessageAndTitle(title: Alert.userBlocked.rawValue, message: "\(post.userName)"), animated: true, completion: nil)
+            self.present(UIAlertController.withMessageAndTitle(title: Alert.userBlocked.rawValue, message: "\(post.userName)"), animated: true, completion: self.removeBlockedUser)
         }), animated: true, completion: nil)
     }
 
-    func readPostData() {
-        handle = postRef.observe(.value, with: { (snapshot) in
-            if let _ = snapshot.children.allObjects as? [DataSnapshot] {
-                self.detailTableView.reloadData()
+    func removeBlockedUser() {
+        getReportedUser { 
+            if self.reportedUsers.contains(self.post.userKey) {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
+    func getReportedUser(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.reportedUsers.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snaps = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snaps {
+                    self.reportedUsers.append(snap.key)
+                }
+                handler()
             }
         })
     }
