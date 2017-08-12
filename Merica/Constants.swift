@@ -81,6 +81,7 @@ enum Alert: String {
     case reportPost = "Report Post"
     case blockUser = "Block User"
     case noEmail = "Unable to send email"
+    case objectional = "Objectional Content Reported"
 }
 
 enum StoryboardID: String {

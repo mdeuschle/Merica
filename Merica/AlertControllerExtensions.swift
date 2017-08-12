@@ -29,6 +29,15 @@ extension UIAlertController {
         return alert
     }
 
+    static func withMessageAndTitle(title: String, message: String) -> UIAlertController {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let action = UIAlertAction(title: Alert.ok.rawValue, style: .default, handler: nil)
+        alert.addAction(action)
+        return alert
+    }
+
     static func withMessageAndAction(alertTitle: String, alertMessage: String, actionButtonTitle: String, handler: @escaping ((UIAlertAction!) -> Void)) -> UIAlertController {
         let alert = UIAlertController(title: alertTitle,
                                       message: alertMessage,

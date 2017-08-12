@@ -48,7 +48,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     func reportButtonTapped(post: Post) {
         present(UIAlertController.actionSheet(handler1: { (action1) in
             self.reportedPostRef.childByAutoId().setValue(post.postKey)
-            print("ACTION 1 Tapped")
+            self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in
             print("ACTION 2 Tapped")
         }), animated: true, completion: nil)
