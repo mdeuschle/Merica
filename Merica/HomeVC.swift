@@ -15,9 +15,11 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     @IBOutlet var postTableView: UITableView!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
     var posts = [Post]()
+    var reportedUsers = [String]()
     var postRef: DatabaseReference!
     var reportedPostRef: DatabaseReference!
     var reportedUserRef: DatabaseReference!
+    var currentUser: DatabaseReference!
     var handle: UInt!
     var userKey: String!
     var userName: String!
@@ -26,6 +28,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
         super.viewDidLoad()
         postRef = DataService.shared.refPosts
         reportedPostRef = DataService.shared.reportedPosts
+        currentUser = DataService.shared.refCurrentUser
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,7 +54,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
             self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in
             self.reportedUserRef.setValue(true)
-            self.present(UIAlertController.withMessageAndTitle(title: Alert.userBlocked.rawValue, message: "\(post.userName)"), animated: true, completion: nil)
+            self.present(UIAlertController.withMessageAndTitle(title: Alert.userBlocked.rawValue, message: "\(post.userName)"), animated: true, completion: self.readPostData)
         }), animated: true, completion: nil)
     }
 
@@ -75,11 +78,29 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
                 for snap in snapShot {
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        self.posts.append(post)
-                        self.postTableView.reloadData()
-                        self.posts = SortHelper.sortPosts(posts: self.posts)
+                        self.getReportedUser {
+                            if self.reportedUsers.contains(post.userKey) {
+                                self.postTableView.reloadData()
+                                self.posts = SortHelper.sortPosts(posts: self.posts)
+                            } else {
+                                self.posts.append(post)
+                                self.postTableView.reloadData()
+                                self.posts = SortHelper.sortPosts(posts: self.posts)
+                            }
+                        }
                     }
                 }
+            }
+        })
+    }
+
+    func getReportedUser(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.reportedUsers.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snaps = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snaps {
+                    self.reportedUsers.append(snap.key)
+                }
+                handler()
             }
         })
     }
