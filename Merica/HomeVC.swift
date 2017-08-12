@@ -17,6 +17,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     var posts = [Post]()
     var postRef: DatabaseReference!
     var reportedPostRef: DatabaseReference!
+    var reportedUserRef: DatabaseReference!
     var handle: UInt!
     var userKey: String!
     var userName: String!
@@ -44,11 +45,13 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
     }
 
     func reportButtonTapped(post: Post) {
+        reportedUserRef = DataService.shared.reportedUserRef(userKey: post.userKey)
         present(UIAlertController.actionSheet(handler1: { (action1) in
             self.reportedPostRef.childByAutoId().setValue(post.postKey)
             self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in
-            print("ACTION 2 Tapped")
+            self.reportedUserRef.setValue(true)
+            self.present(UIAlertController.withMessageAndTitle(title: Alert.userBlocked.rawValue, message: "\(post.userName)"), animated: true, completion: nil)
         }), animated: true, completion: nil)
     }
 

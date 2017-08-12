@@ -20,6 +20,7 @@ class DataService {
     private var _refUsers = dbBase.child(DatabaseID.users.rawValue)
     private var _refPics = storageBase.child(DatabaseID.pics.rawValue)
     private var _reportedPosts = dbBase.child(DatabaseID.reportedPosts.rawValue)
+    private var _reportedUsers = dbBase.child(DatabaseID.reportedUsers.rawValue)
 
     var refBase: DatabaseReference {
         return _refBase
@@ -36,6 +37,10 @@ class DataService {
     var reportedPosts: DatabaseReference {
         return _reportedPosts
     }
+    var reportedUsers: DatabaseReference {
+        return _reportedUsers
+    }
+
     var refCurrentUser: DatabaseReference {
         guard let uid = KeychainWrapper.standard.string(forKey: KeyChain.uid.rawValue) else {
             return DatabaseReference()
@@ -57,6 +62,10 @@ class DataService {
 
     func favoriteRef(postKey: String) -> DatabaseReference {
         return refCurrentUser.child(DatabaseID.isFavorite.rawValue).child(postKey)
+    }
+
+    func reportedUserRef(userKey: String) -> DatabaseReference {
+        return refCurrentUser.child(DatabaseID.reportedUsers.rawValue).child(userKey)
     }
 }
 

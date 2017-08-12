@@ -50,6 +50,7 @@ enum DatabaseID: String {
     case estDate = "estDate"
     case defaultProfile = "defaultProfile.png"
     case reportedPosts = "reportedPosts"
+    case reportedUsers = "reportedUsers"
 }
 
 enum KeyChain: String {
@@ -82,6 +83,7 @@ enum Alert: String {
     case blockUser = "Block User"
     case noEmail = "Unable to send email"
     case objectional = "Objectional Content Reported"
+    case userBlocked = "User Blocked"
 }
 
 enum StoryboardID: String {
