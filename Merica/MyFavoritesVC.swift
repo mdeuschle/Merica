@@ -86,7 +86,6 @@ class MyFavoritesVC: UIViewController {
             }
         })
     }
-    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segue.fromMyFavoritesToDetail.rawValue {
