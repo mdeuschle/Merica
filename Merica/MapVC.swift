@@ -15,13 +15,16 @@ class MapVC: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     var posts = [Post]()
+    var reportedUsers = [String]()
     var postRef: DatabaseReference!
     var storageRef: StorageReference!
+    var currentUser: DatabaseReference!
     var handle: UInt!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         postRef = DataService.shared.refPosts
+        currentUser = DataService.shared.refCurrentUser
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -42,10 +45,26 @@ class MapVC: UIViewController, MKMapViewDelegate {
                 for snap in snapShot {
                     if let postDic = snap.value as? [String: Any] {
                         let post = Post(postKey: snap.key, postDic: postDic)
-                        self.posts.append(post)
-                        self.dropPins()
+
+                        self.getReportedUser {
+                            if !self.reportedUsers.contains(post.userKey) {
+                                self.posts.append(post)
+                                self.dropPins()
+                            }
+                        }
                     }
                 }
+            }
+        })
+    }
+
+    func getReportedUser(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.reportedUsers.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snaps = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snaps {
+                    self.reportedUsers.append(snap.key)
+                }
+                handler()
             }
         })
     }
