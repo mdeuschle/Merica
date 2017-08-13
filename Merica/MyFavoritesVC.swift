@@ -14,9 +14,11 @@ class MyFavoritesVC: UIViewController {
     @IBOutlet var postTableView: UITableView!
 
     var posts = [Post]()
+    var reportedUsers = [String]()
     var selectedPost: Post!
     var favoritesRef: DatabaseReference!
     var postRef: DatabaseReference!
+    var currentUser: DatabaseReference!
     var favoritesHandler: UInt!
     var postHandler: UInt!
 
@@ -24,6 +26,7 @@ class MyFavoritesVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         postRef = DataService.shared.refPosts
+        currentUser = DataService.shared.refCurrentUser
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,10 +53,20 @@ class MyFavoritesVC: UIViewController {
                         self.favoritesRef.observeSingleEvent(of: .value, with: { (favoriteSnap) in
                             if let isFavorite = favoriteSnap.value as? Bool {
                                 if isFavorite {
-                                    self.posts.append(post)
-                                    self.posts.sort(by: { $0.date > $1.date })
-                                    self.postTableView.reloadData()
-                                    self.favoritesHandler = self.favoritesRef.observe(.value, with: { (snapshot) in })
+
+
+                                    self.getReportedUser {
+                                        if self.reportedUsers.contains(post.userKey) {
+                                            self.posts.sort(by: { $0.date > $1.date })
+                                            self.postTableView.reloadData()
+                                            self.favoritesHandler = self.favoritesRef.observe(.value, with: { (snapshot) in })
+                                        } else {
+                                            self.posts.append(post)
+                                            self.posts.sort(by: { $0.date > $1.date })
+                                            self.postTableView.reloadData()
+                                            self.favoritesHandler = self.favoritesRef.observe(.value, with: { (snapshot) in })
+                                        }
+                                    }
                                 }
                             }
                         })
@@ -62,6 +75,18 @@ class MyFavoritesVC: UIViewController {
             }
         })
     }
+
+    func getReportedUser(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.reportedUsers.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snaps = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snaps {
+                    self.reportedUsers.append(snap.key)
+                }
+                handler()
+            }
+        })
+    }
+    
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segue.fromMyFavoritesToDetail.rawValue {
