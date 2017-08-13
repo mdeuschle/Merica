@@ -26,6 +26,7 @@ enum Segue: String {
     case fromUserPostsToDetail = "fromUserPostsToDetail"
     case unwindToWelcome = "unwindToWelcome"
     case unwindToHome = "unwindToHome"
+    case fromSignupToTerms = "fromSignupToTerms"
 }
 
 enum DatabaseID: String {
@@ -142,7 +143,7 @@ enum LocationType: String {
 }
 
 enum URLString: String {
-    case privacyPoliy = "https://sites.google.com/view/merica/terms-privacy-policy?authuser=0"
+    case privacyPoliy = "https://sites.google.com/view/merica/privacy-policy"
 }
 
 enum Report: String {

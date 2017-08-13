@@ -75,7 +75,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'Merica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgV-bg-7ha">
-                                <rect key="frame" x="94" y="240" width="133" height="47"/>
+                                <rect key="frame" x="92.5" y="240" width="136" height="53"/>
                                 <fontDescription key="fontDescription" name="BenjaminFranklin" family="Benjamin Franklin" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -406,7 +406,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-qL-NDE">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-qL-NDE">
                                 <rect key="frame" x="26" y="451" width="268" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="EFc-pH-Bqi"/>
@@ -500,6 +500,7 @@
                         <outlet property="logoImage" destination="CSp-PF-2a5" id="bHL-9g-QgG"/>
                         <outlet property="mericaLabel" destination="a4a-8g-3Dp" id="VHn-8B-asZ"/>
                         <outlet property="passwordTextField" destination="ZJ7-22-ENd" id="XLx-kL-57Z"/>
+                        <outlet property="termsLabel" destination="bAO-qL-NDE" id="fCd-aj-IpH"/>
                         <outlet property="userNameTextField" destination="Bfz-aC-2G9" id="eOP-Hp-tuV"/>
                         <segue destination="GoY-N4-VuM" kind="show" identifier="signUpSuccess" id="aGa-Ld-f99"/>
                     </connections>
@@ -2325,7 +2326,7 @@
         <image name="whiteBack" width="16" height="28"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TCA-hu-Vt9"/>
         <segue reference="aGa-Ld-f99"/>
+        <segue reference="TCA-hu-Vt9"/>
     </inferredMetricsTieBreakers>
 </document>

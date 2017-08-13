@@ -17,15 +17,25 @@ class SignUpVC: UIViewController {
     @IBOutlet var userNameTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var logoImage: UIImageView!
+    @IBOutlet var termsLabel: UILabel!
+    var tap: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         notifications()
+        tap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.termsTapped))
+        termsLabel.addGestureRecognizer(tap)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    func termsTapped() {
+        if let url = URL(string: URLString.privacyPoliy.rawValue) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 
     func notifications() {
@@ -50,8 +60,10 @@ class SignUpVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TabBarController {
-            destination.didSignUp = true
+        if segue.identifier == Segue.signUpSuccess.rawValue {
+            if let destination = segue.destination as? TabBarController {
+                destination.didSignUp = true
+            }
         }
     }
 
