@@ -75,7 +75,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'Merica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgV-bg-7ha">
-                                <rect key="frame" x="92.5" y="240" width="136" height="53"/>
+                                <rect key="frame" x="94" y="240" width="133" height="47"/>
                                 <fontDescription key="fontDescription" name="BenjaminFranklin" family="Benjamin Franklin" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -306,7 +306,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="d28-w1-nob">
-                                <rect key="frame" x="26" y="354" width="268" height="28"/>
+                                <rect key="frame" x="26" y="317" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ul2-N9-hWL">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
@@ -332,7 +332,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Id3-fa-RQF">
-                                <rect key="frame" x="26" y="402" width="268" height="28"/>
+                                <rect key="frame" x="26" y="365" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfz-aC-2G9">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
@@ -358,7 +358,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Qq-5k-J9H">
-                                <rect key="frame" x="26" y="450" width="268" height="28"/>
+                                <rect key="frame" x="26" y="413" width="268" height="28"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Create a Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJ7-22-ENd">
                                         <rect key="frame" x="0.0" y="0.0" width="268" height="17"/>
@@ -406,6 +406,60 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAO-qL-NDE">
+                                <rect key="frame" x="26" y="451" width="268" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="EFc-pH-Bqi"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment content="By signing up you agree to our ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Terms">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" and have read our ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Privacy Policy">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" and ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Content Policy">
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name=".AppleSystemUIFont"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.13725490200000001" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -416,25 +470,28 @@
                             <constraint firstAttribute="trailing" secondItem="Yep-HT-Vvp" secondAttribute="trailing" id="BRe-fH-NuB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CSp-PF-2a5" secondAttribute="trailing" constant="60" id="D3H-5u-mSx"/>
                             <constraint firstItem="Lte-eU-edk" firstAttribute="top" secondItem="Yep-HT-Vvp" secondAttribute="bottom" id="JDS-de-YoX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bAO-qL-NDE" secondAttribute="trailing" constant="10" id="MSj-8P-1ej"/>
                             <constraint firstItem="3Qq-5k-J9H" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="Orw-A7-dJa"/>
                             <constraint firstItem="CSp-PF-2a5" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="60" id="QkE-00-AQC"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="UZa-Hp-Yys"/>
                             <constraint firstItem="Ie6-1F-ebW" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="W7O-OC-gV1"/>
-                            <constraint firstItem="DPP-7k-uVe" firstAttribute="top" secondItem="3Qq-5k-J9H" secondAttribute="bottom" constant="20" id="WBB-xy-O4x"/>
                             <constraint firstItem="Ie6-1F-ebW" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="10" id="XFh-qP-iSa"/>
                             <constraint firstItem="Stw-2d-27N" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leading" id="Xeb-03-aR7"/>
                             <constraint firstItem="a4a-8g-3Dp" firstAttribute="centerX" secondItem="GKb-dl-BtF" secondAttribute="centerX" id="YIr-ZO-gBs"/>
+                            <constraint firstItem="DPP-7k-uVe" firstAttribute="top" secondItem="bAO-qL-NDE" secondAttribute="bottom" constant="10" id="YTU-kQ-Q61"/>
                             <constraint firstItem="CSp-PF-2a5" firstAttribute="top" secondItem="KDt-GW-zxK" secondAttribute="bottom" constant="80" id="Zgk-6x-FfZ"/>
                             <constraint firstItem="Id3-fa-RQF" firstAttribute="top" secondItem="d28-w1-nob" secondAttribute="bottom" constant="20" id="bYg-BY-x5Z"/>
                             <constraint firstItem="Yep-HT-Vvp" firstAttribute="top" secondItem="GKb-dl-BtF" secondAttribute="top" id="dbI-Vd-nKO"/>
                             <constraint firstItem="Stw-2d-27N" firstAttribute="top" secondItem="GKb-dl-BtF" secondAttribute="top" id="f2k-OP-6iG"/>
                             <constraint firstItem="3Qq-5k-J9H" firstAttribute="top" secondItem="Id3-fa-RQF" secondAttribute="bottom" constant="20" id="hmE-G7-hIj"/>
+                            <constraint firstItem="bAO-qL-NDE" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="hxl-n9-rhf"/>
                             <constraint firstItem="d28-w1-nob" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="ojR-22-1VF"/>
                             <constraint firstItem="DPP-7k-uVe" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leadingMargin" constant="10" id="p57-95-kcQ"/>
                             <constraint firstItem="Yep-HT-Vvp" firstAttribute="leading" secondItem="GKb-dl-BtF" secondAttribute="leading" id="rfP-hC-IM5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DPP-7k-uVe" secondAttribute="trailing" constant="10" id="rhS-B8-YLP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d28-w1-nob" secondAttribute="trailing" constant="10" id="s3f-Fb-5r5"/>
                             <constraint firstItem="a4a-8g-3Dp" firstAttribute="top" secondItem="CSp-PF-2a5" secondAttribute="bottom" constant="20" id="s53-Wz-tzX"/>
+                            <constraint firstItem="bAO-qL-NDE" firstAttribute="top" secondItem="3Qq-5k-J9H" secondAttribute="bottom" constant="10" id="uKx-MD-NQU"/>
                             <constraint firstItem="Lte-eU-edk" firstAttribute="top" secondItem="DPP-7k-uVe" secondAttribute="bottom" constant="30" id="v4t-Nh-lgA"/>
                         </constraints>
                     </view>
