@@ -142,7 +142,7 @@ enum LocationType: String {
 }
 
 enum URLString: String {
-    case privacyPoliy = "https://sites.google.com/view/merica/privacy-policy"
+    case privacyPoliy = "https://sites.google.com/view/merica/terms-privacy-policy?authuser=0"
 }
 
 enum Report: String {
