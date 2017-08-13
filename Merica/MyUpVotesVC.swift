@@ -13,9 +13,11 @@ class MyUpVotesVC: UIViewController {
 
     @IBOutlet var postTableView: UITableView!
     var posts = [Post]()
+    var reportedUsers = [String]()
     var selectedPost: Post!
     var postRef: DatabaseReference!
     var upVotesRef: DatabaseReference!
+    var currentUser: DatabaseReference!
     var postHandler: UInt!
     var upVotesHandler: UInt!
 
@@ -23,6 +25,7 @@ class MyUpVotesVC: UIViewController {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
         postRef = DataService.shared.refPosts
+        currentUser = DataService.shared.refCurrentUser
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,10 +52,19 @@ class MyUpVotesVC: UIViewController {
                         self.upVotesRef.observeSingleEvent(of: .value, with: { (upVoteSnap) in
                             if let isUpVote = upVoteSnap.value as? Bool {
                                 if isUpVote {
-                                    self.posts.append(post)
-                                    self.posts.sort(by: { $0.date > $1.date })
-                                    self.postTableView.reloadData()
-                                    self.upVotesHandler = self.upVotesRef.observe(.value, with: { (snapshot) in })
+
+                                    self.getReportedUser {
+                                        if self.reportedUsers.contains(post.userKey) {
+                                            self.posts.sort(by: { $0.date > $1.date })
+                                            self.postTableView.reloadData()
+                                            self.upVotesHandler = self.upVotesRef.observe(.value, with: { (snapshot) in })
+                                        } else {
+                                            self.posts.append(post)
+                                            self.posts.sort(by: { $0.date > $1.date })
+                                            self.postTableView.reloadData()
+                                            self.upVotesHandler = self.upVotesRef.observe(.value, with: { (snapshot) in })
+                                        }
+                                    }
                                 }
                             }
                         })
@@ -68,6 +80,17 @@ class MyUpVotesVC: UIViewController {
                 destination.post = selectedPost
             }
         }
+    }
+
+    func getReportedUser(handler: @escaping () -> ()) {
+        currentUser.child(DatabaseID.reportedUsers.rawValue).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snaps = snapshot.children.allObjects as? [DataSnapshot] {
+                for snap in snaps {
+                    self.reportedUsers.append(snap.key)
+                }
+                handler()
+            }
+        })
     }
 }
 
