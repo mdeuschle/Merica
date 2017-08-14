@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>&quot;Merica App would like access to your location in order to create a city stamp for your posts&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>&quot;Merica App would like access to your photo library in order add pictures you choose to your posts&quot;</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BenjaminFranklin.ttf</string>
