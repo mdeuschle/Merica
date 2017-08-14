@@ -73,15 +73,16 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
             if let snapShot = snapshot.children.allObjects as? [DataSnapshot] {
                 for snap in snapShot {
                     if let postDic = snap.value as? [String: Any] {
-                        let post = Post(postKey: snap.key, postDic: postDic)
                         self.getReportedUser {
+                            let post = Post(postKey: snap.key, postDic: postDic)
                             if self.reportedUsers.contains(post.userKey) {
                                 self.postTableView.reloadData()
                                 self.posts = SortHelper.sortPosts(posts: self.posts)
                             } else {
                                 self.posts.append(post)
-                                self.postTableView.reloadData()
+                                self.posts = Array(Set(self.posts))
                                 self.posts = SortHelper.sortPosts(posts: self.posts)
+                                self.postTableView.reloadData()
                             }
                         }
                     }

@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class Post {
+class Post: Hashable, Equatable {
 
     private var _postTitle: String!
     private var _userName: String!
@@ -78,6 +78,11 @@ class Post {
             return Date()
         }
     }
+
+    var hashValue: Int {
+        return _postKey.hashValue
+    }
+
 
     init(postTitle: String, userName: String, postImageURL: String, profileImageURL: String, timeStamp: String, upVotes: Int, downVotes: Int, isFavorite: Bool, latitude: Double, longitude: Double, cityName: String, stateName: String, comment: String, postUser: String, userKey: String) {
         _postTitle = postTitle
@@ -167,8 +172,9 @@ class Post {
     }
 }
 
-
-
+func ==(left: Post, right: Post) -> Bool {
+    return left.postKey == right.postKey
+}
 
 
 
