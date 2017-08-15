@@ -118,6 +118,7 @@ class MyPostsCell: UITableViewCell {
     @IBAction func shareTapped(_ sender: Any) {
         if let title = postTitleLabel.text {
             let vc = UIActivityViewController(activityItems: [title], applicationActivities: nil)
+            vc.popoverPresentationController?.sourceView = parentVC?.view
             parentVC?.present(vc, animated: true)
         }
     }

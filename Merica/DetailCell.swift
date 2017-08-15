@@ -167,6 +167,7 @@ class DetailCell: UITableViewCell {
     @IBAction func shareTapped(_ sender: Any) {
         if let title = postTitleLabel.text, let image = postImageView.image {
             let vc = UIActivityViewController(activityItems: [title, image], applicationActivities: nil)
+            vc.popoverPresentationController?.sourceView = parentVC?.view
             parentVC?.present(vc, animated: true)
         }
     }
