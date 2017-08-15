@@ -49,7 +49,7 @@ class HomeVC: UIViewController, DidTapUserProfile, ReportPost {
 
     func reportButtonTapped(post: Post) {
         reportedUserRef = DataService.shared.reportedUserRef(userKey: post.userKey)
-        present(UIAlertController.actionSheet(handler1: { (action1) in
+        present(UIAlertController.reportAlert(handler1: { (action1) in
             self.reportedPostRef.childByAutoId().setValue(post.postKey)
             self.present(UIAlertController.withMessageAndTitle(title: Alert.objectional.rawValue, message: "\(post.postTitle)"), animated: true, completion: nil)
         }, handler2: { (action2) in

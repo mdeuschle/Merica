@@ -53,10 +53,10 @@ extension UIAlertController {
         return alert
     }
 
-    static func actionSheet(handler1: @escaping ((UIAlertAction!) -> Void), handler2: @escaping ((UIAlertAction!) -> Void)) -> UIAlertController {
+    static func reportAlert(handler1: @escaping ((UIAlertAction!) -> Void), handler2: @escaping ((UIAlertAction!) -> Void)) -> UIAlertController {
         let alert = UIAlertController(title: nil,
                                       message: nil,
-                                      preferredStyle: .actionSheet)
+                                      preferredStyle: .alert)
         let reportButton = UIAlertAction(title: Alert.reportPost.rawValue,
                                          style: .default,
                                          handler: handler1)
