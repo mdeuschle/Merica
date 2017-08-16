@@ -53,6 +53,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        selectedImage = nil
         hideSpinner()
     }
 
