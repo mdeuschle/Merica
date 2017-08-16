@@ -30,6 +30,7 @@
 		A83B4EA11F13115B008595E8 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA01F13115B008595E8 /* MapVC.swift */; };
 		A83B4EA51F1442CF008595E8 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA41F1442CF008595E8 /* ProfileCell.swift */; };
 		A83B4EA71F149476008595E8 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B4EA61F149476008595E8 /* PostCell.swift */; };
+		A89815171F43DB0D006E0BC8 /* ActivityIndicatorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89815161F43DB0D006E0BC8 /* ActivityIndicatorExtension.swift */; };
 		A89B12461F30DB040094574E /* BenjaminFranklin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A89B12451F30DB040094574E /* BenjaminFranklin.ttf */; };
 		A89B12481F3163640094574E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A89B12471F3163640094574E /* CircleView.swift */; };
 		A8CF0DE21F1E8274005B8EA6 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CF0DE11F1E8274005B8EA6 /* LocationService.swift */; };
@@ -106,6 +107,7 @@
 		A83B4EA01F13115B008595E8 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		A83B4EA41F1442CF008595E8 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		A83B4EA61F149476008595E8 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		A89815161F43DB0D006E0BC8 /* ActivityIndicatorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorExtension.swift; sourceTree = "<group>"; };
 		A89B12451F30DB040094574E /* BenjaminFranklin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = BenjaminFranklin.ttf; sourceTree = "<group>"; };
 		A89B12471F3163640094574E /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		A8CF0DE11F1E8274005B8EA6 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				A8D4DBB81F2D652200D37555 /* MyFavoritesVC.swift */,
 				A81E621A1F34E0DC00D252CB /* UserPostsVC.swift */,
 				A83B4E971F12F113008595E8 /* AlertControllerExtensions.swift */,
+				A89815161F43DB0D006E0BC8 /* ActivityIndicatorExtension.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				A8D4DBA11F2BE92F00D37555 /* MoreVC.swift in Sources */,
 				A8FC68D01F16BF0700DEED82 /* ImageExtensions.swift in Sources */,
 				A8FC68CE1F16AD7C00DEED82 /* TabBarController.swift in Sources */,
+				A89815171F43DB0D006E0BC8 /* ActivityIndicatorExtension.swift in Sources */,
 				A83B4E8A1F105F2D008595E8 /* SignUpVC.swift in Sources */,
 				A83B4E9C1F131110008595E8 /* ProfileVC.swift in Sources */,
 				A8D4DBB71F2D604C00D37555 /* MyFavoritesCell.swift in Sources */,
