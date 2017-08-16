@@ -30,7 +30,6 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     override func viewDidLoad() {
         super.viewDidLoad()
         configImagePicker()
-        notifications()
         currentLocation = CLLocation()
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
@@ -67,34 +66,22 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     func configImagePicker() {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
-    }
-
-    func notifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.showKeyboard), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.hideKeyboard), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-
-    func showKeyboard(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y == 0 {
-                view.frame.origin.y -= keyboardSize.height
-            }
+        imagePicker.modalPresentationStyle = .popover
+        if let mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) {
+            imagePicker.mediaTypes = mediaTypes
         }
     }
 
-    func hideKeyboard(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if view.frame.origin.y != 0 {
-                view.frame.origin.y += keyboardSize.height
-            }
-        }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
+            imageView.contentMode = .scaleAspectFit
             imageView.image = image
         } else {
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
@@ -173,6 +160,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
 
     @IBAction func cameraButtonTapped(_ sender: UIBarButtonItem) {
         present(imagePicker, animated: true, completion: nil)
+        imagePicker.popoverPresentationController?.barButtonItem = sender
     }
 
     @IBAction func postButtonTapped(_ sender: UIBarButtonItem) {
