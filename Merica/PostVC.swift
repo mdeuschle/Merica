@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 import CoreLocation
 import MapKit
 
-class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
+class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, SpinnerPresenter {
 
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var postTextField: UITextField!
@@ -24,6 +24,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     var postRef: DatabaseReference!
     var picsRef: StorageReference!
     var currentUser: DatabaseReference!
+    var spinner = UIActivityIndicatorView()
     var name = ""
     var profileURL = ""
 
@@ -48,6 +49,11 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
                 self.profileURL = profileURL
             }
         })
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        hideSpinner()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -121,6 +127,7 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
 
     func postTapped() {
+        showSpinner()
         if let image = selectedImage {
             if let reSizedImage = image.resize(width: 300) {
                 if let imageData = UIImagePNGRepresentation(reSizedImage) {

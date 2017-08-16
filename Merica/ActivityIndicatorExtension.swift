@@ -19,7 +19,7 @@ public extension SpinnerPresenter where Self: UIViewController {
     func showSpinner() {
         DispatchQueue.main.async {
             self.spinner.activityIndicatorViewStyle = .whiteLarge
-            self.spinner.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
+            self.spinner.frame = CGRect(x: 0, y: 0, width: 75, height: 75)
             self.spinner.center = CGPoint(x: self.view.bounds.size.width / 2, y: self.view.bounds.height / 2)
             self.view.addSubview(self.spinner)
             self.spinner.startAnimating()
