@@ -70,13 +70,22 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
     func configImagePicker() {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = false
         imagePicker.sourceType = .photoLibrary
+        imagePicker.modalPresentationStyle = .popover
+        if let mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary) {
+            imagePicker.mediaTypes = mediaTypes
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImage = image
+            profileImage.contentMode = .scaleAspectFill
             profileImage.image = image
         } else {
             present(UIAlertController.withMessage(message: Alert.imageNotFound.rawValue), animated: true, completion: nil)
@@ -118,6 +127,7 @@ class ProfileVC: UIViewController, UIImagePickerControllerDelegate, UINavigation
 
     func editTapped() {
         present(imagePicker, animated: true, completion: nil)
+        imagePicker.popoverPresentationController?.barButtonItem = editButton
     }
 }
 
