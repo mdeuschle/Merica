@@ -75,7 +75,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'Merica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgV-bg-7ha">
-                                <rect key="frame" x="92.5" y="240" width="136" height="53"/>
+                                <rect key="frame" x="94" y="240" width="133" height="47"/>
                                 <fontDescription key="fontDescription" name="BenjaminFranklin" family="Benjamin Franklin" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -401,7 +401,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'Merica" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4a-8g-3Dp">
-                                <rect key="frame" x="92" y="240" width="136" height="53"/>
+                                <rect key="frame" x="93.5" y="240" width="133" height="47"/>
                                 <fontDescription key="fontDescription" name="BenjaminFranklin" family="Benjamin Franklin" pointSize="40"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1065,7 +1065,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LOt-jR-7Jd" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" image="greyProfile" id="ggt-yw-rbD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" userInteractionEnabled="NO" contentMode="scaleToFill" id="Ifg-Xj-F9M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ifg-Xj-F9M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
